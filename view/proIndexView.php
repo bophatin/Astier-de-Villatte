@@ -21,16 +21,16 @@
                 <input type="text" id="username" name="username" class="pseudo-log"/>
                 <label for="password">PASSWORD</label>
                 <input type="password" id="password" name="password" class="mdp-log"/>
-                <input type="submit" id="submit" value="CONNEXION" class ="button"/>
+                <input type="submit" id="submit" name="submit" value="CONNEXION" class ="button"/>
 			</form> 
 			<div id="resultat" class="error-msg"></div>
 		</div>
+		<?php var_dump($_POST); ?>
 	</div>
 
-    
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="public/js/ajax.js"></script>
+   
 </body>
-
 </html>
 

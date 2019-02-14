@@ -13,7 +13,12 @@ $page === isset($_GET['page']);
 
 switch($page) {
 	case 'indexView':
+	/*FrontController::getListMenu();*/
 	require 'view/indexView.php';
+	break;
+
+	case 'headerView':
+	FrontController::getListMenu();
 	break;
 
 	case 'bougiesView':

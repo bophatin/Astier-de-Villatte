@@ -7,9 +7,9 @@
 					<ul class="menu-principal">
 						<li class="menu-collection"><a href="">Collection</a>
 							<ul class="submenu">
-								<li><a href="index.php?page=bougiesView">Bougies</a></li>
-								<li><a href="index.php?page=ceramicView">Ceramic</a></li>
-								<li><a href="index.php?page=eauxView">Eaux</a></li>
+								<?php foreach($ok as $oks): ?>
+								<li><a href="index.php?page=bougiesView"><?= $oks->nameCat(); ?></a></li>
+								<?php endforeach ?>
 							</ul>
 						</li>
 						<li class="menu-boutiques"><a href="">Boutiques</a></li>

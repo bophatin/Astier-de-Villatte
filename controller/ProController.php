@@ -3,6 +3,7 @@
 class ProController {
 
     public static function logPro() {
+		
 		if (isset($_POST['username'], $_POST['password'])) {
 			if(!empty($_POST['username']) AND !empty($_POST['password'])) {
                     
@@ -18,12 +19,12 @@ class ProController {
 				$user = $um->logUser($username);
 					
 				$mdp = $user->pwdAdmin();
+				
 				$validPwd = password_verify($password, $mdp);
 
 				if($validPwd) {
 					session_start();
-					$_SESSION['username'] = $username;
-					$_SESSION['password'] = $password;
+					$_SESSION['user'] = $_POST['username'];
 					echo "Success";
 				} else {
 					echo "Failed";
@@ -33,16 +34,15 @@ class ProController {
 			}
 		} else {
 			require 'view/404View.php';
-        }
-        require 'view/proIndexView.php';  
-    }
-
+		}
+		require 'view/proIndexView.php';
+	}
 
     public static function getUsers() {
         $ab = new UserManager();
         $cd = $ab ->getListUsers();
-        var_dump($cd);
-        require 'view/proIndexView.php';
+		var_dump($cd);
+		require 'view/proIndexView.php';
     }
 
 }
