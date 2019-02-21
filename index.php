@@ -13,11 +13,11 @@ $page === isset($_GET['page']);
 
 switch($page) {
 	case 'indexView':
-	/*FrontController::getListMenu();*/
+	FrontController::sendNewsletter();
 	require 'view/indexView.php';
 	break;
 
-	case 'headerView':
+	case 'headerView' :
 	FrontController::getListMenu();
 	break;
 
@@ -39,5 +39,9 @@ switch($page) {
 
 	case 'about';
 	require 'view/aboutView.php';
+	break;	
+
+	default : 
+	require 'view/404View.php';
 	break;
 }
