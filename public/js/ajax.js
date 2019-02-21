@@ -19,4 +19,24 @@ $(document).ready(function() {
             'text'
         );
     });
+
+    $("#sendemail").click(function(e) {
+        e.preventDefault();
+
+        $.post(
+            'index.php', {
+                email : $('#email').val(),
+            },
+            function(data) {
+                if(data == 'Success') {
+                    $("#response").html("<p>Nous avoons bien enregistré votre email !</p>");
+                } else {
+                    $("#response").html("<p>Cette adresse mail est invalide !</p>");
+                } 
+            },
+            'text'
+        );
+    });
+
+
 });

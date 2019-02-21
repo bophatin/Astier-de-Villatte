@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="public/index.css"/>
+	<link rel="stylesheet" type="text/css" href="<?= $css; ?>"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Cormorant:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -12,10 +12,12 @@
 </head>
 
 <body>
-	<?php require("view/headerView.php"); ?>
+	<?php include("view/headerView.php"); ?>
     <?= $content; ?>
 	<?php include("view/footerView.php"); ?>
 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script src="public/js/ajax.js"></script>
 	<script src="public/js/anime.min.js"></script>
 	<script src="public/js/animation.js"></script>
 </body>

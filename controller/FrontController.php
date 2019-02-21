@@ -10,7 +10,8 @@ class FrontController {
 		
 	public static function getListMenu() {
 		$test = new CategoryManager();
-		$ok = $test->getListCat();
+		$menu = $test->getListCat();
+		print_r($menu);
 		require 'view/headerView.php';
 	}
 
@@ -27,4 +28,40 @@ class FrontController {
 			}
 		}
 	}
+
+	public static function sendNewsletter() {
+		// Add
+		if(isset($_POST['sendemail'])) {
+			if (isset($_POST['email'])) {
+				if (!empty($_POST['email'])) {
+
+					$email = $_POST['email'];
+					$syntaxe=" /^[^\W][a-zA-Z0-9_]+(\.[a-zA-Z0-9_]+)*\@[a-zA-Z0-9_]+(\.[a-zA-Z0-9_]+)*\.[a-zA-Z]{2,4}$/ ";
+
+					if(preg_match($syntaxe, $email)) {
+						$emailpost = new Newsletter([
+							'email' => htmlspecialchars($_POST['email'])
+						]);
+	
+						$addnewmail = new NewsletterManager();
+						$addemail = $addnewmail->add($emailpost);
+						
+						echo 'Success';
+						header('Location:index.php');
+					} else {
+						echo 'Failed';
+					}
+				} else {
+					echo "Tous les champs doivent être complétés !";
+				}
+			}
+		}
+
+		// Get
+		$titre = "Newsletters";
+		$getm = new NewsletterManager();
+		$getemails = $getm->getListEmail();
+	}
 }
+
+

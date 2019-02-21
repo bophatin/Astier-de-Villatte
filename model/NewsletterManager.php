@@ -4,15 +4,15 @@ require_once 'Database.php';
 class NewsletterManager {
 
     public function add(Newsletter $email) {
-        $db = Database::getPDO()->prepare('INSERT INTO newsletter(email) VALUES(:email)'); 
+        $db = Database::getPDO()->prepare('INSERT INTO newsletter(email, date_inscription) VALUES(:email, NOW())'); 
 
-		$q->bindValue(':email', $chap->email());
-		$q->execute();
+		$db->bindValue(':email', $email->email());
+		$db->execute();
     }
 
     public function getListEmail() {
         $emails = [];
-		$db = Database::getPDO()->query('SELECT * FROM newsletter ORDER BY id DESC');
+		$db = Database::getPDO()->query('SELECT email FROM newsletter');
 
 		while ($donnees = $db->fetch(PDO::FETCH_ASSOC)) {
 			$emails[] = new Newsletter($donnees);

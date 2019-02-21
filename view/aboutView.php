@@ -1,20 +1,7 @@
-<!DOCTYPE html>
-<html lang="fr-FR">
+<?php $css='public/about.css'; ?>
+<?php $title='About - Astier de Villatte'; ?>
 
-<head>
-	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="public/about.css"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Cormorant:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-	<title>About - Astier de Villatte</title>
-</head>
-
-<body>
-
-    <?php include("headerView.php"); ?>
-
+<?php ob_clean(); ?>
     <div id="wrapper-section-1">
         <div class="container-sec1">
 			<div class="bloc-left">
@@ -31,7 +18,6 @@
 	</div>
 
 	<div id="wrapper-section-3">
-
 		<div class="container-sec3">
 			<div class="container-left-sec3">
 				<div class="bloc-left-date"><div class="date-left">1980</div></div>
@@ -55,10 +41,7 @@
 				<div class="bloc-right-date"><div class="date-right">2016</div></div>
 			</div>
 		</div>
-
 	</div>
+<?php $content = ob_get_clean(); ?>
 
-
-</body>
-
-</html>
+<?php require ('template/templatePage.php'); ?>

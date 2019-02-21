@@ -1,20 +1,7 @@
-<!DOCTYPE html>
-<html lang="fr-FR">
+<?php $css='public/collection.css' ?>
+<?php $title='Bougies - Astier de Villatte' ?>
 
-<head>
-	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="public/collection.css"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Cormorant:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-	<title>Les Bougies - Astier de Villatte</title>
-</head>
-
-<body>
-	
-	<?php include("headerView.php"); ?>
-
+<?php ob_start(); ?>
     <div id="wrapper-section-1">
 		<div class="container-section-1">
 			<div class="container-sec1-left">
@@ -169,8 +156,6 @@
 	</div>
 
 	<div class="pre-foot"></div>
-	<?php include("footerView.php"); ?>
+<?php $content = ob_get_clean(); ?>
 
-</body>
-
-</html>
+<?php require ('view/templatePage.php') ?>

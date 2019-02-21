@@ -1,16 +1,18 @@
+<?php $css='public/index.css'; ?>
 <?php $title = 'Astier de Villatte'; ?>
 
 <?php ob_start(); ?>
 	<div id="wrapper-section-1">
 		<div class="container-section-1">
 			<div class="container-sec1-left">
-				<div class="background-left"><img src="public/img/1.jpg" alt=""></div>
+				<div class="background-left"><img src="public/img/1.jpg" alt="Ceramic Astier de Villatte"></div>
 				<div class="title-left"><p>Ceramic</p></div>
 				<button class="btn">Decouvrir</button>
 			</div>
-			<div class="container-sec1-right"><img src="public/img/2.jpg"></div>
+			<div class="container-sec1-right"><img src="public/img/2.jpg" alt="Decoration Astier de Villatte"></div>
 		</div>
 	</div>
+	
 	<div id="wrapper-section-2">
 		<div class="container-section-2">
 			<div class="back-grey">
@@ -27,13 +29,13 @@
 						<button class="btn-collec">Decouvrir</button>
 					</div>
 				</div>
-				<div class="right-bloc"><img src="public/img/main-astier.png"></div>
+				<div class="right-bloc"><img src="public/img/main-astier.png" alt=""></div>
 			</div>
 		</div>
 	</div>
 
 	<div id="wrapper-section-3">
-		<div class="container-img-3"><img src="public/img/theduet.jpg"></div>
+		<div class="container-img-3"><img src="public/img/theduet.jpg" alt=""></div>
 	</div>
 
 	<div class="back-green">
@@ -57,9 +59,9 @@
 			</div>
 			<div class="container-list-sec4">
 				<ul>
-					<li><div class="product-sec4"><img src="public/img/bougie.jpg"></div></li>
-					<li><div class="product-sec4"><img src="public/img/bougie.jpg"></div></li>
-					<li><div class="product-sec4"><img src="public/img/bougie.jpg"></div></li>
+					<li><div class="product-sec4"><img src="public/img/bougie.jpg" alt=""></div></li>
+					<li><div class="product-sec4"><img src="public/img/bougie.jpg" alt=""></div></li>
+					<li><div class="product-sec4"><img src="public/img/bougie.jpg" alt=""></div></li>
 				</ul>
 				<div class="icons-arrow">
 					<div class="left-arrow"><i class="fas fa-angle-left"></i></div>
@@ -70,17 +72,24 @@
 	</div>
 
 	<div id="wrapper-section-5">
-		<div class="txt">
-			<p>Newsletter</p>
-			<p>et au raffinement désuet. Quartier Maubert.</p>
+		<div class="container-newsletter">
+			<p class="txt">Newsletter</p>
+			<p class="little-title">Inscrivez-vous et ne manquez plus rien !</p>
+			<div class="container-form">
+				<form method="post">
+					<input type="text" name="email" id="email" class="email-form"/><br/>
+					<input type="submit" name="sendemail" id="sendemail" value="JE M'INSCRIS" class="button-form"/>
+				</form>
+				<div id="response" class="error-msg"></div>
+			</div>
 		</div>
 	</div>
 
 	<div id="wrapper-section-6">
         <div class="container-sec6">
-            <div class="container-left-sec6"><img src="public/img/article-boutique.jpg"></div>
+            <div class="container-left-sec6"><img src="public/img/article-boutique.jpg" alt=""></div>
             <div class="container-right-sec6">
-                <div class="front-img-sec6"><img src="public/img/article-boutique-2.jpg"></div>
+                <div class="front-img-sec6"><img src="public/img/article-boutique-2.jpg" alt=""></div>
                 <div class="title-cont-right"><p>Boutique</p></div>
             </div>
         </div>

@@ -1,9 +1,10 @@
 <?php
 
-class Form {
+class Newsletter {
 
     private $_id;
     private $_email;
+    private $_date_inscription;
 
     public function __construct($donnees) {
         if(!empty($donnees)) {
@@ -25,6 +26,7 @@ class Form {
     // GETTERS
     public function id() { return $this->_id; }
     public function email() { return $this->_email; }
+    public function dateInscription() { return $this->_date_inscription; }
 
     // SETTERS
     public function setId($id) {
@@ -38,5 +40,13 @@ class Form {
         if (is_string($email)) {
             $this->_email = $email;
         }
+    }
+
+    public function setDate_inscription($dateInscription) {
+        $dateInscription = DateTime::createFromFormat('Y-m-d', $dateInscription);
+		$dateInscription = $dateInscription->format('Y-m-d');
+		if ($dateInscription) {
+        	$this->_date_inscription = $dateInscription;
+    	}
     }
 }

@@ -1,20 +1,7 @@
-<!DOCTYPE html>
-<html lang="fr-FR">
+<?php $css='public/article.css'; ?>
+<?php $title='Article - Astier de Villatte'; ?>
 
-<head>
-	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="public/article.css"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Cormorant:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-	<title>Article - Astier de Villatte</title>
-</head>
-
-<body>
-	
-    <?php include("headerView.php"); ?>
-    
+<?php ob_clean(); ?>
     <div id="wrapper-section-1">
 		<div class="container-section-1">
         <div class="container-sec1-left"><img src="<?= $post->imgBig(); ?>"></div>
@@ -73,9 +60,6 @@
             </div>
         </div>
     </div>
+<?php $content= ob_get_clean(); ?>
 
-	<?php include("footerView.php"); ?>
-
-</body>
-
-</html>
+<?php require ('view/templatePage.php'); ?>
