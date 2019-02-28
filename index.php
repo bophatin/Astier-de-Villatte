@@ -11,25 +11,15 @@ if(isset($_GET['page'])) {
 
 $page === isset($_GET['page']);
 
+FrontController::getListMenu();
+
 switch($page) {
 	case 'indexView':
 	FrontController::sendNewsletter();
 	require 'view/indexView.php';
 	break;
 
-	case 'headerView' :
-	FrontController::getListMenu();
-	break;
-
-	case 'bougiesView':
-	require 'view/bougiesView.php';
-	break;
-
-	case 'ceramicView';
-	require 'view/ceramicView.php';
-	break;
-
-	case 'eauxView';
+	case 'allArticlesView':
 	FrontController::getListArticles();
 	break;
 
