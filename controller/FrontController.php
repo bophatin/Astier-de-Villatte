@@ -3,15 +3,24 @@
 class FrontController {
 	
   	public static function getListArticles() {
+		if (isset($_GET['id']) AND !empty($_GET['id'])) {
+			$getid = htmlspecialchars($_GET['id']);
+
+			// Affichage de tous les articles en fonction de la category cliquée
 			$listArt = new ArticleManager();
-			$articles = $listArt->getListArt();
-			require 'view/eauxView.php';
+			$articles = $listArt->getListArt($getid);
+
+			// Affichage des infos en fonction de la category cliquée
+			$newNameMenu = new CategoryManager();
+			$nameMenu = $newNameMenu->getCat($getid);
+
+			require 'view/allArticlesView.php';
 		}
+	}
 		
 	public static function getListMenu() {
 		$test = new CategoryManager();
 		$menu = $test->getListCat();
-		print_r($menu);
 		require 'view/headerView.php';
 	}
 

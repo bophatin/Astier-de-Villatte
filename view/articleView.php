@@ -62,4 +62,4 @@
     </div>
 <?php $content= ob_get_clean(); ?>
 
-<?php require ('view/templatePage.php'); ?>
+<?php require ('template/templatePage.php'); ?>

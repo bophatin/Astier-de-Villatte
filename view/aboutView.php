@@ -44,4 +44,4 @@
 	</div>
 <?php $content = ob_get_clean(); ?>
 
-<?php require ('template/templatePage.php'); ?>
+<?php require('template/templatePage.php'); ?>

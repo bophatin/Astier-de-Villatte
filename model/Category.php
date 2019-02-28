@@ -4,6 +4,8 @@ class Category {
     
     private $_id;
     private $_name_cat;
+    private $_description_cat;
+    private $_img_cat;
 
     public function __construct($donnees) {
         if(!empty($donnees)) {
@@ -25,6 +27,8 @@ class Category {
     // SETTERS
     public function id() { return $this->_id; }
     public function nameCat() { return $this->_name_cat; }
+    public function descriptionCat() { return $this->_description_cat; }
+    public function imgCat() { return $this->_img_cat; }
 
     // GETTERS
     public function setId($id) {
@@ -37,6 +41,18 @@ class Category {
     public function setName_cat($nameCat) {
         if (is_string($nameCat)) {
             $this->_name_cat = $nameCat;
+        }
+    }
+
+    public function setDescription_cat($descriptionCat) {
+        if (is_string($descriptionCat)) {
+            $this->_description_cat = $descriptionCat;
+        }
+    }
+
+    public function setImg_cat($imgCat) {
+        if (is_string($imgCat)) {
+            $this->_img_cat = $imgCat;
         }
     }
 

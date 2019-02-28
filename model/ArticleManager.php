@@ -4,7 +4,7 @@ require_once 'Database.php';
 class ArticleManager {
 
     public function add(Article $art) {
-        $db = Database::getPDO()->prepare('INSERT INTO articles(designation, img_big, description_art, volume, prix, img_art_1, img_art_2, bloc_01, bloc_02, bloc_03, stock) VALUES (:designation, :img_big, :description_art, :volume, :prix, :img_art_1, :img_art_2, :bloc_01, :bloc_02, :bloc_03, :stock)');
+        $db = Database::getPDO()->prepare('INSERT INTO articles(designation, img_big, description_art, volume, prix, img_art_1, img_art_2, bloc_01, bloc_02, bloc_03, stock) VALUES (:designation, :img_big, :description_art, :volume, :prix, :img_art_1, :img_art_2, :bloc_01, :bloc_02, :bloc_03, :stock, :categories_id)');
         
         $db->bindValue(':designation', $art->designation());
         $db->bindValue(':im_big', $art->imgBig());
@@ -17,20 +17,21 @@ class ArticleManager {
         $db->bindValue(':bloc_02', $art->bloc02());
         $db->bindValue(':bloc_03', $art->bloc03());
         $db->bindValue(':stock', $art->stock());
+        $db->bindValue(':categories_id', $art->stock());
 
         $db->execute();
     }
 
-    public function getListArt() {
+    public function getListArt($idcategories) {
         $art = [];
-        $db = Database::getPDO()->query('SELECT * FROM articles ORDER BY id DESC');
+        $db = Database::getPDO()->query('SELECT * FROM articles WHERE id_categories =' .$idcategories);
 
         while ($donnees = $db->fetch(PDO::FETCH_ASSOC)) {
             $art[] = new Article($donnees);
         }
         return $art;
     }
-
+    
     public function getArt($id) {
         $db = Database::getPDO()->prepare('SELECT * FROM articles WHERE id =' .$id);
 

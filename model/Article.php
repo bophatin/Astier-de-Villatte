@@ -14,6 +14,7 @@ class Article {
     private $_bloc_02;
     private $_bloc_03;
     private $_volume;
+    private $_id_categories;
 
     public function __construct($donnees) {
         if(!empty($donnees)) {
@@ -45,6 +46,7 @@ class Article {
     public function bloc02() { return $this->_bloc_02; }
     public function bloc03() { return $this->_bloc_03; }
     public function volume() { return $this->_volume; }
+    public function idCatgories() { return $this->_id_categories; }
 
     // SETTERS
     public function setId($id) {
@@ -120,6 +122,13 @@ class Article {
         $volume = (int) $volume;
         if ($volume > 0) {
             $this->_volume = $volume;
+        }
+    }
+
+    public function setId_categories($idcategories) {
+        $idcategories = (int) $idcategories;
+        if ($idcategories > 0) {
+            $this->_id_categories = $idcategories;
         }
     }
 }

@@ -4,8 +4,11 @@ require_once 'Database.php';
 class CategoryManager {
 
     public function add(Category $cat) {
-        $db = Database::getPDO()->prepare('INSERT INTO categories(name_cat) VALUES (:name_cat)');
+        $db = Database::getPDO()->prepare('INSERT INTO categories(id, name_cat, description_cat, img_cat) VALUES (:id, :name_cat, :description_cat, :img_cat)');
+        $db->bindValue(':id', $cat->id());
         $db->bindValue(':name_cat', $cat->nameCat());
+        $db->bindValue(':description_cat', $cat->descriptionCat());
+        $db->bindValue('img_cat', $cat->imgCat());
         $db->execute();
     }
 

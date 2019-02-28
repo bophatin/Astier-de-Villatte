@@ -7,7 +7,7 @@
 			<div class="container-sec1-left">
 				<div class="background-left"><img src="public/img/1.jpg" alt="Ceramic Astier de Villatte"></div>
 				<div class="title-left"><p>Ceramic</p></div>
-				<button class="btn">Decouvrir</button>
+				<button class="btn"><a href="index.php?page=allArticlesView&id=2">Decouvrir</a></button>
 			</div>
 			<div class="container-sec1-right"><img src="public/img/2.jpg" alt="Decoration Astier de Villatte"></div>
 		</div>
@@ -26,7 +26,7 @@
 					<div class="bloc-txt">
 						<p class="text-title">Collection</p>
 						<p class="text-desc">5ème arrondissement de la capitale. Quartier Maubert. C’est dans ce coin qu’ils qualifient de « banlieue de Saint-Michel » et de « province au cœur de Paris » qu’Ivan Pericoli et Benoît Astier de Villatte, créateurs de la maison de céramique Astier de Villatte, ont façonné un appartement à l’image de leur univers.</p>
-						<button class="btn-collec">Decouvrir</button>
+						<!-- <button class="btn-collec">Decouvrir</button> -->
 					</div>
 				</div>
 				<div class="right-bloc"><img src="public/img/main-astier.png" alt=""></div>
@@ -77,7 +77,7 @@
 			<p class="little-title">Inscrivez-vous et ne manquez plus rien !</p>
 			<div class="container-form">
 				<form method="post">
-					<input type="text" name="email" id="email" class="email-form"/><br/>
+					<input type="text" name="email" id="email" value="Email" onFocus="if (this.value=='Email') {this.value=''}" class="email-form"/><br/>
 					<input type="submit" name="sendemail" id="sendemail" value="JE M'INSCRIS" class="button-form"/>
 				</form>
 				<div id="response" class="error-msg"></div>

@@ -17,14 +17,13 @@ class ProController {
 				
 				$um = new UserManager();
 				$user = $um->logUser($username);
-					
 				$mdp = $user->pwdAdmin();
 				
 				$validPwd = password_verify($password, $mdp);
 
 				if($validPwd) {
 					session_start();
-					$_SESSION['user'] = $_POST['username'];
+					$_SESSION['username'] = $_POST['username'];
 					echo "Success";
 				} else {
 					echo "Failed";
@@ -35,7 +34,7 @@ class ProController {
 		} else {
 			require 'view/404View.php';
 		}
-		require 'view/proIndexView.php';
+		/*require 'view/proIndexView.php';*/
 	}
 
     public static function getUsers() {

@@ -14,9 +14,10 @@ $page === isset($_GET['page']);
 switch($page) {
 	case 'proIndexView':
 	ProController::getUsers();
-	break;
-	
-    case 'log';
 	ProController::logPro();
 	break;
+	
+    /*case 'log';
+	ProController::logPro();
+	break;*/
 }

@@ -4,12 +4,12 @@
 <?php ob_start(); ?>
     <div id="form">
 		<div class="background-form">
-			<form method="post" action="pro.php?page=log">
+			<form method="post">
 			    <label for="username">NAME</label>
-                <input type="text" id="username" name="username" class="pseudo-log"/>
-                <label for="password">PASSWORD</label>
-                <input type="password" id="password" name="password" class="mdp-log"/>
-                <input type="submit" id="submit" name="submit" value="CONNEXION" class ="button"/>
+          <input type="text" id="username" name="username" class="pseudo-log"/>
+          <label for="password">PASSWORD</label>
+          <input type="password" id="password" name="password" class="mdp-log"/>
+          <input type="button" id="submit" name="submit" value="CONNEXION" class ="button"/>
 			</form> 
 			<div id="resultat" class="error-msg"></div>
 		</div>
