@@ -1,7 +1,7 @@
 <?php $css='public/about.css'; ?>
 <?php $title='About - Astier de Villatte'; ?>
 
-<?php ob_clean(); ?>
+<?php ob_start(); ?>
     <div id="wrapper-section-1">
         <div class="container-sec1">
 			<div class="bloc-left">

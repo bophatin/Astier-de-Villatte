@@ -4,10 +4,11 @@ require_once 'Database.php';
 class ArticleManager {
 
     public function add(Article $art) {
-        $db = Database::getPDO()->prepare('INSERT INTO articles(designation, img_big, description_art, volume, prix, img_art_1, img_art_2, bloc_01, bloc_02, bloc_03, stock) VALUES (:designation, :img_big, :description_art, :volume, :prix, :img_art_1, :img_art_2, :bloc_01, :bloc_02, :bloc_03, :stock, :categories_id)');
+        $db = Database::getPDO()->prepare('INSERT INTO articles(designation, img_big, title_desc, description_art, volume, prix, img_art_1, img_art_2, bloc_01, bloc_02, bloc_03, stock) VALUES (:designation, :img_big, :title_desc, :description_art, :volume, :prix, :img_art_1, :img_art_2, :bloc_01, :bloc_02, :bloc_03, :stock, :categories_id)');
         
         $db->bindValue(':designation', $art->designation());
-        $db->bindValue(':im_big', $art->imgBig());
+        $db->bindValue(':img_big', $art->imgBig());
+        $db->bindValue(':title_desc', $art->titleDesc());
         $db->bindValue(':description_art', $art->descriptionArt());
         $db->bindValue(':volume', $art->volume());
         $db->bindValue(':prix', $art->prix());
@@ -31,6 +32,15 @@ class ArticleManager {
         }
         return $art;
     }
+
+    public function getBougies() {
+        $art = [];
+        $db = Database::getPDO()->query('SELECT * FROM articles WHERE id_categories = 3');
+        while ($donnees = $db->fetch(PDO::FETCH_ASSOC)) {
+            $art[] = new Article($donnees);
+        }
+        return $art;
+    }
     
     public function getArt($id) {
         $db = Database::getPDO()->prepare('SELECT * FROM articles WHERE id =' .$id);
@@ -41,10 +51,11 @@ class ArticleManager {
     }
 
     public function update(Article $art) {
-        $db = Database::getPDO()->prepare('UPDATE articles SET designation = :designation, img_big = :img_big, description_art = :description_art, volume = :volume, prix = :prix, img_art1 = :img_art_1, img_art_2 = :im_art_2, bloc_01 = :bloc_01, bloc_02 = :bloc_02, bloc_03 = :bloc_03, stock = :stock WHERE id = :id');
+        $db = Database::getPDO()->prepare('UPDATE articles SET designation = :designation, img_big = :img_big, title_desc = :title_desc, description_art = :description_art, volume = :volume, prix = :prix, img_art1 = :img_art_1, img_art_2 = :im_art_2, bloc_01 = :bloc_01, bloc_02 = :bloc_02, bloc_03 = :bloc_03, stock = :stock WHERE id = :id');
 
         $db->bindValue(':designation', $art->designation());
         $db->bindValue(':im_big', $art->imgBig());
+        $db->bindValue(':title_desc', $art->titleDesc());
         $db->bindValue(':description_art', $art->descriptionArt());
         $db->bindValue(':volume', $art->volume());
         $db->bindValue(':prix', $art->prix());

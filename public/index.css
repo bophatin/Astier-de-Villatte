@@ -349,6 +349,7 @@ nav li:hover .submenu {
 	height: 450px;
 	margin-top: 50px;
 	position: relative;
+	overflow: hidden;
 }
 
 .title-sec4 {
@@ -383,6 +384,7 @@ nav li:hover .submenu {
 	top: 50%;
 	transform: translateY(-50%);
 	margin-left: -50px;
+	cursor: pointer;
 }
 
 .right-arrow {
@@ -391,6 +393,7 @@ nav li:hover .submenu {
 	right: 0;
 	transform: translateY(-50%, 0);
 	margin-right: -50px;
+	cursor: pointer;
 }
 
 

@@ -1,7 +1,7 @@
 <?php $css='public/article.css'; ?>
 <?php $title='Article - Astier de Villatte'; ?>
 
-<?php ob_clean(); ?>
+<?php ob_start(); ?>
     <div id="wrapper-section-1">
 		<div class="container-section-1">
         <div class="container-sec1-left"><img src="<?= $post->imgBig(); ?>"></div>
@@ -19,10 +19,10 @@
         <div class="container-section-2">
             <div class="container-sec2-left">
                 <div class="desc-left">
-                    <p class="title-left">Une eau signée Christophe Raynaus et Françoise Caron</p>
+                    <p class="title-left"><?= $post->titleDesc(); ?></p>
                     <p class=txt-left><?= $post->descriptionArt(); ?></p>
                     <div class="infos-left">
-                        <p class="ml-left"><?= $post->volume(); ?>ml</p>
+                        <p class="ml-left"><?= $post->volume(); ?> ml</p>
                         <p class="price-right"><?= $post->prix(); ?> €</p>
                     </div>
                 </div>

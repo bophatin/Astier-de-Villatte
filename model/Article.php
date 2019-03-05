@@ -4,6 +4,7 @@ class Article {
 
     private $_id;
     private $_designation;
+    private $_title_desc;
     private $_img_big;
     private $_description_art;
     private $_prix;
@@ -47,6 +48,7 @@ class Article {
     public function bloc03() { return $this->_bloc_03; }
     public function volume() { return $this->_volume; }
     public function idCatgories() { return $this->_id_categories; }
+    public function titleDesc() { return $this->_title_desc; }
 
     // SETTERS
     public function setId($id) {
@@ -129,6 +131,12 @@ class Article {
         $idcategories = (int) $idcategories;
         if ($idcategories > 0) {
             $this->_id_categories = $idcategories;
+        }
+    }
+
+    public function setTitle_desc($titleDesc) {
+        if (is_string($titleDesc)) {
+            $this->_title_desc = $titleDesc;
         }
     }
 }

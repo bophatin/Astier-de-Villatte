@@ -46,7 +46,7 @@
 			</div>
 			<div class="right-green">
 				<p class="text-green">5ème arrondissement de la capitale. Quartier Maubert. C’est dans ce coin qu’ils qualifient de « banlieue de Saint-Michel » et de « province au cœur de Paris » qu’Ivan Pericoli et Benoît Astier de Villatte, créateurs de la maison de céramique Astier de Villatte, ont façonné un appartement à l’image de leur univers. Quartier Maubert.</p>
-				<button class="btn-collec">Decouvrir</button>
+				<button class="btn-collec"><a href="index.php?page=about">Decouvrir</a></button>
 			</div>
 		</div>
 	</div>
@@ -55,17 +55,18 @@
 		<div class="container-section-4">
 			<div class="container-title-sec4">
 				<p class="title-sec4">Villa Medicis</p>
-				<p class="under-title-sec4">Bougies</p>
+				<p class="under-title-sec4">Les eaux</p>
 			</div>
-			<div class="container-list-sec4">
+			<div class="container-list-sec4" id="carrousel">
 				<ul>
-					<li><div class="product-sec4"><img src="public/img/bougie.jpg" alt=""></div></li>
-					<li><div class="product-sec4"><img src="public/img/bougie.jpg" alt=""></div></li>
-					<li><div class="product-sec4"><img src="public/img/bougie.jpg" alt=""></div></li>
+					<?php foreach($oks as $ok): ?>
+					<li class="slide">
+						<div class="product-sec4"><img src="<?= $ok->imgArt1(); ?>" alt=""></div></li>
+					<?php endforeach ?>
 				</ul>
 				<div class="icons-arrow">
-					<div class="left-arrow"><i class="fas fa-angle-left"></i></div>
-					<div class="right-arrow"><i class="fas fa-angle-right"></i></div>
+					<div id="button-previous" class="left-arrow"><i class="fas fa-angle-left"></i></div>
+					<div id="button-next" class="right-arrow"><i class="fas fa-angle-right"></i></div>
 				</div>
 			</div>
 		</div>
@@ -77,7 +78,7 @@
 			<p class="little-title">Inscrivez-vous et ne manquez plus rien !</p>
 			<div class="container-form">
 				<form method="post">
-					<input type="text" name="email" id="email" value="Email" onFocus="if (this.value=='Email') {this.value=''}" class="email-form"/><br/>
+					<input type="text" name="email" id="email" placeholder="Email"  class="email-form"/><br/>
 					<input type="submit" name="sendemail" id="sendemail" value="JE M'INSCRIS" class="button-form"/>
 				</form>
 				<div id="response" class="error-msg"></div>

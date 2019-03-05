@@ -19,8 +19,8 @@ class FrontController {
 	}
 		
 	public static function getListMenu() {
-		$test = new CategoryManager();
-		$menu = $test->getListCat();
+		$newListMenu = new CategoryManager();
+		$menu = $newListMenu->getListCat();
 		require 'view/headerView.php';
 	}
 
@@ -36,6 +36,12 @@ class FrontController {
 				require 'view/articleView.php';
 			}
 		}
+	}
+
+	public static function getListBougies() {
+		$test = new ArticleManager();
+		$oks = $test->getBougies();
+		require 'view/indexView.php';
 	}
 
 	public static function sendNewsletter() {
@@ -54,15 +60,17 @@ class FrontController {
 	
 						$addnewmail = new NewsletterManager();
 						$addemail = $addnewmail->add($emailpost);
-						
+
+						/* Mettre fonction sendmail() pour avoir un retour*/
+
 						echo 'Success';
-						header('Location:index.php');
+						/*header('Location:index.php');*/
 					} else {
 						echo 'Failed';
 					}
-				} else {
+				} /*else {
 					echo "Tous les champs doivent être complétés !";
-				}
+				}*/
 			}
 		}
 

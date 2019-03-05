@@ -16,7 +16,8 @@ FrontController::getListMenu();
 switch($page) {
 	case 'indexView':
 	FrontController::sendNewsletter();
-	require 'view/indexView.php';
+	FrontController::getListBougies();
+	/*require 'view/indexView.php';*/
 	break;
 
 	case 'allArticlesView':
