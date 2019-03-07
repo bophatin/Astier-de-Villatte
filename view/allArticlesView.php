@@ -36,7 +36,6 @@
 		</div>
 	</div>
 
-	<div class="pre-foot"></div>
 <?php $content = ob_get_clean(); ?>
 
 <?php require ('template/templatePage.php') ?>

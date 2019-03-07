@@ -21,7 +21,6 @@
 	<script src="public/js/slider.js"></script>
 	<script src="public/js/anime.min."></script>
 	<script src="public/js/animation."></script>
-	
 	<script src="public/js/global.js"></script>
 </body>
 

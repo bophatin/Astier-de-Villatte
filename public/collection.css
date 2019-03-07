@@ -216,6 +216,7 @@ nav li:hover .submenu {
 	max-width: 100%;
 	height: 190px;
 	background: #f7f7f7;
+	margin-top: 56px;
 }
 
 .container-footer {
@@ -286,9 +287,4 @@ nav li:hover .submenu {
 
 .right-container-footer li {
 	padding-left: 25px;
-}
-
-.pre-foot {
-	max-width: 100%;
-	height: 56px;
 }

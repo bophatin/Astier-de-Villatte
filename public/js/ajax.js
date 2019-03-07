@@ -18,7 +18,7 @@ $(document).ready(function() {
             },
             'text'
         );
-    });*/
+    });
 
     $("#submit").click(function(){
         $.ajax({
@@ -32,7 +32,7 @@ $(document).ready(function() {
                 $("#resultat").html("<p>Mauvais identifiants !</p>");
            }
         });
-    });
+    });*/
 
    $("#sendemail").click(function(e) {
         e.preventDefault();
