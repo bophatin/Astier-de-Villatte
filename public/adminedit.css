@@ -1,0 +1,90 @@
+html body {
+	margin: 0;
+    padding: 0;
+}
+
+/* HEADER */
+
+.container-header-admin {
+    position: relative;
+    max-width: 100%;
+    display: flex;
+    border-bottom:1px solid #b5b5b5;
+}
+
+.bloc-logo {
+    width: 1135px;
+    height: 70px;
+}
+
+.logo {
+    position: absolute;
+    width: 220px;
+    height: auto;
+    top: 50%;
+    left: 3%;
+    transform: translate(-3%, -50%);
+}
+
+.bloc-name, .bloc-logout {
+    font-family: 'Roboto', sans-serif;
+    width: 153px;
+    height: 70px;
+    border-left:1px solid #b5b5b5;
+    position: relative;
+}
+
+.hello, .logout-butt {
+    position: absolute;
+    top: 25%;
+    left: 42%;
+    transform: translate(-25%, -42%);
+}
+
+a {
+    text-decoration: none; 
+    color: black;
+}
+
+
+/* NAV LEFT */
+
+.container-nav-content {
+    max-width: 100%;
+    display: flex;
+}
+
+.bloc-nav-admin {
+    width: 200px;
+    height: 720px;
+    margin:0;
+    padding:0;
+    border-right:1px solid #b5b5b5;
+}
+
+.bloc-content-admin {
+    width: 1241px;
+    height: auto;
+    background: #f3f5f5;
+}
+
+nav li {
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    list-style-type: none;
+    font-family: 'Roboto', sans-serif;
+    padding:10px;
+    cursor: pointer;
+}
+
+nav li:hover {
+    border-right:4px solid black;
+}
+
+
+/* CATEGORY */
+
+h1 {
+    font-family: 'Roboto', sans-serif;
+}
