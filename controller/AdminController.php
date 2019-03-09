@@ -105,7 +105,7 @@ class AdminController {
 				$file_tmp_name = $_FILES['img-cat']['tmp_name'];
 				$file_destination = 'public/img/' .$file_name;
 
-				if(!in_array($extension, $extensions_ok)) {
+				if(in_array($extension, $extensions_ok)) {
 					if(move_uploaded_file($file_tmp_name, $file_destination)) {
 						echo "Fichier envoyé avec succès !";
 					} else {
@@ -122,13 +122,12 @@ class AdminController {
 					'description_cat' => $descCat,
 					'img_cat' => $file_destination
 				]);
-				
-				print_r($_POST);
 
 				$newAddManager = new CategoryManager();
-				$addCat = $$newAddManager->add($newAddCat);
+				$addCat = $newAddManager->add($newAddCat);
 			}
-		} require 'view/back/adminCategoryView.php';
+		} 
+		require 'view/back/adminCategoryView.php';
 	}
 
 	

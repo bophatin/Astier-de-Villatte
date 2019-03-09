@@ -38,9 +38,11 @@ class FrontController {
 		}
 	}
 
-	public static function getListBougies() {
-		$test = new ArticleManager();
-		$oks = $test->getBougies();
+	public static function getListSlider() {
+		$new_slider = new ArticleManager();
+		$sliders = $new_slider->getSlider();
+
+		$groupesSliders = array_chunk(array_chunk($sliders, 3), 6);
 		require 'view/indexView.php';
 	}
 

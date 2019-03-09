@@ -33,7 +33,7 @@ class ArticleManager {
         return $art;
     }
 
-    public function getBougies() {
+    public function getSlider() {
         $art = [];
         $db = Database::getPDO()->query('SELECT * FROM articles WHERE id_categories = 3');
         while ($donnees = $db->fetch(PDO::FETCH_ASSOC)) {
