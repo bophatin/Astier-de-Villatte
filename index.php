@@ -17,8 +17,10 @@ switch($page) {
 	case 'indexView':
 	FrontController::sendNewsletter();
 	FrontController::getListSLider();
-	/*require 'view/indexView.php';*/
 	break;
+
+	/* rajouter case newsletter pour la gérer uniquement quand le submit est appelé */
+	/* appeler cette case "action" pour gérer tous les boutons submit*/
 
 	case 'allArticlesView':
 	FrontController::getListArticles();
