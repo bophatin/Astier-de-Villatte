@@ -28,6 +28,9 @@ var Slider = {
                 self.next();
             }
         });
+
+        slide.css("display", "none");
+        slide.first().css("display", "block");
     },
 
     next : function() {

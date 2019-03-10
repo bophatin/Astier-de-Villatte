@@ -341,7 +341,6 @@ nav li:hover .submenu {
 
 .container-title-sec4 {
 	max-width: 1200px;
-	margin: auto;
 }
 
 .container-list-sec4 {
@@ -353,10 +352,9 @@ nav li:hover .submenu {
 
 .container-list-sec4 ul {
 	list-style-type: none;
-	display: flex;
+	/*display: flex;
 	justify-content: space-between;
-	padding: 0;
-	overflow: hidden;
+	/*padding: 0;*/
 }
 
 .title-sec4 {
@@ -377,12 +375,12 @@ nav li:hover .submenu {
 .product-sec4 {
 	width: 350px;
 	height: 450px;
-	border:1px solid black;
 	position: relative;
+	margin-right: 30px;
 }
 
 .img-sec4 {
-	width: 350px;
+	width: 380px;
 	height: auto;
 }
 

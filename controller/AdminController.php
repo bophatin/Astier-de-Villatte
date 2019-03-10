@@ -26,7 +26,7 @@ class AdminController {
 						session_start();
 						$_SESSION['username'] = $_POST['username'];
 						echo $_POST;
-						header('Location:admin.php?page=adminEditView');
+						header('Location:admin.php?page=adminArticlesView');
 					} else {
 						$error = "Identifiants incorrects"; 
 					}

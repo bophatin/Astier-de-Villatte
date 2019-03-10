@@ -53,30 +53,27 @@
 
 	<div id="wrapper-section-4">
 		<div class="container-section-4">
-
 			<div class="container-title-sec4">
 				<p class="title-sec4">Villa Medicis</p>
 				<p class="under-title-sec4">Les eaux</p>
 			</div>
-
-			<?php foreach ($groupesSliders as $groupeSliders): ?>
+			<?php foreach ($groupesSliders as $groupeSlider): ?>
 			<div class="container-list-sec4" id="carrousel">
-				<?php foreach ($groupeSliders as $sliders): ?>
 				<ul>
+				<?php foreach ($groupeSlider as $sliders): ?>
 					<li class="slide">
 						<?php foreach ($sliders as $slider): ?>
-						<div class="product-sec4"><img src="<?= $slider->imgArt1(); ?>" alt=""></div>
+						<img src="<?= $slider->imgArt1(); ?>" alt="" class="product-sec4">
 						<?php endforeach ?>
 					</li>
-				</ul>
 				<?php endforeach ?>
+				</ul>
 				<div class="icons-arrow">
 					<div id="button-previous" class="left-arrow"><i class="fas fa-angle-left"></i></div>
 					<div id="button-next" class="right-arrow"><i class="fas fa-angle-right"></i></div>
 				</div>
 			</div>
-			<?php endforeach ?>		
-			
+			<?php endforeach ?>
 		</div>
 	</div>
 

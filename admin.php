@@ -25,13 +25,19 @@ switch($page) {
 	AdminController::addNewCat();
 	break;
 
-	case 'adminEditView':
-	require 'view/back/adminEditView.php';
+	case 'adminArticlesView':
+	require 'view/back/adminArticlesView.php';
+	break;
+
+	case 'adminMediaView':
+	require 'view/back/adminMediaView.php';
 	break;
 
 	case 'adminUsersView':
 	AdminController::getUsers();
 	AdminController::addUser();
 	break;
+
+	/* appeler ase "action" pour gérer tous les boutons submit */
 
 }
