@@ -45,7 +45,7 @@ class UserManager {
 
 		$db->bindValue(':id', $users->id());
 		$db->bindValue(':name_admin', $users->nameAdmin());
-		$db->bindValue(':pwd_admin', $users->pwd_admin());
+		$db->bindValue(':pwd_admin', $users->pwdAdmin());
 		$db->execute();
     }
 

@@ -88,14 +88,9 @@ class AdminController {
 
 		if(isset($_POST['send-cat'])) {
 
-			var_dump($_FILES);
-			var_dump($_FILES['img-cat']['error']);
-
 			if (isset($_POST['name-cat'], $_POST['desc-cat'])) {
-				if(!empty($_POST['name-cat']) AND !empty($_POST['desc-cat'])) {
-					$nameCat = htmlspecialchars($_POST['name-cat']);
-					$descCat = htmlspecialchars($_POST['desc-cat']);
-				}
+				$nameCat = htmlspecialchars($_POST['name-cat']);
+				$descCat = htmlspecialchars($_POST['desc-cat']);
 			}
 
 			if (!empty($_FILES)) {
@@ -125,11 +120,81 @@ class AdminController {
 
 				$newAddManager = new CategoryManager();
 				$addCat = $newAddManager->add($newAddCat);
+				header('Location: admin.php?page=adminCategoryView');
 			}
 		} 
 		require 'view/back/adminCategoryView.php';
 	}
 
+	public static function getCats() {
+		$newCat = new CategoryManager();
+		$getCats = $newCat->getListCat();
+		require 'view/back/adminCategoryView.php';
+	}
+
+
+	// ARTICLES
+
+	public static function addArticle() {
+        if(isset($_POST['create'])) {
+			if (isset($_POST['pseudo-add'], $_POST['mdp-add'])) {
+				if (!empty($_POST['pseudo-add']) AND !empty($_POST['mdp-add'])) {
+
+					$newUser = new User([
+						'name_admin' => htmlspecialchars($_POST['pseudo-add']),
+						'pwd_admin' => password_hash(htmlspecialchars($_POST['mdp-add']), PASSWORD_DEFAULT)
+					]);
+
+					$addUserManager = new UserManager();
+					$addUser = $addUserManager->add($newUser);
+					header('Location: admin.php?page=adminUsersView'); 
+				} else {
+					echo  "Tous les champs doivent être complétés !";
+				}
+			} 
+		} 
+	}
+
+	public static function getListArt() {
+		$newArt = new ArticleManager();
+		$getArts = $newArt->getArts();
+		require 'view/back/adminArticlesView.php';
+	}
+
+	
+	// PAGE DELETE
+
+	public static function delete() {
+		if (isset($_POST['delete_cat'])) {
+			$newDelCat = new Category([
+				'id' => htmlspecialchars($_GET['id'])
+			]);
+
+			$newDelManager = new CategoryManager();
+			$delCat = $newDelManager->delete($newDelCat);
+			header('Location: admin.php?page=adminCategoryView');
+		}
+
+		if (isset($_POST['delete_user'])) {
+			$newDelUser = new User([
+				'id' => htmlspecialchars($_GET['id'])
+			]);
+
+			$newDelManager = new UserManager();
+			$delUser = $newDelManager->delete($newDelUser);
+			header('Location: admin.php?page=adminUsersView');
+		}
+
+		if (isset($_POST['delete_art'])) {
+			$newDelArt = new Article([
+				'id' => htmlspecialchars($_GET['id'])
+			]);
+
+			$newDelManager = new ArticlerManager();
+			$delArt = $newDelManager->delete($newDelArt);
+			header('Location: admin.php?page=adminArticlesView');
+		}
+	}
 	
 
 }
