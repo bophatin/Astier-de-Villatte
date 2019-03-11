@@ -8,11 +8,11 @@
 						<li class="menu-collection"><a href="">Collection</a>
 							<ul class="submenu">
 								<?php foreach($menu as $menus): ?>
-								<li><a href="index.php?page=allArticlesView&id=<?= $menus->id(); ?>"><?= $menus->nameCat(); ?></a></li>
+								<li><a href="index.php?page=allArticles&id=<?= $menus->id(); ?>"><?= $menus->nameCat(); ?></a></li>
 								<?php endforeach ?>
 							</ul>
 						</li>
-						<li class="menu-boutiques"><a href="">Boutiques</a></li>
+						<li class="menu-boutiques"><a href="index.php?page=boutiques">Boutiques</a></li>
 						<li class="menu-about"><a href="index.php?page=about">About</a></li>
 					</ul>
 				</nav>

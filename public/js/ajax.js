@@ -1,39 +1,5 @@
 $(document).ready(function() {
 
-    /*$("#submit").click(function(e) {
-        e.preventDefault();
-
-        $.post(
-            'pro.php', { 
-                username : $('#username').val(),
-                password : $('#password').val()
-            },
-            function(data) {
-                if(data == 'Success'){
-                    $("#resultat").html("<p>Vous avez été connecté avec succès !</p>");
-                }
-                else {
-                    $("#resultat").html("<p>Mauvais identifiants !</p>");
-                }
-            },
-            'text'
-        );
-    });
-
-    $("#submit").click(function(){
-        $.ajax({
-           url : 'pro.php',
-           type : 'POST',
-           dataType : 'text',
-           success : function(text, statut){
-                $("#resultat").html("<p>Vous avez été connecté avec succès !</p>");
-           },
-           error : function(text, statut, erreur){
-                $("#resultat").html("<p>Mauvais identifiants !</p>");
-           }
-        });
-    });*/
-
    $("#sendemail").click(function(e) {
         e.preventDefault();
 
@@ -51,4 +17,41 @@ $(document).ready(function() {
             'text'
         );
     });
+
+    $("#contact").submit(function(e) {
+
+        var nom  = $("#nom").val();
+        var sujet = $("#sujet").val();
+        var email = $("#email").val();
+        var message = $("#message").val();
+        var dataString = nom + sujet + email + message;
+        var msg_all = "Merci de remplir tous les champs";
+        var msg_alert = "Merci de remplir ce champs";
+
+        if (dataString  == "") {
+            $("#msg_all").html(msg_all);
+         } else if (nom == "") {
+            $("#msg_nom").html(msg_alert);
+        } else if (sujet == "") {
+            $("#msg_sujet").html(msg_alert);
+        } else if (email == "") {
+            $("#msg_email").html(msg_alert);
+        } else if (message == "") {
+            $("#msg_message").html(msg_alert);
+        } else {
+            $.ajax({
+                type : "POST",
+                url: $(this).attr("action"),
+                data: $(this).serialize(),
+                success : function() {
+                    $("#contact").html("<p>Formulaire bien envoyé</p>");
+                },
+                error: function() {
+                    $("#contact").html("<p>Erreur d'appel, le formulaire ne peut pas fonctionner</p>");
+                }
+            });
+        }
+        return false;
+    });
+   
 });
