@@ -22,11 +22,12 @@ switch($page) {
 	break;
 
 	case 'adminCategoryView':
+	AdminController::getCats();
 	AdminController::addNewCat();
 	break;
 
 	case 'adminArticlesView':
-	require 'view/back/adminArticlesView.php';
+	AdminController::getListArt();
 	break;
 
 	case 'adminMediaView':
@@ -38,6 +39,8 @@ switch($page) {
 	AdminController::addUser();
 	break;
 
-	/* appeler ase "action" pour gérer tous les boutons submit */
+	case 'delete':
+	AdminController::delete();
+	break;
 
 }
