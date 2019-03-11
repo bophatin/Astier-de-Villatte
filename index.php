@@ -15,19 +15,24 @@ FrontController::getListMenu();
 
 switch($page) {
 	case 'indexView':
-	FrontController::sendNewsletter();
 	FrontController::getListSLider();
 	break;
 
-	/* rajouter case newsletter pour la gérer uniquement quand le submit est appelé */
-	/* appeler cette case "action" pour gérer tous les boutons submit*/
+	case 'action':
+	FrontController::sendNewsletter();
+	FrontController::formContact();
+	break;
 
-	case 'allArticlesView':
+	case 'allArticles':
 	FrontController::getListArticles();
 	break;
 
-	case 'articleView';
+	case 'articleView':
 	FrontController::getArticle();
+	break;
+
+	case 'boutiques':
+	require 'view/boutiquesView.php';
 	break;
 
 	case 'about';
