@@ -19,6 +19,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 	<script src="public/js/ajax.js"></script>
 	<script src="public/js/slider.js"></script>
+	<script src="public/js/main.js"></script>
 	<script src="public/js/anime.min.js"></script>
 	<script src="public/js/animation.js"></script>
 	<script src="public/js/global.js"></script>

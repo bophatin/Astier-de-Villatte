@@ -4,6 +4,7 @@
 			<div class="left-container-footer">
 				<ul>
 					<li><a href="admin.php">Admin</a></li>
+					<li><a href="admin.php">Contact</a></li>
 				</ul>
 				<p class="txt-footer">Astier de Villatte, 2019</p>
 			</div>

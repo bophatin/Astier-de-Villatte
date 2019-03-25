@@ -30,7 +30,7 @@
                 <input type="submit" name ="submit" value="Envoyer" />
             </p>
         </form>
-        <span id="msg_all"></span> 
+        <span id="msg_all"></span>
     </div>
 
 <?php $content= ob_get_clean(); ?>

@@ -20,11 +20,13 @@ $(document).ready(function() {
 
     $("#contact").submit(function(e) {
 
+        e.preventDefault();
+
         var nom  = $("#nom").val();
         var sujet = $("#sujet").val();
         var email = $("#email").val();
         var message = $("#message").val();
-        var dataString = nom + sujet + email + message;
+        var dataString = {'nom': nom, 'sujet': sujet, 'email': email, 'message': message};
         var msg_all = "Merci de remplir tous les champs";
         var msg_alert = "Merci de remplir ce champs";
 
@@ -42,7 +44,7 @@ $(document).ready(function() {
             $.ajax({
                 type : "POST",
                 url: $(this).attr("action"),
-                data: $(this).serialize(),
+                data: dataString,
                 success : function() {
                     $("#contact").html("<p>Formulaire bien envoyé</p>");
                 },

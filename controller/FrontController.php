@@ -97,6 +97,9 @@ class FrontController {
 	public static function formContact() {
 
 		if(isset($_POST['submit'])) {
+			echo '<pre>';
+			print_r($_POST);
+			die();
 
 			if (isset($_POST["nom"])) {
 				$nom = htmlspecialchars($_POST["nom"]);
@@ -130,6 +133,7 @@ class FrontController {
 			}
 
 			if (!empty($_POST['nom']) AND !empty($_POST['sujet']) AND !empty($_POST['email']) AND !empty($_POST['message'])) {
+				return json_encode(data);
 				$newContact = new Contact ([
 					'name_contact' => $nom,
 					'subject_contact' => $sujet,
