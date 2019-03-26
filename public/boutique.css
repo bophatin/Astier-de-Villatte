@@ -41,7 +41,6 @@ html body {
 
 nav li {
 	list-style-type: none;
-	/*padding: 20px 10px;*/
 	font-family: 'Roboto', sans-serif;
 	text-transform: uppercase;
 	letter-spacing: 1.5px;
@@ -102,9 +101,127 @@ nav li:hover .submenu {
 }
 
 
+/* ECRAN ACCUEIL */
+
+#wrapper_boutiques {
+	padding-top: 40px;
+	padding-bottom: 190px;
+	background: #b7d0cd;
+}
+
+.container_boutiques {
+	position: relative;
+	max-width: 100%;
+	height: 400px;
+	text-align: center;
+}
+
+.container_titres {
+	position: absolute;
+	text-align: center;
+	left: 50%;
+	top: 50%;
+	transform:translate(-50%,-50%);
+	color:white;
+	text-transform: uppercase;
+}
+
+.title-paris {
+	font-family: 'Roboto', sans-serif;
+	font-size: 18px;
+	letter-spacing: 2px;
+	padding:0;
+	margin: 0;
+}
+
+h1 {
+	font-family: 'Cormorant', serif;
+	font-weight: normal;
+	font-size: 80px;
+	padding:0;
+	margin: 0;
+}
 
 
+/* TXT TRANSITION */
 
+.container_transition {
+	max-width: 100%;
+	height : 320px;
+	display: flex;
+}
+
+.txt-transition {
+	font-family: 'Roboto', sans-serif;
+	font-size: 18px;
+	text-transform:uppercase;
+	letter-spacing:1px;
+	text-align: center;
+	line-height: 30px;
+	margin: auto;
+}
+
+/* HONORE */
+
+#wrapper-honore {
+	max-width: 100%;
+}
+
+.container-honore {
+	width: 1200px;
+	height:800px;
+	margin: auto;
+	position: relative;
+}
+
+.bloc-map {
+	position: absolute;
+	width: 800px;
+	height: 645px;
+	background: #f0c1c1;
+	z-index:500;
+}
+
+.bloc-img {
+	position: absolute;
+	width:652px;
+	height:720px;
+	background:#b0924f;
+	right:0;
+	bottom: 0;
+}
+
+.bloc-titres {
+	position:absolute;
+	width: 300px;
+	height: 350px;
+	background: white;
+	text-transform: uppercase;
+	top: 150px;
+	right: 200px;
+	z-index:1000;
+}
+
+.bloc-titre {
+	position: absolute;
+	width:auto;
+	bottom: 10px;
+	left: 50%;
+	transform: translate(-50%, -10%);
+}
+
+.rue {
+	font-family: 'Roboto', sans-serif;
+	padding:0;
+	margin:0;
+}
+
+.nom_shop {
+	font-family: 'Cormorant', serif;
+	font-size: 50px;
+	padding:0;
+	margin:0;
+}
 
 /* FOOTER */
 
