@@ -37,9 +37,8 @@ switch($page) {
 
 	case 'about';
 	require 'view/aboutView.php';
-	break;	
-
-	default : 
-	require 'view/404View.php';
 	break;
+
+	case 'contact';
+	require 'view/contactView.php';
 }

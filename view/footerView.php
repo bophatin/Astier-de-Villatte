@@ -3,8 +3,8 @@
 		<div class="container-txt-footer">
 			<div class="left-container-footer">
 				<ul>
+					<li><a href="index.php?page=contact">Contact</a></li>
 					<li><a href="admin.php">Admin</a></li>
-					<li><a href="admin.php">Contact</a></li>
 				</ul>
 				<p class="txt-footer">Astier de Villatte, 2019</p>
 			</div>
