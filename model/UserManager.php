@@ -35,7 +35,7 @@ class UserManager {
         $db = Database::getPDO()->prepare('UPDATE users SET name_admin = :name_admin, pwd_admin = :pwd_admin WHERE id = :id');
 
 		$db->bindValue(':name_admin', $users->nameAdmin());
-		$db->bindValue(':pwd_admin', $users->pwd_admin());
+		$db->bindValue(':pwd_admin', $users->pwdAdmin());
 		$db->bindValue(':id', $users->id());
 		$db->execute();
     }

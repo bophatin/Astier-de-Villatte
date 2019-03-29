@@ -30,8 +30,10 @@ class CategoryManager {
     }
 
     public function update(Category $cat) {
-        $db = Database::getPDO()->prepare('UPDATE categories SET name_cat = :name_cat WHERE id = :id');
+        $db = Database::getPDO()->prepare('UPDATE categories SET name_cat = :name_cat, description_cat = :description_cat WHERE id = :id');
         $db->bindValue(':name_cat', $cat->nameCat());
+        $db->bindValue(':description_cat', $cat->descriptionCat());
+        $db->bindValue(':id', $cat->id());
         $db->execute();
     }
 

@@ -55,12 +55,14 @@ class AdminController {
 
 	/* USERS */
 
+	// afficher liste des users
     public static function getUsers() {
         $newUser = new UserManager();
 		$getUser = $newUser->getListUsers();
 		require 'view/back/adminUsersView.php';
 	}
 
+	// ajouter un user
 	public static function addUser() {
         if(isset($_POST['create'])) {
 			if (isset($_POST['pseudo-add'], $_POST['mdp-add'])) {
@@ -81,9 +83,38 @@ class AdminController {
 		} 
 	}
 
+	// afficher data d'un user selon son id sur la page update
+	public static function getUserId() {
+		if (isset($_GET['id'])) {
+			$id = htmlspecialchars(($_GET['id']));
+
+			$getUserManager = new UserManager();
+			$getUser = $getUserManager->getUser($id);
+			require 'view/back/updateUsersView.php';
+		} 
+	}
+
+	// update data d'un user
+	public static function updateUser() {
+		if(isset($_POST['update'])) {
+			if (isset($_POST['pseudo-new'], $_POST['mdp-new'])) {
+				$newUpUser = new User([
+					'name_admin' => htmlspecialchars($_POST['pseudo-new']),
+					'pwd_admin' => password_hash(htmlspecialchars($_POST['mdp-new']), PASSWORD_DEFAULT),
+					'id' => htmlspecialchars($_GET['id'])
+				]);
+
+				$newUpUserManager = new UserManager();
+				$UpdateUser = $newUpUserManager->update($newUpUser);
+				header('Location: admin.php?page=adminUsersView'); 
+			}
+		}
+	}
+
 
 	/* CATEGORIES */
 
+	// ajouter une nouvelle cat
 	public static function addNewCat() {
 
 		if(isset($_POST['send-cat'])) {
@@ -98,7 +129,7 @@ class AdminController {
 				$extension = strrchr($file_name, '.'); 
 				$extensions_ok = array('.png', '.gif', '.jpg', '.jpeg');
 				$file_tmp_name = $_FILES['img-cat']['tmp_name'];
-				$file_destination = 'public/img/' .$file_name;
+				$file_destination = 'public/img/uploads/' .$file_name;
 
 				if(in_array($extension, $extensions_ok)) {
 					if(move_uploaded_file($file_tmp_name, $file_destination)) {
@@ -123,46 +154,95 @@ class AdminController {
 				header('Location: admin.php?page=adminCategoryView');
 			}
 		} 
-		require 'view/back/adminCategoryView.php';
 	}
 
+	// afficher liste des catégories
 	public static function getCats() {
 		$newCat = new CategoryManager();
 		$getCats = $newCat->getListCat();
 		require 'view/back/adminCategoryView.php';
 	}
 
+	// afficher data d'une cat selon son id sur la page update
+	public static function getCatId() {
+		if (isset($_GET['id'])) {
+			$id = htmlspecialchars(($_GET['id']));
 
-	// ARTICLES
-
-	public static function addArticle() {
-        if(isset($_POST['create'])) {
-			if (isset($_POST['pseudo-add'], $_POST['mdp-add'])) {
-				if (!empty($_POST['pseudo-add']) AND !empty($_POST['mdp-add'])) {
-
-					$newUser = new User([
-						'name_admin' => htmlspecialchars($_POST['pseudo-add']),
-						'pwd_admin' => password_hash(htmlspecialchars($_POST['mdp-add']), PASSWORD_DEFAULT)
-					]);
-
-					$addUserManager = new UserManager();
-					$addUser = $addUserManager->add($newUser);
-					header('Location: admin.php?page=adminUsersView'); 
-				} else {
-					echo  "Tous les champs doivent être complétés !";
-				}
-			} 
+			$getCatManager = new CategoryManager();
+			$getCats = $getCatManager->getCat($id);
+			require 'view/back/updateCategoryView.php';
 		} 
 	}
 
+	// update data d'une catégorie 
+	public static function updateCat() {
+		if(isset($_POST['update'])) {
+			if (isset($_POST['cat-new'], $_POST['desc-new'])) {
+				$newCat = new Category([
+					'name_cat' => htmlspecialchars($_POST['cat-new']),
+					'description_cat' => htmlspecialchars($_POST['desc-new']),
+					'id' => htmlspecialchars($_GET['id'])
+				]);
+
+				$newCatManager = new CategoryManager();
+				$updateCat = $newCatManager->update($newCat);
+				header('Location: admin.php?page=adminCategoryView'); 
+			}
+		}
+	}
+
+
+	/* ARTICLES */
+
+	// ajouter un nouvel article
+	public static function addArticle() {
+       
+	}
+
+	// afficher la liste des articles
 	public static function getListArt() {
 		$newArt = new ArticleManager();
 		$getArts = $newArt->getArts();
 		require 'view/back/adminArticlesView.php';
 	}
 
-	
-	// PAGE DELETE
+	// afficher data d'un article selon son id sur la page update
+	public static function getArtId() {
+		if (isset($_GET['id'])) {
+			$id = htmlspecialchars(($_GET['id']));
+
+			$getArtManager = new ArticleManager();
+			$getArts = $getArtManager->getArt($id);
+			require 'view/back/updateArticlesView.php';
+		} 
+	}
+
+	// update data d'un article
+	public static function updateArt() {
+		if(isset($_POST['update'])) {
+			if (isset($_POST['designation_new'], $_POST['title_desc_new'], $_POST['desc_art_new'], $_POST['prix_new'], $_POST['bloc_01_new'], $_POST['bloc_02_new'], $_POST['bloc_03_new'], $_POST['volume_new'])) {
+				$newArt = new Article([
+					'designation' => htmlspecialchars($_POST['designation_new']),
+					'title_desc' => htmlspecialchars($_POST['title_desc_new']),
+					'description_art' => htmlspecialchars($_POST['desc_art_new']),
+					'volume' => htmlspecialchars($_POST['volume_new']),
+					'prix' => htmlspecialchars($_POST['prix_new']),
+					'bloc_01' => htmlspecialchars($_POST['bloc_01_new']),
+					'bloc_02' => htmlspecialchars($_POST['bloc_02_new']),
+					'bloc_03' => htmlspecialchars($_POST['bloc_03_new']),
+					'id' => htmlspecialchars($_GET['id'])
+				]);
+
+				$newArtManager = new ArticleManager();
+				$updateCat = $newArtManager->update($newArt);
+				header('Location: admin.php?page=adminArticlesView'); 
+			}
+		}
+	}
+
+
+
+	/* PAGE DELETE */
 
 	public static function delete() {
 		if (isset($_POST['delete_cat'])) {

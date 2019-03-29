@@ -70,7 +70,12 @@ class FrontController {
 			$newNameMenu = new CategoryManager();
 			$nameMenu = $newNameMenu->getCat($getid);
 
-			require 'view/allArticlesView.php';
+			// GERE AFFICHAGE PAGE OU ERREUR
+			if ($nameMenu->id() == false) {
+				require 'view/404View.php';
+			} else {
+				require 'view/allArticlesView.php';
+			}
 		}
 	}
 
@@ -83,7 +88,8 @@ class FrontController {
 			$article = new ArticleManager();
 			$post = $article->getArt($id);
 
-			if ($post == false) {
+			// GERE AFFICHAGE PAGE OU ERREUR
+			if ($post->id() == false) {
 				require 'view/404View.php';
 			} else {
 				require 'view/articleView.php';
@@ -92,14 +98,11 @@ class FrontController {
 	}
 
 
-	// PAGE BOUTIQUES
+	// PAGE CONTACT
 
 	public static function formContact() {
 
 		if(isset($_POST['submit'])) {
-			echo '<pre>';
-			print_r($_POST);
-			die();
 
 			if (isset($_POST["nom"])) {
 				$nom = htmlspecialchars($_POST["nom"]);
@@ -133,18 +136,31 @@ class FrontController {
 			}
 
 			if (!empty($_POST['nom']) AND !empty($_POST['sujet']) AND !empty($_POST['email']) AND !empty($_POST['message'])) {
-				return json_encode(data);
-				$newContact = new Contact ([
-					'name_contact' => $nom,
-					'subject_contact' => $sujet,
-					'email_contact' => $email,
-					'msg_contact' => $message
-				]);
+				
+				// PREPARATION DES DONNEES
+				$ip           = $_SERVER["REMOTE_ADDR"];
+				$hostname     = gethostbyaddr($_SERVER["REMOTE_ADDR"]);
+				$destinataire = "bophatin@gmail.com";
+				$objet        = "[Astier de Villatte] " . $sujet;
+				$contenu      = "Nom de l'expéditeur : " . $nom . "\r\n";
+				$contenu     .= $message . "\r\n\n";
+				$contenu     .= "Adresse IP de l'expéditeur : " . $ip . "\r\n";
+				$contenu     .= "DLSAM : " . $hostname;
+			
+				$headers  = "CC: " . $email . " \r\n"; // ici l'expediteur du mail
+				$headers .= "Content-Type: text/plain; charset=\"ISO-8859-1\"; DelSp=\"Yes\"; format=flowed /r/n";
+				$headers .= "Content-Disposition: inline \r\n";
+				$headers .= "Content-Transfer-Encoding: 7bit \r\n";
+				$headers .= "MIME-Version: 1.0";
 
-				$newAddContact = new ContactManager();
-				$addContact = $newAddContact->add($newContact);
+				echo '<pre>';
+				print_r($contenu);
+				die();
+
+				sendmail($destinataire, $objet, $contenu, $headers);
 			}
 		}
+		require 'view/contactView.php';
 	}
 }
 

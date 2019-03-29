@@ -28,28 +28,31 @@ $(document).ready(function() {
         var message = $("#message").val();
         var dataString = {'nom': nom, 'sujet': sujet, 'email': email, 'message': message};
         var msg_all = "Merci de remplir tous les champs";
-        var msg_alert = "Merci de remplir ce champs";
+        var msg_nom = "Merci de remplir votre nom";
+        var msg_sujet = "Merci de remplir le sujet";
+        var msg_email = "Merci de remplir votre email";
+        var msg_msg = "Merci de remplir le message";
 
         if (dataString  == "") {
             $("#msg_all").html(msg_all);
          } else if (nom == "") {
-            $("#msg_nom").html(msg_alert);
+            $("#msg_nom").html(msg_nom);
         } else if (sujet == "") {
-            $("#msg_sujet").html(msg_alert);
+            $("#msg_sujet").html(msg_sujet);
         } else if (email == "") {
-            $("#msg_email").html(msg_alert);
+            $("#msg_email").html(msg_email);
         } else if (message == "") {
-            $("#msg_message").html(msg_alert);
+            $("#msg_message").html(msg_msg);
         } else {
             $.ajax({
                 type : "POST",
                 url: $(this).attr("action"),
                 data: dataString,
                 success : function() {
-                    $("#contact").html("<p>Formulaire bien envoyé</p>");
+                    $("#contact").html("<p>Votre message a bien été envoyé !</p>");
                 },
                 error: function() {
-                    $("#contact").html("<p>Erreur d'appel, le formulaire ne peut pas fonctionner</p>");
+                    $("#contact").html("<p>Une erreur est survenue, le formulaire ne peut pas être envoyé !</p>");
                 }
             });
         }

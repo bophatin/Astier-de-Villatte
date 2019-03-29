@@ -20,7 +20,6 @@ switch($page) {
 
 	case 'action':
 	FrontController::sendNewsletter();
-	FrontController::formContact();
 	break;
 
 	case 'allArticles':
@@ -40,5 +39,10 @@ switch($page) {
 	break;
 
 	case 'contact';
-	require 'view/contactView.php';
+	FrontController::formContact();
+	break;
+
+	default :
+	require 'view/404View.php';
+	break;
 }

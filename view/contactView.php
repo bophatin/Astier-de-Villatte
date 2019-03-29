@@ -23,7 +23,7 @@
                 <div class="container-txt-right">
                     <h1>Tell us everything,</h1>
                     <div id="form_contact">
-                        <form action="index.php?page=action" id="contact" method="POST">
+                        <form action="index.php?page=contact" id="contact" method="POST">
                         <div class="container-flex">
                             <div class="left">
                                 <div class="p_form">
@@ -53,8 +53,8 @@
                         <div class="butt">
                             <input type="submit" name ="submit" value="Envoyer" class="button"/>
                         </div>
-                        </form>
                         <span id="msg_all"></span>
+                        </form>
                     </div>
                 </div>
             </div>

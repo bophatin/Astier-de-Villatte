@@ -61,20 +61,19 @@ class ArticleManager {
     }
 
     public function update(Article $art) {
-        $db = Database::getPDO()->prepare('UPDATE articles SET designation = :designation, img_big = :img_big, title_desc = :title_desc, description_art = :description_art, volume = :volume, prix = :prix, img_art1 = :img_art_1, img_art_2 = :im_art_2, bloc_01 = :bloc_01, bloc_02 = :bloc_02, bloc_03 = :bloc_03, stock = :stock WHERE id = :id');
+        $db = Database::getPDO()->prepare('UPDATE articles SET designation = :designation, title_desc = :title_desc, description_art = :description_art, volume = :volume, prix = :prix, bloc_01 = :bloc_01, bloc_02 = :bloc_02, bloc_03 = :bloc_03 WHERE id = :id');
 
         $db->bindValue(':designation', $art->designation());
-        $db->bindValue(':im_big', $art->imgBig());
+        /*$db->bindValue(':img_big', $art->imgBig());*/
         $db->bindValue(':title_desc', $art->titleDesc());
         $db->bindValue(':description_art', $art->descriptionArt());
         $db->bindValue(':volume', $art->volume());
         $db->bindValue(':prix', $art->prix());
-        $db->bindValue(':img-Art_1', $art->imgArt1());
-        $db->bindValue(':img-Art_1', $art->imgArt2());
+        /*$db->bindValue(':img-Art_1', $art->imgArt1());
+        $db->bindValue(':img-Art_1', $art->imgArt2());*/
         $db->bindValue(':bloc_01', $art->bloc01());
         $db->bindValue(':bloc_02', $art->bloc02());
         $db->bindValue(':bloc_03', $art->bloc03());
-        $db->bindValue(':stock', $art->stock());
         $db->bindValue(':id', $art->id());
 
         $db->execute();

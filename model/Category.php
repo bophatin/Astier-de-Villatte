@@ -11,7 +11,7 @@ class Category {
         if(!empty($donnees)) {
             $this->hydrate($donnees);
         } else {
-            var_dump('Problème constructeur hydrate<br/>');
+           
         }
     }
 

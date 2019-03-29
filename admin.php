@@ -30,13 +30,24 @@ switch($page) {
 	AdminController::getListArt();
 	break;
 
-	case 'adminMediaView':
-	require 'view/back/adminMediaView.php';
-	break;
-
 	case 'adminUsersView':
 	AdminController::getUsers();
 	AdminController::addUser();
+	break;
+
+	case 'updateUsersView':
+	AdminController::getUserId();
+	AdminController::updateUser();
+	break;
+
+	case 'updateCategoryView':
+	AdminController::getCatId();
+	AdminController::updateCat();
+	break;
+
+	case 'updateArticlesView':
+	AdminController::getArtId();
+	AdminController::updateArt();
 	break;
 
 	case 'delete':

@@ -6,22 +6,38 @@
     <h1>Articles</h1>
 
 	<form method="post" enctype="multipart/form-data">
-        <label for="designation">Designation</label>
-        <input type="text" name="designation"/><br/>
-        <label for="title_desc">Title</label>
-        <input type="text" name="title_desc"/><br/>
-        <label for="description_art">Description</label>
-        <input type="text" name="description_art"/><br/>
-        <label for="volume">Volume</label>
-        <input type="text" name="volume"/><br/>
-        <label for="prix">Prix</label>
-        <input type="text" name="prix"/><br/>
-        <label for="bloc_01">Bloc 01</label>
-        <input type="text" name="bloc_01"/><br/>
-        <label for="bloc_02">Bloc 02</label>
-        <input type="text" name="bloc_02"/><br/>
-        <label for="bloc_03">Bloc 03</label>
-        <input type="text" name="bloc_03"/><br/>
+        <p>
+            <label for="designation">Designation</label>
+            <input type="text" name="designation"/>
+        </p>
+        <p>
+            <label for="title_desc">Title</label>
+            <input type="text" name="title_desc"/>
+        </p>
+        <p>
+            <label for="description_art">Description</label>
+            <input type="text" name="description_art"/>
+        </p>
+        <p>
+            <label for="volume">Volume</label>
+            <input type="text" name="volume"/>
+        </p>
+        <p>
+            <label for="prix">Prix</label>
+            <input type="text" name="prix"/>
+        </p>
+        <p>
+            <label for="bloc_01">Bloc 01</label>
+            <input type="text" name="bloc_01"/>
+        </p>
+        <p>
+            <label for="bloc_02">Bloc 02</label>
+            <input type="text" name="bloc_02"/>
+        </p>
+        <p>
+            <label for="bloc_03">Bloc 03</label>
+            <input type="text" name="bloc_03"/>
+        </p>
         <input type="hidden" name="MAX_FILE_SIZE"/>
         <p>Img big <input type="file" name="img_big"/></p>
         <p>Img tous les articles <input type="file" name="img_art_1"/></p>
@@ -35,7 +51,7 @@
 		<tr>
 			<td><label for="id"><?= $getArt->designation(); ?></label></td>
 			<td>
-				<a href="admin.php?page=update&id=<?=$getArt->id();?>"><input type="submit" name="update" value="update" class="button-tab"></a>
+				<a href="admin.php?page=updateArticlesView&id=<?=$getArt->id();?>"><input type="submit" name="update" value="update" class="button-tab"></a>
 			</td>
 			<td>
 				<form method="post" action="admin.php?page=delete&id=<?=$getArt->id();?>" >
