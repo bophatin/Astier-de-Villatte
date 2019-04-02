@@ -46,7 +46,7 @@ $(document).ready(function() {
         } else {
             $.ajax({
                 type : "POST",
-                url: $(this).attr("action"),
+                url: "index.php?page=contact", /*$(this).attr("action")*/
                 data: dataString,
                 success : function() {
                     $("#contact").html("<p>Votre message a bien été envoyé !</p>");

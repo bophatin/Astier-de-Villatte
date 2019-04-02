@@ -136,28 +136,31 @@ class FrontController {
 			}
 
 			if (!empty($_POST['nom']) AND !empty($_POST['sujet']) AND !empty($_POST['email']) AND !empty($_POST['message'])) {
+
+				$mail = new PHPMailer();
+				$mail->Host = 'smtp.free.fr';
+				$mail->SMTPAuth   = false;
+				$mail->Port = 25; // Par défaut
 				
-				// PREPARATION DES DONNEES
-				$ip           = $_SERVER["REMOTE_ADDR"];
-				$hostname     = gethostbyaddr($_SERVER["REMOTE_ADDR"]);
-				$destinataire = "bophatin@gmail.com";
-				$objet        = "[Astier de Villatte] " . $sujet;
-				$contenu      = "Nom de l'expéditeur : " . $nom . "\r\n";
-				$contenu     .= $message . "\r\n\n";
-				$contenu     .= "Adresse IP de l'expéditeur : " . $ip . "\r\n";
-				$contenu     .= "DLSAM : " . $hostname;
-			
-				$headers  = "CC: " . $email . " \r\n"; // ici l'expediteur du mail
-				$headers .= "Content-Type: text/plain; charset=\"ISO-8859-1\"; DelSp=\"Yes\"; format=flowed /r/n";
-				$headers .= "Content-Disposition: inline \r\n";
-				$headers .= "Content-Transfer-Encoding: 7bit \r\n";
-				$headers .= "MIME-Version: 1.0";
+				// Expéditeur
+				$mail->SetFrom($email);
+				// Destinataire
+				$mail->AddAddress('bophatin@gmail.com');
+				// Objet
+				$mail->Subject = $sujet;
+				
+				// Votre message
+				$mail->MsgHTML($message);
 
-				echo '<pre>';
-				print_r($contenu);
-				die();
+				var_dump($mail);
 
-				sendmail($destinataire, $objet, $contenu, $headers);
+				// Envoi du mail avec gestion des erreurs
+				if(!$mail->Send()) {
+					die('Erreur : ' . $mail->ErrorInfo);
+				} else {
+					die('Message envoyé !');
+				} 
+ 
 			}
 		}
 		require 'view/contactView.php';
