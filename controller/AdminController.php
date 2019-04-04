@@ -119,39 +119,45 @@ class AdminController {
 
 		if(isset($_POST['send-cat'])) {
 
-			if (isset($_POST['name-cat'], $_POST['desc-cat'])) {
-				$nameCat = htmlspecialchars($_POST['name-cat']);
-				$descCat = htmlspecialchars($_POST['desc-cat']);
-			}
+			$nameCat = htmlspecialchars($_POST['name-cat']);
+			$descCat = htmlspecialchars($_POST['desc-cat']);
 
 			if (!empty($_FILES)) {
 				$file_name = $_FILES['img-cat']['name'];
 				$extension = strrchr($file_name, '.'); 
 				$extensions_ok = array('.png', '.gif', '.jpg', '.jpeg');
 				$file_tmp_name = $_FILES['img-cat']['tmp_name'];
-				$file_destination = 'public/img/uploads/' .$file_name;
+				$taille_max = 104857600; /* Equivaut à 100 Mo */
+				$taille_fichier = filesize($file_tmp_name);
+				$file_destination = 'public/img/' .$file_name;
+
+				if ($taille_fichier > $taille_max) {
+					echo "Vous avez dépassé la taille de fichier autorisée";
+				}
 
 				if(in_array($extension, $extensions_ok)) {
 					if(move_uploaded_file($file_tmp_name, $file_destination)) {
-						echo "Fichier envoyé avec succès !";
+						/*echo "Fichier envoyé avec succès !";*/
+
+						if(!empty($_POST['name-cat']) AND !empty($_POST['desc-cat']) AND !empty($_FILES['img-cat'])) {
+
+							$newAddCat = new Category ([
+								'name_cat' => $nameCat,
+								'description_cat' => $descCat,
+								'img_cat' => $file_destination
+							]);
+						
+							$newAddManager = new CategoryManager();
+							$addCat = $newAddManager->add($newAddCat);
+							header('Location: admin.php?page=adminCategoryView');
+							exit();
+						}
 					} else {
 						echo "Une erreur est survenue lors de l'envoi du fichier !";
-					}
+					} 	
 				} else {
 					echo 'Vous devez uploader un fichier de type png, gif, jpg, jpeg...';
 				}
-			}
-
-			if(!empty($_POST['name-cat']) AND !empty($_POST['desc-cat']) AND !empty($_FILES['img-cat'])) {
-				$newAddCat = new Category ([
-					'name_cat' => $nameCat,
-					'description_cat' => $descCat,
-					'img_cat' => $file_destination
-				]);
-
-				$newAddManager = new CategoryManager();
-				$addCat = $newAddManager->add($newAddCat);
-				header('Location: admin.php?page=adminCategoryView');
 			}
 		} 
 	}
@@ -199,10 +205,16 @@ class AdminController {
        
 	}
 
-	// afficher la liste des articles
 	public static function getListArt() {
+
+		// afficher la liste des articles pour update ou delete
 		$newArt = new ArticleManager();
 		$getArts = $newArt->getArts();
+
+		// afficher liste catégories pour associer l'article
+		$newCat = new CategoryManager();
+		$getCats = $newCat->getListCat();
+
 		require 'view/back/adminArticlesView.php';
 	}
 
