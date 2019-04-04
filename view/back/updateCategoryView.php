@@ -9,11 +9,11 @@
 	<form method="post" class="form">
 		<p>
 			<label for="name-cat">Catégorie</label>
-			<input type="text" name="cat-new" id="nom" value="<?= $getCats->nameCat(); ?>"/>
+			<input type="text" name="cat-new" id="nom" maxlength="10" value="<?= $getCats->nameCat(); ?>"/>
 		</p>
 		<p>
 			<label for="desc-cat">Description</label>
-			<textarea name="desc-new" id="nom" cols="70" rows="15"><?= $getCats->descriptionCat(); ?></textarea>
+			<textarea name="desc-new" id="nom" cols="70" rows="15" maxlength="200" ><?= $getCats->descriptionCat(); ?></textarea>
 		</p>
 		<input type="submit" name="update" value="UPDATE" class ="button"/>
 	</form> 

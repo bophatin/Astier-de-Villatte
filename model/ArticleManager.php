@@ -4,7 +4,7 @@ require_once 'Database.php';
 class ArticleManager {
 
     public function add(Article $art) {
-        $db = Database::getPDO()->prepare('INSERT INTO articles(designation, img_big, title_desc, description_art, volume, prix, img_art_1, img_art_2, bloc_01, bloc_02, bloc_03, stock) VALUES (:designation, :img_big, :title_desc, :description_art, :volume, :prix, :img_art_1, :img_art_2, :bloc_01, :bloc_02, :bloc_03, :stock, :categories_id)');
+        $db = Database::getPDO()->prepare('INSERT INTO articles(designation, img_big, title_desc, description_art, volume, prix, img_art_1, img_art_2, bloc_01, bloc_02, bloc_03, id_categories) VALUES (:designation, :img_big, :title_desc, :description_art, :volume, :prix, :img_art_1, :img_art_2, :bloc_01, :bloc_02, :bloc_03, :categories_id)');
         
         $db->bindValue(':designation', $art->designation());
         $db->bindValue(':img_big', $art->imgBig());
@@ -17,8 +17,7 @@ class ArticleManager {
         $db->bindValue(':bloc_01', $art->bloc01());
         $db->bindValue(':bloc_02', $art->bloc02());
         $db->bindValue(':bloc_03', $art->bloc03());
-        $db->bindValue(':stock', $art->stock());
-        $db->bindValue(':categories_id', $art->stock());
+        $db->bindValue(':categories_id', $art->idCategories());
 
         $db->execute();
     }

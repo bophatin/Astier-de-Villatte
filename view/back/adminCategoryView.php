@@ -9,11 +9,11 @@
 	<form method="post" enctype="multipart/form-data">
 		<p>
 			<label for="name-cat">New category</label>
-			<input type="text" name="name-cat"/>
+			<input type="text" name="name-cat" maxlength="10"/>
 		</p>
 		<p>
 			<label for="desc-cat">Description</label>
-			<textarea type="text" name="desc-cat" cols="50" rows="10"></textarea>
+			<textarea type="text" name="desc-cat" cols="50" rows="10" maxlength="200"></textarea>
 		</p>
 		<p>
 			<label for="img-cat">Image</label>

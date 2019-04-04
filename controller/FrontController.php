@@ -137,30 +137,37 @@ class FrontController {
 
 			if (!empty($_POST['nom']) AND !empty($_POST['sujet']) AND !empty($_POST['email']) AND !empty($_POST['message'])) {
 
-				$mail = new PHPMailer();
-				$mail->Host = 'smtp.free.fr';
-				$mail->SMTPAuth   = false;
-				$mail->Port = 25; // Par défaut
-				
-				// Expéditeur
-				$mail->SetFrom($email);
-				// Destinataire
-				$mail->AddAddress('bophatin@gmail.com');
-				// Objet
-				$mail->Subject = $sujet;
-				
-				// Votre message
-				$mail->MsgHTML($message);
+				$mail = new PHPMailer(true);
 
-				var_dump($mail);
+				try {
+					//Server settings
+					$mail->SMTPDebug = 2;                                       // Enable verbose debug output
+					$mail->isSMTP();                                          // Set mailer to use SMTP
+					$mail->Host       = 'ns0.ovh.net';  // Specify main and backup SMTP servers
+					$mail->SMTPAuth   = true;                                   // Enable SMTP authentication
+					$mail->Username   = 'contact@bophatin.com';                     // SMTP username
+					$mail->Password   = 'boP5astier';                               // SMTP password
+					$mail->SMTPSecure = 'tls';                                  // Enable TLS encryption, `ssl` also accepted
+					$mail->Port       = 587;                                    // TCP port to connect to
+				
+					//Recipients
+					$mail->setFrom($email);
+					$mail->addAddress('bophatin@gmail.com');               // Name is optional
+					$mail->addReplyTo('bophatin@gmail.com', 'Information');
+					$mail->addCC('cc@example.com');
+					$mail->addBCC('bcc@example.com');
 
-				// Envoi du mail avec gestion des erreurs
-				if(!$mail->Send()) {
-					die('Erreur : ' . $mail->ErrorInfo);
-				} else {
-					die('Message envoyé !');
-				} 
- 
+					// Content
+					$mail->isHTML(true);                                  // Set email format to HTML
+					$mail->Subject = $sujet;
+					$mail->Body    = $message;
+					$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+				
+					$mail->send();
+					echo 'Message envoyé !';
+				} catch (Exception $e) {
+					echo "Erreur : {$mail->ErrorInfo}";
+				}
 			}
 		}
 		require 'view/contactView.php';

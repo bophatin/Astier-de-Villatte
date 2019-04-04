@@ -8,40 +8,50 @@
 	<form method="post" enctype="multipart/form-data">
         <p>
             <label for="designation">Designation</label>
-            <input type="text" name="designation"/>
+            <input type="text" name="designation" maxlength="10"/>
         </p>
         <p>
             <label for="title_desc">Title</label>
-            <input type="text" name="title_desc"/>
+            <input type="text" name="title_desc" maxlength="25"/>
         </p>
         <p>
             <label for="description_art">Description</label>
-            <input type="text" name="description_art"/>
+            <input type="text" name="description_art" maxlength="200"/>
         </p>
         <p>
             <label for="volume">Volume</label>
-            <input type="text" name="volume"/>
+            <input type="text" name="volume" maxlength="3"/>
         </p>
         <p>
             <label for="prix">Prix</label>
-            <input type="text" name="prix"/>
+            <input type="text" name="prix" maxlength="3"/>
         </p>
         <p>
             <label for="bloc_01">Bloc 01</label>
-            <input type="text" name="bloc_01"/>
+            <input type="text" name="bloc_01" maxlength="10"/>
         </p>
         <p>
             <label for="bloc_02">Bloc 02</label>
-            <input type="text" name="bloc_02"/>
+            <input type="text" name="bloc_02" maxlength="10"/>
         </p>
         <p>
             <label for="bloc_03">Bloc 03</label>
-            <input type="text" name="bloc_03"/>
+            <input type="text" name="bloc_03" maxlength="10"/>
         </p>
         <input type="hidden" name="MAX_FILE_SIZE"/>
         <p>Img big <input type="file" name="img_big"/></p>
         <p>Img tous les articles <input type="file" name="img_art_1"/></p>
         <p>Img page article <input type="file" name="img_art_2"/></p>
+
+        <p>
+            <select name="categories_id">
+                <option>Choisissez sa catégorie</option>
+                <?php foreach($getCats as $choix_cat): ?>
+                <option value="<?= $choix_cat->id(); ?>"><?= $choix_cat->nameCat(); ?></option>
+                <?php endforeach ?>
+	        </select>
+        </p>
+
         <input type="submit" name="send-cat" value="ADD" class ="button"/>
     </form>
 

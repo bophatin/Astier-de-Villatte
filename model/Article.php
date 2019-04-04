@@ -47,7 +47,7 @@ class Article {
     public function bloc02() { return $this->_bloc_02; }
     public function bloc03() { return $this->_bloc_03; }
     public function volume() { return $this->_volume; }
-    public function idCatgories() { return $this->_id_categories; }
+    public function idCategories() { return $this->_id_categories; }
     public function titleDesc() { return $this->_title_desc; }
 
     // SETTERS
