@@ -12,7 +12,7 @@ class NewsletterManager {
 
     public function getListEmail() {
         $emails = [];
-		$db = Database::getPDO()->query('SELECT email FROM newsletter');
+		$db = Database::getPDO()->query('SELECT * FROM newsletter');
 
 		while ($donnees = $db->fetch(PDO::FETCH_ASSOC)) {
 			$emails[] = new Newsletter($donnees);
@@ -24,7 +24,7 @@ class NewsletterManager {
         $db = Database::getPDO()->prepare('SELECT * FROM newsletter WHERE id =' .$id);
 
 		$db->execute(array($id));
-		$donnees = $q->fetch(PDO::FETCH_ASSOC);
+		$donnees = $db->fetch(PDO::FETCH_ASSOC);
 
 		return new Newsletter($donnees);
     }
@@ -32,8 +32,8 @@ class NewsletterManager {
     public function update(Newsletter $email) {
         $db = Database::getPDO()->prepare('UPDATE newsletter SET email = :email WHERE id = :id');
 
-		$db->bindValue(':email', $chap->email());
-		$db->bindValue(':id', $chap->id());
+		$db->bindValue(':email', $email->email());
+		$db->bindValue(':id', $email->id());
 		$db->execute();
     }
 

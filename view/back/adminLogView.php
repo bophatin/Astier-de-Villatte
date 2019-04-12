@@ -21,17 +21,15 @@
         
         <div class="right-container-log">
             <div id="form">
-                <div class="background-form">
-                    <form method="post">
-                        <label for="username">PSEUDO</label>
-                        <input type="text" name="username" id="pseudo-log"/>
-                        <label for="password">MOT DE PASSE</label>
-                        <input type="password" name="password" id="mdp-log"/>
-                        <input type="submit" name="submit" value="CONNEXION" class ="button"/>
-                    </form> 
-                </div>
+                <form method="post">
+                    <label for="username">PSEUDO</label>
+                    <input type="text" name="username" id="pseudo-log"/>
+                    <label for="password">MOT DE PASSE</label>
+                    <input type="password" name="password" id="mdp-log"/>
+                    <input type="submit" name="submit" value="CONNEXION" class ="button"/>
+                 </form> 
+                 <div class="error-msg"><?php echo $error ?></div>
             </div>
-            <div class="error-msg"><?php echo $error ?></div>
         </div>
     </div>
 

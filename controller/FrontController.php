@@ -20,39 +20,29 @@ class FrontController {
 	}
 
 	public static function sendNewsletter() {
-		// Add
-		if(isset($_POST['sendemail'])) {
-			if (isset($_POST['email'])) {
-				if (!empty($_POST['email'])) {
-
-					$email = $_POST['email'];
-					$syntaxe=" /^[^\W][a-zA-Z0-9_]+(\.[a-zA-Z0-9_]+)*\@[a-zA-Z0-9_]+(\.[a-zA-Z0-9_]+)*\.[a-zA-Z]{2,4}$/ ";
-
-					if(preg_match($syntaxe, $email)) {
-						$emailpost = new Newsletter([
-							'email' => htmlspecialchars($_POST['email'])
-						]);
-	
-						$addnewmail = new NewsletterManager();
-						$addemail = $addnewmail->add($emailpost);
-
-						/* Mettre fonction sendmail() pour avoir un retour*/
-
-						echo 'Success';
-						/*header('Location:index.php');*/
-					} else {
-						echo 'Failed';
-					}
-				} /*else {
-					echo "Tous les champs doivent être complétés !";
-				}*/
-			}
+		if (isset($_POST["email"])) {
+			$email = htmlspecialchars($_POST["email"]);
+		} else {
+			echo "Merci de renseigner votre email <br/>";
+			$email = "";
 		}
 
-		// Get
-		$titre = "Newsletters";
-		$getm = new NewsletterManager();
-		$getemails = $getm->getListEmail();
+		if (!empty($_POST['email'])) {
+			$syntaxe = " /^[^\W][a-zA-Z0-9_]+(\.[a-zA-Z0-9_]+)*\@[a-zA-Z0-9_]+(\.[a-zA-Z0-9_]+)*\.[a-zA-Z]{2,4}$/ ";
+			
+			if(preg_match($syntaxe, $email)) {
+				$emailpost = new Newsletter([
+					'email' => htmlspecialchars($_POST['email'])
+				]);
+		
+				$addnewmail = new NewsletterManager();
+				$addemail = $addnewmail->add($emailpost);
+
+				echo 'Success';
+			} else {
+				echo 'Error';
+			}
+		} 
 	}
 
 
@@ -102,8 +92,6 @@ class FrontController {
 
 	public static function formContact() {
 
-		if(isset($_POST['submit'])) {
-
 			if (isset($_POST["nom"])) {
 				$nom = htmlspecialchars($_POST["nom"]);
 			} else {
@@ -135,14 +123,15 @@ class FrontController {
 				$message = "";
 			}
 
+
 			if (!empty($_POST['nom']) AND !empty($_POST['sujet']) AND !empty($_POST['email']) AND !empty($_POST['message'])) {
 
 				$mail = new PHPMailer(true);
 
 				try {
 					//Server settings
-					$mail->SMTPDebug = 2;                                       // Enable verbose debug output
-					$mail->isSMTP();                                          // Set mailer to use SMTP
+					$mail->SMTPDebug = 2;                                  // Enable verbose debug output
+					$mail->isSMTP();                                    // Set mailer to use SMTP
 					$mail->Host       = 'ns0.ovh.net';  // Specify main and backup SMTP servers
 					$mail->SMTPAuth   = true;                                   // Enable SMTP authentication
 					$mail->Username   = 'contact@bophatin.com';                     // SMTP username
@@ -162,16 +151,17 @@ class FrontController {
 					$mail->Subject = $sujet;
 					$mail->Body    = $message;
 					$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
-				
+
 					$mail->send();
+
 					echo 'Message envoyé !';
 				} catch (Exception $e) {
 					echo "Erreur : {$mail->ErrorInfo}";
 				}
 			}
+			require 'view/contactView.php';
 		}
-		require 'view/contactView.php';
-	}
+	
 }
 
 

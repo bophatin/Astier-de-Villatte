@@ -1,37 +1,48 @@
 $(document).ready(function() {
 
-   $("#sendemail").click(function(e) {
+    $("#newsletter").submit(function(e) {
         e.preventDefault();
 
-        $.post(
-            'index.php', {
-                email : $('#email').val(),
-            },
-            function(data) {
-                if(data == 'Success') {
-                    $("#response").html("<p>Nous avons bien enregistré votre email !</p>");
-                } else {
-                    $("#response").html("<p>Cette adresse mail est invalide !</p>");
-                } 
-            },
-            'text'
-        );
+        var email = $("#email").val();
+        var submit = $("#sendemail").val();
+        var dataString = {'email': email, 'sendemail': submit};
+        var msg_error = "Merci de remplir votre email";
+
+        if (email == "") {
+            $("#response_error").html(msg_error);
+        } else {
+            $.ajax({
+                type : "POST",
+                url : "index.php?page=action",
+                data : dataString,
+                success : function() {
+                    $("#response_ok").html("<p>Nous avons bien enregistré votre email !</p>");
+                },
+                error: function() {
+                    $("#response_error").html("<p>Cette adresse mail est invalide !</p>");
+                }
+            });
+        }
+        return false;
     });
 
     $("#contact").submit(function(e) {
-
         e.preventDefault();
 
         var nom  = $("#nom").val();
         var sujet = $("#sujet").val();
         var email = $("#email").val();
         var message = $("#message").val();
-        var dataString = {'nom': nom, 'sujet': sujet, 'email': email, 'message': message};
+        var submit = $("#btn_submit").val();
+        var dataString = {'nom': nom, 'sujet': sujet, 'email': email, 'message': message, 'submit': submit};
         var msg_all = "Merci de remplir tous les champs";
         var msg_nom = "Merci de remplir votre nom";
         var msg_sujet = "Merci de remplir le sujet";
         var msg_email = "Merci de remplir votre email";
         var msg_msg = "Merci de remplir le message";
+
+        /* rajouter if else, if else  au lieu de else if else if */
+        /* mettre un <p> en display none et ecrire si le champs est vide faire apparaitre le p, s'il est rempli le cacher */
 
         if (dataString  == "") {
             $("#msg_all").html(msg_all);

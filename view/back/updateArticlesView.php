@@ -1,9 +1,7 @@
 <?php $css='public/adminedit.css' ?>
-<?php $title='B0 Category - Astier de Villatte' ?>
-
+<?php $title='Update Article - BO Astier de Villatte' ?>
 
 <?php ob_start(); ?>
-   
     <h1>Update Article</h1>
 
 		<form method="post" class="form">
@@ -41,7 +39,6 @@
             </p>
 			<input type="submit" name="update" value="UPDATE" class ="button"/>
         </form> 
-        
 <?php $content = ob_get_clean(); ?>
 
 <?php require ('template/templateAdmin.php') ?>

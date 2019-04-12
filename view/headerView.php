@@ -1,3 +1,6 @@
+<!DOCTYPE html>
+<html lang="fr-FR">
+
 <header>
 	<div id="wrapper-header">
 		<div class="container-header">
@@ -20,3 +23,5 @@
 		</div>
 	</div>
 </header>
+
+</html>

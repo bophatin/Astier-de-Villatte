@@ -10,9 +10,8 @@
 			</div>
 			<div class="right-container-footer">
 				<ul class="rs-icons">
-					<li><i class="fab fa-facebook-f"></i></li>
-					<li><i class="fab fa-pinterest-p"></i></li>
-					<li><i class="fab fa-instagram"></i></li>
+					<li><a href="https://fr-fr.facebook.com/Astierdevillatte/" target="blank"><i class="fab fa-facebook-f"></i></a></li>
+					<li><a href="https://www.instagram.com/astierdevillatte/?hl=fr" target="blank"><i class="fab fa-instagram"></i></a></li>
 				</ul>
 			</div>
 		</div>

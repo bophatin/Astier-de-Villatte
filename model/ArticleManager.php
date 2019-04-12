@@ -4,7 +4,7 @@ require_once 'Database.php';
 class ArticleManager {
 
     public function add(Article $art) {
-        $db = Database::getPDO()->prepare('INSERT INTO articles(designation, img_big, title_desc, description_art, volume, prix, img_art_1, img_art_2, bloc_01, bloc_02, bloc_03, id_categories) VALUES (:designation, :img_big, :title_desc, :description_art, :volume, :prix, :img_art_1, :img_art_2, :bloc_01, :bloc_02, :bloc_03, :categories_id)');
+        $db = Database::getPDO()->prepare('INSERT INTO articles(designation, img_big, title_desc, description_art, volume, prix, img_art_1, img_art_2, bloc_01, bloc_02, bloc_03, id_categories) VALUES (:designation, :title_desc, :description_art, :volume, :prix, :img_art_1, :img_art_2, :bloc_01, :bloc_02, :bloc_03, :categories_id)');
         
         $db->bindValue(':designation', $art->designation());
         $db->bindValue(':img_big', $art->imgBig());
@@ -12,8 +12,8 @@ class ArticleManager {
         $db->bindValue(':description_art', $art->descriptionArt());
         $db->bindValue(':volume', $art->volume());
         $db->bindValue(':prix', $art->prix());
-        $db->bindValue(':img-Art_1', $art->imgArt1());
-        $db->bindValue(':img-Art_1', $art->imgArt2());
+        $db->bindValue(':img_big', $art->imgArt1());
+        $db->bindValue(':img_big', $art->imgArt2());
         $db->bindValue(':bloc_01', $art->bloc01());
         $db->bindValue(':bloc_02', $art->bloc02());
         $db->bindValue(':bloc_03', $art->bloc03());
@@ -63,13 +63,10 @@ class ArticleManager {
         $db = Database::getPDO()->prepare('UPDATE articles SET designation = :designation, title_desc = :title_desc, description_art = :description_art, volume = :volume, prix = :prix, bloc_01 = :bloc_01, bloc_02 = :bloc_02, bloc_03 = :bloc_03 WHERE id = :id');
 
         $db->bindValue(':designation', $art->designation());
-        /*$db->bindValue(':img_big', $art->imgBig());*/
         $db->bindValue(':title_desc', $art->titleDesc());
         $db->bindValue(':description_art', $art->descriptionArt());
         $db->bindValue(':volume', $art->volume());
         $db->bindValue(':prix', $art->prix());
-        /*$db->bindValue(':img-Art_1', $art->imgArt1());
-        $db->bindValue(':img-Art_1', $art->imgArt2());*/
         $db->bindValue(':bloc_01', $art->bloc01());
         $db->bindValue(':bloc_02', $art->bloc02());
         $db->bindValue(':bloc_03', $art->bloc03());

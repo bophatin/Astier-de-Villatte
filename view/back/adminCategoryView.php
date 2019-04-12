@@ -1,9 +1,8 @@
 <?php $css='public/adminedit.css' ?>
-<?php $title='B0 Category - Astier de Villatte' ?>
+<?php $title='Category - BO Astier de Villatte' ?>
 
 
 <?php ob_start(); ?>
-   
     <h1>Category</h1>
 
 	<form method="post" enctype="multipart/form-data">
@@ -43,7 +42,6 @@
 			</table>
 		</div>
 	</div>
-
 <?php $content = ob_get_clean(); ?>
 
 <?php require ('template/templateAdmin.php') ?>

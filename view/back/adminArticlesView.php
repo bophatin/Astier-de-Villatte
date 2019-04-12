@@ -8,11 +8,11 @@
 	<form method="post" enctype="multipart/form-data">
         <p>
             <label for="designation">Designation</label>
-            <input type="text" name="designation" maxlength="10"/>
+            <input type="text" name="designation" maxlength="30"/>
         </p>
         <p>
             <label for="title_desc">Title</label>
-            <input type="text" name="title_desc" maxlength="25"/>
+            <input type="text" name="title_desc" maxlength="40"/>
         </p>
         <p>
             <label for="description_art">Description</label>
@@ -39,9 +39,9 @@
             <input type="text" name="bloc_03" maxlength="10"/>
         </p>
         <input type="hidden" name="MAX_FILE_SIZE"/>
-        <p>Img big <input type="file" name="img_big"/></p>
-        <p>Img tous les articles <input type="file" name="img_art_1"/></p>
-        <p>Img page article <input type="file" name="img_art_2"/></p>
+        <p>Img big <input type="file" name="img_big[]" multiple/></p>
+        <p>Img tous les articles <input type="file" name="img_art_1[]" multiple/></p>
+        <p>Img page article <input type="file" name="img_art_2[]" multiple/></p>
 
         <p>
             <select name="categories_id">
@@ -52,7 +52,7 @@
 	        </select>
         </p>
 
-        <input type="submit" name="send-cat" value="ADD" class ="button"/>
+        <input type="submit" name="send-art" value="ADD" class ="button"/>
     </form>
 
     <h2>Liste des articles :</h2>

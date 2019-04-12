@@ -34,6 +34,16 @@ html body {
     position: relative;
 }
 
+.bloc-name {
+    position: absolute;
+    right: 153px;
+}
+
+.bloc-logout {
+    position: absolute;
+    right: 0;
+}
+
 .hello, .logout-butt {
     position: absolute;
     top: 25%;
@@ -46,6 +56,10 @@ a {
     color: black;
 }
 
+@media all and (max-width: 1441px) {
+
+}
+
 
 /* NAV LEFT */
 
@@ -56,15 +70,15 @@ a {
 
 .bloc-nav-admin {
     width: 200px;
-    height: 720px;
+    height: 900px;
     margin:0;
     padding:0;
     border-right:1px solid #b5b5b5;
 }
 
 .bloc-content-admin {
-    width: 1241px;
-    height: auto;
+    width: 1800px;
+    height: 900px;
     background: #f3f5f5;
 }
 
@@ -82,8 +96,20 @@ nav li:hover {
     border-right:4px solid black;
 }
 
+@media all and (max-width: 1441px) {
+    .bloc-nav-admin {
+        height: 720px;
+    }
 
-/* CATEGORY */
+    .bloc-content-admin {
+        width: 1241px;
+        height: auto;
+    }
+}
+
+
+
+/* H1 */
 
 h1 {
     font-family: 'Roboto', sans-serif;

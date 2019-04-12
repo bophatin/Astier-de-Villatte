@@ -3,7 +3,8 @@
 
 <head>
 	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="public/contact.css"/>
+    <link rel="stylesheet" type="text/css" href="public/contact.css"/>
+    <link rel="stylesheet" type="text/css" href="public/template.css"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Cormorant:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -16,13 +17,16 @@
 
     <div id="wrapper-form">
         <div class="container-form">
+
             <div class="bloc-left-form">
                 <a href="index.php"><i class="fas fa-arrow-left"></i></a>
             </div>
+
             <div class="bloc-right-form">
                 <div class="container-txt-right">
                     <h1>Tell us everything,</h1>
                     <div id="form_contact">
+
                         <form action="index.php?page=contact" id="contact" method="POST">
                         <div class="container-flex">
                             <div class="left">
@@ -51,10 +55,11 @@
                             </div>
                         </div>
                         <div class="butt">
-                            <input type="submit" name ="submit" value="Envoyer" class="button"/>
+                            <input type="submit" name ="submit" value="Envoyer" id="btn_submit" class="button"/>
                         </div>
                         <span id="msg_all"></span>
                         </form>
+                        
                     </div>
                 </div>
             </div>

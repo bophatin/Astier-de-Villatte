@@ -2,23 +2,25 @@
 <?php $title = 'Astier de Villatte'; ?>
 
 <?php ob_start(); ?>
-	<div id="wrapper-section-1">
+	<!-- 1. PUSH PRODUIT FULL PAGE -->
+	<section id="wrapper-section-1">
 		<div class="container-section-1">
 			<div class="container-sec1-left">
 				<div class="background-left"><img src="public/img/1.jpg" alt="Ceramic Astier de Villatte"></div>
-				<div class="title-left"><p>Ceramic</p></div>
-				<button class="btn"><a href="index.php?page=allArticlesView&id=2">Decouvrir</a></button>
+				<div class="title-left"><h1>Ceramic</h1></div>
+				<button class="btn"><a href="index.php?page=allArticles&id=2">Decouvrir</a></button>
 			</div>
 			<div class="container-sec1-right"><img src="public/img/2.jpg" alt="Decoration Astier de Villatte"></div>
 		</div>
-	</div>
+	</section>
 	
-	<div id="wrapper-section-2">
+	<!-- 2. COLLECTION FOND GRIS -->
+	<section id="wrapper-section-2">
 		<div class="container-section-2">
 			<div class="back-grey">
 				<div class="text-grey">
 					<p class="little-title">Collection</p>
-					<p class="txt">Un lieu au chic discret <br/>et au raffinement désuet. Quartier Maubert.</p>
+					<h2 class="txt">Un lieu au chic discret <br/>et au raffinement désuet. Quartier Maubert.</h2>
 				</div>
 			</div>
 			<div class="container-blocs">
@@ -29,19 +31,19 @@
 						<!-- <button class="btn-collec">Decouvrir</button> -->
 					</div>
 				</div>
-				<div class="right-bloc"><img src="public/img/main-astier.png" alt=""></div>
+				<div class="right-bloc"><img src="public/img/main-astier.png" alt="Ceramic main Astier de Villatte"></div>
 			</div>
 		</div>
-	</div>
+	</section>
 
-	<div id="wrapper-section-3">
-		<div class="container-img-3"><img src="public/img/theduet.jpg" alt=""></div>
+	<!-- 3. THE DUET -->
+	<section id="wrapper-section-3">
+		<div class="container-img-3"><img src="public/img/theduet.jpg" alt="Ivan & Benoit Astier de Villatte"></div>
 	</div>
-
 	<div class="back-green">
 		<div class="container-green">
 			<div class="left-green">
-				<p class="title-green">The Duet</p>
+				<h3 class="title-green">The Duet</h3>
 				<p class="lititle-green">Ivan & Benoit</p>
 			</div>
 			<div class="right-green">
@@ -49,12 +51,13 @@
 				<button class="btn-collec"><a href="index.php?page=about">Decouvrir</a></button>
 			</div>
 		</div>
-	</div>
+	</section>
 
-	<div id="wrapper-section-4">
+	<!-- 4. SLIDER -->
+	<section id="wrapper-section-4">
 		<div class="container-section-4">
 			<div class="container-title-sec4">
-				<p class="title-sec4">Villa Medicis</p>
+				<h4 class="title-sec4">Villa Medicis</h4>
 				<p class="under-title-sec4">Les eaux</p>
 			</div>
 			<?php foreach ($groupesSliders as $groupeSlider): ?>
@@ -63,7 +66,18 @@
 				<?php foreach ($groupeSlider as $sliders): ?>
 					<li class="slide">
 						<?php foreach ($sliders as $slider): ?>
-						<img src="<?= $slider->imgArt1(); ?>" alt="" class="product-sec4">
+						<div class="product-sec4">
+							<img src="<?= $slider->imgArt1(); ?>" alt="">
+						 <div class="desc-hover">
+							<a href="index.php?page=articleView&id=<?=$slider->id();?>">
+								<div class="label-art">
+									<div class="title-art">
+									<p><?= $slider->designation(); ?></p>
+									<p><?= $slider->prix(); ?>€</p>
+									</div>
+								</div>
+							</a>
+						</div></div>
 						<?php endforeach ?>
 					</li>
 				<?php endforeach ?>
@@ -75,31 +89,34 @@
 			</div>
 			<?php endforeach ?>
 		</div>
-	</div>
+	</section>
 
-	<div id="wrapper-section-5">
+	<!-- 5. NEWSLETTER -->
+	<section id="wrapper-section-5">
 		<div class="container-newsletter">
-			<p class="txt">Newsletter</p>
+			<h5 class="txt-newslett">Newsletter</h5>
 			<p class="little-title">Inscrivez-vous et ne manquez plus rien !</p>
 			<div class="container-form">
-				<form method="post">
+				<form action="index.php?page=action" id="newsletter" method="POST">
 					<input type="text" name="email" id="email" placeholder="Email"  class="email-form"/><br/>
 					<input type="submit" name="sendemail" id="sendemail" value="JE M'INSCRIS" class="button-form"/>
 				</form>
-				<div id="response" class="error-msg"></div>
+				<div id="response_ok" class="ok-msg"></div>
+				<div id="response_error" class="error-msg"></div>
 			</div>
 		</div>
-	</div>
+	</section>
 
-	<div id="wrapper-section-6">
+	<!-- 6. BOUTIQUES -->
+	<section id="wrapper-section-6">
         <div class="container-sec6">
-            <div class="container-left-sec6"><img src="public/img/article-boutique.jpg" alt=""></div>
+            <div class="container-left-sec6"><img src="public/img/article-boutique.jpg" alt="Boutique Paris 1 Astier de Villatte"></div>
             <div class="container-right-sec6">
-                <div class="front-img-sec6"><img src="public/img/article-boutique-2.jpg" alt=""></div>
-                <div class="title-cont-right"><p>Boutique</p></div>
+                <div class="front-img-sec6"><img src="public/img/article-boutique-2.jpg" alt="Boutique Paris 6 Astier de Villatte"></div>
+                <div class="title-cont-right"><h6>Boutique</h6></div>
             </div>
         </div>
-	</div>
+	</section>
 <?php $content = ob_get_clean(); ?>
 
 <?php require('template/templatePage.php'); ?>

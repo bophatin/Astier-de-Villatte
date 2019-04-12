@@ -29,6 +29,7 @@
                     <ul>
                         <li><a href="admin.php?page=adminCategoryView">Category</a></li>
                         <li><a href="admin.php?page=adminArticlesView">Articles</a></li>
+                        <li><a href="admin.php?page=adminNewsletterView">Newsletter</a></li>
                         <li><a href="admin.php?page=adminUsersView">Users</a></li>
                     </ul>
                 </nav>

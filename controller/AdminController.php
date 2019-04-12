@@ -26,7 +26,7 @@ class AdminController {
 						session_start();
 						$_SESSION['username'] = $_POST['username'];
 						echo $_POST;
-						header('Location:admin.php?page=adminArticlesView');
+						header('Location:admin.php?page=adminCategoryView');
 					} else {
 						$error = "Identifiants incorrects"; 
 					}
@@ -202,11 +202,67 @@ class AdminController {
 
 	// ajouter un nouvel article
 	public static function addArticle() {
-       
+		if(isset($_POST['send-art'])) {
+
+			$designation = htmlspecialchars($_POST['designation']);
+			$title_desc = htmlspecialchars($_POST['title_desc']);
+			$description_art = htmlspecialchars($_POST['description_art']);
+			$volume = htmlspecialchars($_POST['volume']);
+			$prix = htmlspecialchars($_POST['prix']);
+			$bloc_01 = htmlspecialchars($_POST['bloc_01']);
+			$bloc_02 = htmlspecialchars($_POST['bloc_02']);
+			$bloc_03 = htmlspecialchars($_POST['bloc_03']);
+			$id = htmlspecialchars($_GET['id']);
+
+			if (!empty($_FILES)) {
+				$file_name = array($_FILES['img_big']['name'], $_FILES['img_art_1']['name'], $_FILES['img_art_2']['name']);
+				$extension = strrchr($file_name, '.'); 
+				$extensions_ok = array('.png', '.gif', '.jpg', '.jpeg');
+				$file_tmp_name = array($_FILES['img_big']['tmp_name'], $_FILES['img_art_1']['tmp_name'], $_FILES['img_art_2']['tmp_name']);
+				$taille_max = 104857600; /* Equivaut à 100 Mo */
+				$taille_fichier = filesize($file_tmp_name);
+				$file_destination = 'public/img/' .$file_name;
+
+				if ($taille_fichier > $taille_max) {
+					echo "Vous avez dépassé la taille de fichier autorisée";
+				}
+
+				if(in_array($extension, $extensions_ok)) {
+					if(move_uploaded_file($file_tmp_name, $file_destination)) {
+						/*echo "Fichier envoyé avec succès !";*/
+
+						if (isset($_POST['designation'], $_POST['img_big'], $_POST['title_desc'], $_POST['desc_art'], $_POST['volume'], $_POST['prix'], $_POST['img_art_1'], $_POST['img_art_2'], $_POST['bloc_01'], $_POST['bloc_02'], $_POST['bloc_03'])) {
+							$newAddArt = new Article ([
+								'designation' => $designation,
+								'img_big' => htmlspecialchars($_POST['img_big']),
+								'title_desc' => $title_desc,
+								'description_art' => $description_art,
+								'volume' => $volume,
+								'prix' => $prix,
+								'img_art_1' => htmlspecialchars($_POST['img_art_1']),
+								'img_art_2' => htmlspecialchars($_POST['img_art_2']),
+								'bloc_01' => $bloc_01,
+								'bloc_02' => $bloc_02,
+								'bloc_03' => $bloc_03,
+								'id' => $id
+							]);
+						
+							$newAddManager = new ArticleManager();
+							$addArt = $newAddManager->add($newAddArt);
+							header('Location: admin.php?page=adminArticlesView');
+							exit();
+						}
+					} else {
+						echo "Une erreur est survenue lors de l'envoi du fichier !";
+					} 	
+				} else {
+					echo 'Vous devez uploader un fichier de type png, gif, jpg, jpeg...';
+				}
+			}
+		} 
 	}
 
 	public static function getListArt() {
-
 		// afficher la liste des articles pour update ou delete
 		$newArt = new ArticleManager();
 		$getArts = $newArt->getArts();
@@ -232,8 +288,8 @@ class AdminController {
 	// update data d'un article
 	public static function updateArt() {
 		if(isset($_POST['update'])) {
-			if (isset($_POST['designation_new'], $_POST['title_desc_new'], $_POST['desc_art_new'], $_POST['prix_new'], $_POST['bloc_01_new'], $_POST['bloc_02_new'], $_POST['bloc_03_new'], $_POST['volume_new'])) {
-				$newArt = new Article([
+			if (isset($_POST['designation_new'], $_POST['title_desc_new'], $_POST['desc_art_new'], $_POST['volume_new'], $_POST['prix_new'], $_POST['bloc_01_new'], $_POST['bloc_02_new'], $_POST['bloc_03_new'])) {
+				$newArticle = new Article([
 					'designation' => htmlspecialchars($_POST['designation_new']),
 					'title_desc' => htmlspecialchars($_POST['title_desc_new']),
 					'description_art' => htmlspecialchars($_POST['desc_art_new']),
@@ -246,12 +302,49 @@ class AdminController {
 				]);
 
 				$newArtManager = new ArticleManager();
-				$updateCat = $newArtManager->update($newArt);
-				header('Location: admin.php?page=adminArticlesView'); 
+				$updateArticle = $newArtManager->update($newArticle);
+				header('Location: admin.php?page=adminArticlesView');
+				exit();
 			}
 		}
 	}
 
+
+	/* PAGE NEWSLETTER */
+
+	// afficher liste des emails inscrits depuis newsletter
+	public static function getListEmails() {
+		$newsletter = new NewsletterManager();
+		$getEmails = $newsletter->getListEmail();
+		require 'view/back/adminNewsletterView.php';
+	}
+
+	// afficher data d'un email selon son id sur la page update
+	public static function getEmailId() {
+		if (isset($_GET['id'])) {
+			$id = htmlspecialchars(($_GET['id']));
+
+			$getEmailManager = new NewsletterManager();
+			$getEmails = $getEmailManager->getEmail($id);
+			require 'view/back/updateNewsletterView.php';
+		} 
+	}
+
+	// update data d'un email
+	public static function updateEmail() {
+		if(isset($_POST['update'])) {
+			if (isset($_POST['email-new'])) {
+				$newEmail = new Newsletter([
+					'email' => htmlspecialchars($_POST['email-new']),
+					'id' => htmlspecialchars($_GET['id'])
+				]);
+
+				$newEmailManager = new NewsletterManager();
+				$updateEmail = $newEmailManager->update($newEmail);
+				header('Location: admin.php?page=adminNewsletterView'); 
+			}
+		}
+	}
 
 
 	/* PAGE DELETE */
@@ -285,6 +378,16 @@ class AdminController {
 			$newDelManager = new ArticlerManager();
 			$delArt = $newDelManager->delete($newDelArt);
 			header('Location: admin.php?page=adminArticlesView');
+		}
+
+		if (isset($_POST['delete_email'])) {
+			$newDelArt = new Newsletter([
+				'id' => htmlspecialchars($_GET['id'])
+			]);
+
+			$newDelManager = new NewsletterManager();
+			$delArt = $newDelManager->delete($newDelArt);
+			header('Location: admin.php?page=adminNewsletterView');
 		}
 	}
 	
