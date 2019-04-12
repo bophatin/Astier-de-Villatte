@@ -28,6 +28,11 @@ switch($page) {
 
 	case 'adminArticlesView':
 	AdminController::getListArt();
+	AdminController::addArticle();
+	break;
+
+	case 'adminNewsletterView':
+	AdminController::getListEmails();
 	break;
 
 	case 'adminUsersView':
@@ -48,6 +53,11 @@ switch($page) {
 	case 'updateArticlesView':
 	AdminController::getArtId();
 	AdminController::updateArt();
+	break;
+
+	case 'updateNewsletterView':
+	AdminController::getEmailId();
+	AdminController::updateEmail();
 	break;
 
 	case 'delete':
