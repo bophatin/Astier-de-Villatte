@@ -51,8 +51,8 @@ switch($page) {
 	break;
 
 	case 'updateArticlesView':
-	AdminController::getArtId();
 	AdminController::updateArt();
+	AdminController::getArtId();
 	break;
 
 	case 'updateNewsletterView':
