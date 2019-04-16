@@ -3,24 +3,22 @@
 
 
 <?php ob_start(); ?>
-   
-    <h1>Update User</h1>
-
-    <div id="wrapper-form">
-		<div class="container-add">
-			<p class="title">Update a user</p>
-			<div class="background-form">
-				<form method="post" class="form">
-					<label for="pseudo">PSEUDO</label>
-					<input type="text" name="pseudo-new" id="nom" value="<?= $getUser->nameAdmin(); ?>"/>
-					<label for="password">PASSWORD</label>
-					<input type="password" name="mdp-new" id="mdp" value="<?= $getUser->pwdAdmin(); ?>"/>
-					<input type="submit" name="update" value="UPDATE" class ="button"/>
-				</form> 
-			</div>
-		</div>
+    <div class="container_flex">
+		<div class="create">
+			<form method="post" class="form">
+                <p class=titre>Modifier un user</p>
+                <p>
+                    <label for="pseudo">PSEUDO</label>
+                    <br/><input type="text" name="pseudo-new" id="nom" value="<?= $getUser->nameAdmin(); ?>"/>
+                </p>
+                <p>
+                    <label for="password">PASSWORD</label>
+                    <br/><input type="password" name="mdp-new" id="mdp" value="<?= $getUser->pwdAdmin(); ?>"/>
+                </p>
+				<input type="submit" name="update" value="Modifier" class ="button_add"/>
+			</form> 
+        </div>
 	</div>
-
 <?php $content = ob_get_clean(); ?>
 
 <?php require ('template/templateAdmin.php') ?>
