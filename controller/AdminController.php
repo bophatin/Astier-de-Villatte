@@ -316,6 +316,36 @@ class AdminController {
 	public static function getListEmails() {
 		$newsletter = new NewsletterManager();
 		$getEmails = $newsletter->getListEmail();
+
+		// exporter liste des emails dans un fichier csv
+		if (isset($_POST['export_emails'])) {
+			header('Content-Type: text/csv;');
+			header('Content-Disposition: attachment;filename="export_emails.csv"');
+
+			foreach($getEmails as $getEmail) {
+				$email = $getEmail->email();
+				$date = $getEmail->dateInscription();
+
+				$datas[] = array(
+					'email' => $email,
+					'date_inscription' => $date
+				);
+			}
+			
+			$delimiter = ';';
+			$enclosure = '"';
+			$fp = fopen('php://output', 'w');
+			$delimiter = ";";
+
+			fputs($fp, $bom =( chr(0xEF) . chr(0xBB) . chr(0xBF) ));
+			fputcsv($fp,array_keys($datas[0]),$delimiter,$enclosure);
+
+			foreach($datas as $data){
+				fputcsv($fp,$data,$delimiter,$enclosure);
+			}
+			
+			fclose($fp);
+		}
 		require 'view/back/adminNewsletterView.php';
 	}
 

@@ -21,6 +21,10 @@
                 </tr>
             </table>
         <?php endforeach ?>
+
+        <form method="post">
+            <input type="submit" name="export_emails" value="exporter" class="button"/>
+        </form>
     </div>
 <?php $content = ob_get_clean(); ?>
 

@@ -78,6 +78,11 @@ html body {
 	position: relative;
 }
 
+.article > img {
+	width: 372px;
+	height: 465px;
+}
+
 .desc-hover {
 	position: absolute;
 	top: 50%;
