@@ -2,6 +2,7 @@
 <?php $title='Article - Astier de Villatte'; ?>
 
 <?php ob_start(); ?>
+    <!-- 1. GRANDE IMG + TITRE PDUIT -->
     <div id="wrapper-section-1">
 		<div class="container-section-1">
         <div class="container-sec1-left"><img src="<?= $post->imgBig(); ?>"></div>
@@ -15,6 +16,7 @@
 		</div>
 	</div>
 
+    <!-- 2. TEXTE + IMG PRDUIT -->
     <div id="wrapper-section-2">
         <div class="container-section-2">
             <div class="container-sec2-left">
@@ -22,13 +24,13 @@
                     <p class="title-left"><?= $post->titleDesc(); ?></p>
                     <p class=txt-left><?= $post->descriptionArt(); ?></p>
                     <div class="infos-left">
-                        <p class="ml-left"><?= $post->volume(); ?> ml</p>
-                        <p class="price-right"><?= $post->prix(); ?> €</p>
+                        <p class="ml-left">Plus d'infos ?</p>
+                        <p class="price-right"><a href="index.php?page=boutiques">Nos magasins</a></p>
                     </div>
                 </div>
             </div>
             <div class="container-sec2-right">
-                <img src="<?= $post->imgArt2(); ?>" class="img-splash">
+                <img src="<?= $post->imgArt1(); ?>" class="img-splash">
             </div>
         </div>
     </div>
