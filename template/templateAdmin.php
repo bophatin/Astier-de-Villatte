@@ -14,25 +14,22 @@
 </head>
 
 <body>
-    <header id="wrapper-admin">
-        <div class="container-header-admin">
-            <div class="bloc-logo"><img src="public/img/logo.png" class="logo"></div>
-            <div class="bloc-name"><p class="hello">Hello <?php echo $_SESSION['username']; ?></p></div>
-            <div class="bloc-logout"><p class="logout-butt"><a href="admin.php?page=logout">Log out</a></p></div>
-        </div>
-    </header>
-
     <div class="container-nav-content">
         <div class="bloc-nav-admin">
+            <img src="public/img/logo.png" class="logo">
             <div class="navigation">
                 <nav>
                     <ul>
-                        <li><a href="admin.php?page=adminCategoryView">Category</a></li>
+                        <li><a href="admin.php?page=adminCategoryView">Categorie</a></li>
                         <li><a href="admin.php?page=adminArticlesView">Articles</a></li>
                         <li><a href="admin.php?page=adminNewsletterView">Newsletter</a></li>
                         <li><a href="admin.php?page=adminUsersView">Users</a></li>
                     </ul>
                 </nav>
+            </div>
+            <div class="bloc_id">
+                <div class="id">User : <?php echo $_SESSION['username']; ?></div>
+                <div class="id"><a href="admin.php?page=logout">Deconnexion</a></div>
             </div>
         </div>
         <div class="bloc-content-admin">
