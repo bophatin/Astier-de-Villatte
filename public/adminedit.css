@@ -3,52 +3,37 @@ html body {
     padding: 0;
 }
 
-/* HEADER */
-
-.container-header-admin {
-    position: relative;
-    max-width: 100%;
-    display: flex;
-    border-bottom:1px solid #b5b5b5;
-}
 
 .bloc-logo {
     width: 1135px;
     height: 70px;
+    background: yellow;
 }
 
 .logo {
+    width: 300px;
+    height: auto;
+
+}
+
+.bloc_id {
     position: absolute;
     width: 220px;
-    height: auto;
-    top: 50%;
-    left: 3%;
-    transform: translate(-3%, -50%);
-}
-
-.bloc-name, .bloc-logout {
     font-family: 'Roboto', sans-serif;
-    width: 153px;
-    height: 70px;
-    border-left:1px solid #b5b5b5;
-    position: relative;
+    text-transform: uppercase;
+    margin-top: 100px;
+    height: 250px;
+    bottom: 0;
 }
 
-.bloc-name {
-    position: absolute;
-    right: 153px;
+.id {
+    padding-left: 50px;
+    padding-bottom: 20px;
+    letter-spacing: 1px;
 }
 
-.bloc-logout {
-    position: absolute;
-    right: 0;
-}
-
-.hello, .logout-butt {
-    position: absolute;
-    top: 25%;
-    left: 42%;
-    transform: translate(-25%, -42%);
+.id > a:hover {
+    color: red;
 }
 
 a {
@@ -56,30 +41,26 @@ a {
     color: black;
 }
 
-@media all and (max-width: 1441px) {
-
-}
-
-
-/* NAV LEFT */
-
 .container-nav-content {
     max-width: 100%;
+    height: 100vh;
     display: flex;
 }
 
 .bloc-nav-admin {
-    width: 200px;
-    height: 900px;
-    margin:0;
-    padding:0;
+    position: relative;
+    width: 220px;
+    height: 100vh;
     border-right:1px solid #b5b5b5;
 }
 
 .bloc-content-admin {
-    width: 1800px;
-    height: 900px;
+    width: 1770px;
     background: #f3f5f5;
+}
+
+.navigation {
+    margin-top: 50px;
 }
 
 nav li {
@@ -93,14 +74,14 @@ nav li {
 }
 
 nav li:hover {
-    border-right:4px solid black;
+    border-right:4px solid rgb(37, 37, 37);
+}
+
+nav li:visited {
+    border-right:4px solid rgb(37, 37, 37);
 }
 
 @media all and (max-width: 1441px) {
-    .bloc-nav-admin {
-        height: 720px;
-    }
-
     .bloc-content-admin {
         width: 1241px;
         height: auto;
@@ -109,8 +90,92 @@ nav li:hover {
 
 
 
-/* H1 */
+.container_flex {
+    display: flex;
+    flex-wrap: wrap;
+}
 
-h1 {
+.titre {
     font-family: 'Roboto', sans-serif;
+    font-weight: normal;
+    font-size: 30px;
+    letter-spacing: 1px;
+    padding-top: 15px;
+}
+
+.create, .update_delete {
+    padding: 20px 120px; 
+}
+
+label {
+    font-family: 'Roboto', sans-serif;
+    margin-right: 20px;
+}
+
+input, textarea {
+    font-family: 'Roboto', sans-serif;
+    outline: none;
+    padding: 5px;
+    margin-top: 15px;
+    font-size: 12px;
+}
+
+input [type="text"], textarea {
+    border: 1px solid #D3D3D3;
+}
+
+.button, .button_delete, .button_add {
+    height: 30px;
+    padding-left: 22px;
+    padding-right: 22px;
+    cursor:pointer;
+    background:rgb(37, 37, 37);
+    color: white;
+    text-transform: uppercase;
+    border:inherit;
+    letter-spacing: 1.5px;
+    border-radius: 40px;
+    margin-right: 20px;
+}
+
+.button:hover, .button_delete:hover, .button_add:hover {
+    background: #f3f5f5;
+    transition: 0.2s;
+}
+
+.button:hover {
+    border:1px solid rgb(37, 37, 37);
+    color: rgb(37, 37, 37); 
+}
+
+.button_delete:hover {
+    border:1px solid rgb(218, 19, 19);
+    color: rgb(218, 19, 19);
+}
+
+.button_add:hover {
+    border:1px solid rgb(16, 145, 84);
+    color: rgb(16, 145, 84);
+}
+
+.lab_up_del {
+    padding-right:30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.var_name {
+    color: red;
+}
+
+@media all and (max-width: 1441px) {
+    .create, .update_delete {
+        padding: 20px 55px; 
+    }
+}
+
+/* NEWSLETTER */
+
+.td_newslett {
+    width: 250px;
 }

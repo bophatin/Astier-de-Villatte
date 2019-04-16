@@ -13,7 +13,7 @@ html body {
 
 .left-container-log {
 	width: 960px; 
-	height: 970px;
+	height: 100vh;
 	background: #edf0f1;
 	position: relative;
 }
@@ -23,7 +23,7 @@ html body {
 	width: 960px;
 }
 
-.left-container-log > h1{
+.left-container-log > h1 {
 	position: absolute;
 	font-family: 'Roboto', sans-serif;
 	text-transform: lowercase;
@@ -102,14 +102,12 @@ input:focus {
 @media all and (max-width: 1441px) {
 	.left-container-log, .right-container-log {
 		width: 720px; 
-		height: 790px;
 	}
 }	
 
 @media all and (max-width: 1024px) {
 	.left-container-log, .right-container-log {
 		width: 512px; 
-		height: 768px;
 	}
 
 	form {
