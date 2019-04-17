@@ -35,6 +35,10 @@ switch($page) {
 	AdminController::getListEmails();
 	break;
 
+	case 'exportCSV' :
+	AdminController::exportEmails();
+	break;
+
 	case 'adminUsersView':
 	AdminController::getUsers();
 	AdminController::addUser();
