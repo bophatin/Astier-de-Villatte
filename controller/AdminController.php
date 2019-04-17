@@ -316,8 +316,14 @@ class AdminController {
 	public static function getListEmails() {
 		$newsletter = new NewsletterManager();
 		$getEmails = $newsletter->getListEmail();
+		require 'view/back/adminNewsletterView.php';
+	}
 
-		// exporter liste des emails dans un fichier csv
+	// exporter liste des emails dans un fichier csv
+	public static function exportEmails() {
+		$newsletter = new NewsletterManager();
+		$getEmails = $newsletter->getListEmail();
+
 		if (isset($_POST['export_emails'])) {
 			header('Content-Type: text/csv;');
 			header('Content-Disposition: attachment;filename="export_emails.csv"');
@@ -335,7 +341,6 @@ class AdminController {
 			$delimiter = ';';
 			$enclosure = '"';
 			$fp = fopen('php://output', 'w');
-			$delimiter = ";";
 
 			fputs($fp, $bom =( chr(0xEF) . chr(0xBB) . chr(0xBF) ));
 			fputcsv($fp,array_keys($datas[0]),$delimiter,$enclosure);
@@ -343,10 +348,8 @@ class AdminController {
 			foreach($datas as $data){
 				fputcsv($fp,$data,$delimiter,$enclosure);
 			}
-			
 			fclose($fp);
 		}
-		require 'view/back/adminNewsletterView.php';
 	}
 
 	// afficher data d'un email selon son id sur la page update

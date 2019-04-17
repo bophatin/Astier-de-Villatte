@@ -22,7 +22,7 @@
             </table>
         <?php endforeach ?>
 
-        <form method="post">
+        <form method="post" action="admin.php?page=exportCSV">
             <input type="submit" name="export_emails" value="exporter" class="button"/>
         </form>
     </div>
