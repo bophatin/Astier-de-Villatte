@@ -35,30 +35,32 @@
         </div>
     </div>
 
+    <!-- 3. BLOCS 01 02 03 -->
     <div id="wrapper-section-3">
         <div class="container-sec3">
             <div class="bloc-sec3">
-                <p class="title-bloc">01 Senteur</p>
-                <p class="txt-bloc"><?= $post->bloc01(); ?></p>
+                <p class="title-bloc">01 Fabrication</p>
+                <p class="txt-bloc">Faite main</p>
             </div>
             <div class="bloc-sec3">
-                <p class="title-bloc">02 Composition</p>
-                <p class="txt-bloc"><?= $post->bloc02(); ?></p>
+                <p class="title-bloc">02 Caractère</p>
+                <p class="txt-bloc">Unique</p>
             </div>
             <div class="bloc-sec3">
-                <p class="title-bloc">03 Caractere</p>
-                <p class="txt-bloc"><?= $post->bloc03(); ?></p>
+                <p class="title-bloc">03 Atelier</p>
+                <p class="txt-bloc">à Paris</p>
             </div>
         </div>
     </div>
 
+    <!-- 4. À TABLE ! -->
     <div id="wrapper-section-4">
         <div class="container-sec4">
             <div class="container-img-sec4">
-                <div class="img-sec4"><img src ="public/img/article-eaux.jpg"></div>
+                <img src ="public/img/atable-astier.jpg">
             </div>
             <div class="container-title-sec4">
-                <div class="title-sec4">Eaux de Cologne</div>
+                <div class="title-sec4">À table !</div>
             </div>
         </div>
     </div>

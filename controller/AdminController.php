@@ -207,20 +207,21 @@ class AdminController {
 			$designation = htmlspecialchars($_POST['designation']);
 			$title_desc = htmlspecialchars($_POST['title_desc']);
 			$description_art = htmlspecialchars($_POST['description_art']);
-			$volume = htmlspecialchars($_POST['volume']);
-			$prix = htmlspecialchars($_POST['prix']);
-			$bloc_01 = htmlspecialchars($_POST['bloc_01']);
-			$bloc_02 = htmlspecialchars($_POST['bloc_02']);
-			$bloc_03 = htmlspecialchars($_POST['bloc_03']);
-			$id = htmlspecialchars($_GET['id']);
+			$imgbig = $_FILES['img_big']['name'];
+			$imgArt1 = $_FILES['img_art_1']['name'];
+
 
 			if (!empty($_FILES)) {
-				$file_name = array($_FILES['img_big']['name'], $_FILES['img_art_1']['name'], $_FILES['img_art_2']['name']);
-				$extension = strrchr($file_name, '.'); 
+				$file_name[] = array([
+					'img_big' => $imgbig,
+					'img_art_1' => $imgArt1
+				]);
+
+				$extension[] = array(strrchr($imgbig, '.'), strrchr($imgArt1, '.'));
 				$extensions_ok = array('.png', '.gif', '.jpg', '.jpeg');
-				$file_tmp_name = array($_FILES['img_big']['tmp_name'], $_FILES['img_art_1']['tmp_name'], $_FILES['img_art_2']['tmp_name']);
+				$file_tmp_name[] = array($_FILES['img_big']['tmp_name'], $_FILES['img_art_1']['tmp_name']);
 				$taille_max = 104857600; /* Equivaut à 100 Mo */
-				$taille_fichier = filesize($file_tmp_name);
+				$taille_fichier = filesize($_FILES['img_big']['tmp_name']);
 				$file_destination = 'public/img/' .$file_name;
 
 				if ($taille_fichier > $taille_max) {
@@ -229,28 +230,24 @@ class AdminController {
 
 				if(in_array($extension, $extensions_ok)) {
 					if(move_uploaded_file($file_tmp_name, $file_destination)) {
-						/*echo "Fichier envoyé avec succès !";*/
 
-						if (isset($_POST['designation'], $_POST['img_big'], $_POST['title_desc'], $_POST['desc_art'], $_POST['volume'], $_POST['prix'], $_POST['img_art_1'], $_POST['img_art_2'], $_POST['bloc_01'], $_POST['bloc_02'], $_POST['bloc_03'])) {
+						if (isset($_POST['designation'], $_POST['img_big'], $_POST['title_desc'], $_POST['desc_art'], $_POST['img_art_1'])) {
 							$newAddArt = new Article ([
 								'designation' => $designation,
 								'img_big' => htmlspecialchars($_POST['img_big']),
 								'title_desc' => $title_desc,
 								'description_art' => $description_art,
-								'volume' => $volume,
-								'prix' => $prix,
 								'img_art_1' => htmlspecialchars($_POST['img_art_1']),
-								'img_art_2' => htmlspecialchars($_POST['img_art_2']),
-								'bloc_01' => $bloc_01,
-								'bloc_02' => $bloc_02,
-								'bloc_03' => $bloc_03,
-								'id' => $id
 							]);
-						
+								
+							print_r($newAddArt);
+
 							$newAddManager = new ArticleManager();
 							$addArt = $newAddManager->add($newAddArt);
 							header('Location: admin.php?page=adminArticlesView');
 							exit();
+						} else {
+							echo "Une erreur est survenue lors de l'ajout du fichier !";
 						}
 					} else {
 						echo "Une erreur est survenue lors de l'envoi du fichier !";

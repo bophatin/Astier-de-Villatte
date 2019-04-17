@@ -17,7 +17,6 @@ html body {
 }
 
 .bloc_id {
-    position: absolute;
     width: 220px;
     font-family: 'Roboto', sans-serif;
     text-transform: uppercase;
@@ -48,7 +47,6 @@ a {
 }
 
 .bloc-nav-admin {
-    position: relative;
     width: 220px;
     height: 100vh;
     border-right:1px solid #b5b5b5;

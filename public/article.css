@@ -133,7 +133,6 @@ html body {
 	font-family: 'Roboto', sans-serif;
 	width: 203px;
 	margin-bottom:0;
-	color: rgb(128,128,128);
 }
 
 .price-right {
@@ -181,7 +180,7 @@ html body {
 .container-sec3 {
 	display: flex;
     max-width: 1200px;
-	height: 330px;
+	height: 300px;
 	margin: auto;
 	align-items:center;
 }
@@ -218,11 +217,11 @@ html body {
 }
 
 
-/* RAJOUT SERENA */
+/* SECTION 4 */
 
 .container-sec4 {
 	display: flex;
-	width: 1200px;
+	width: 1400px;
 	height: 700px;
 	margin: auto;
 	background: #b7d0cd;
@@ -231,22 +230,22 @@ html body {
 
 .container-img-sec4 {
 	position: relative;
-	width: 974px;
+	width: 1000px;
 	height: 700px;
 }
 
-.img-sec4 {
+.container-img-sec4 > img {
 	position: absolute;
 	width: 935px;
 	height: 628px;
 	top: 50%;
-	transform: translateY(-50%);
-	right: 0;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
 
 .container-title-sec4 {
 	position: relative;
-	width: 230px;
+	width: 400px;
 	height: 700px;
 }
 
@@ -259,4 +258,28 @@ html body {
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
+	text-align: center;
+	height: 700px;
+}
+
+@media all and (max-width: 1441px) {
+	.container-sec4 {
+		width: 1200px;
+	}
+
+	.container-img-sec4 {
+		width: 970px;
+	}
+
+	.container-img-sec4 > img {
+		top: 50%;
+		left: inherit;
+		transform: translateY(-50%);
+		right: 0;
+	}
+
+	.container-title-sec4 {
+		width: 230px;
+	}
+	
 }

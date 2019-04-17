@@ -73,7 +73,6 @@
 								<div class="label-art">
 									<div class="title-art">
 									<p><?= $slider->designation(); ?></p>
-									<p><?= $slider->prix(); ?>€</p>
 									</div>
 								</div>
 							</a>

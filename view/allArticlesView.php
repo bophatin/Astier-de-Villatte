@@ -26,7 +26,6 @@
 						<a href="index.php?page=articleView&id=<?=$article->id();?>"><div class="label-art">
 						<div class="title-art">
 							<p><?= $article->designation(); ?></p>
-							<p><?= $article->prix(); ?>€</p>
 						</div>
 						</div></a>
 					</div>
