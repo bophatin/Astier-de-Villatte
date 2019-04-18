@@ -203,47 +203,48 @@ class AdminController {
 	// ajouter un nouvel article
 	public static function addArticle() {
 		if(isset($_POST['send-art'])) {
+			
+			$nbLignes = count($_FILES['images']['name']);
 
-			$designation = htmlspecialchars($_POST['designation']);
-			$title_desc = htmlspecialchars($_POST['title_desc']);
-			$description_art = htmlspecialchars($_POST['description_art']);
-			$imgbig = $_FILES['img_big']['name'];
-			$imgArt1 = $_FILES['img_art_1']['name'];
+			for($i=0 ; $i<=$nbLignes-1 ; $i++) {
 
-
-			if (!empty($_FILES)) {
-				$file_name[] = array([
-					'img_big' => $imgbig,
-					'img_art_1' => $imgArt1
-				]);
-
-				$extension[] = array(strrchr($imgbig, '.'), strrchr($imgArt1, '.'));
-				$extensions_ok = array('.png', '.gif', '.jpg', '.jpeg');
-				$file_tmp_name[] = array($_FILES['img_big']['tmp_name'], $_FILES['img_art_1']['tmp_name']);
-				$taille_max = 104857600; /* Equivaut à 100 Mo */
-				$taille_fichier = filesize($_FILES['img_big']['tmp_name']);
+				$file_name = $_FILES['images']['name'][$i];
+				$file_tmp_name = $_FILES['images']['tmp_name'][$i];
+				$extension = strrchr($file_name, '.');
+				$extensions = array('.png', '.gif', '.jpg', '.jpeg');
+				$taille_fichier = filesize($file_tmp_name);
 				$file_destination = 'public/img/' .$file_name;
+				$taille_max = 104857600;
+			}
 
 				if ($taille_fichier > $taille_max) {
 					echo "Vous avez dépassé la taille de fichier autorisée";
 				}
 
-				if(in_array($extension, $extensions_ok)) {
+				$designation = $_POST['designation'];
+				$imgBig = $_FILES['images']['name'][0];
+				$title = $_POST['title_desc'];
+				$description = $_POST['description_art'];
+				$imgArt1 = $_FILES['images']['name'][1];
+				$idCategories = $_POST['id_categories'];
+				
+				if(in_array($extension, $extensions)) {
 					if(move_uploaded_file($file_tmp_name, $file_destination)) {
-
-						if (isset($_POST['designation'], $_POST['img_big'], $_POST['title_desc'], $_POST['desc_art'], $_POST['img_art_1'])) {
+						
+						if (!empty($designation) AND !empty($imgBig) AND !empty($title) AND !empty($description) AND !empty($imgArt1) AND !empty($idCategories)) {
+							
 							$newAddArt = new Article ([
 								'designation' => $designation,
-								'img_big' => htmlspecialchars($_POST['img_big']),
-								'title_desc' => $title_desc,
-								'description_art' => $description_art,
-								'img_art_1' => htmlspecialchars($_POST['img_art_1']),
+								'img_big' => $imgBig,
+								'title_desc' => $title,
+								'description_art' => $description,
+								'img_art_1' => $imgArt1,
+								'id_categories' => $idCategories
 							]);
-								
-							print_r($newAddArt);
 
 							$newAddManager = new ArticleManager();
-							$addArt = $newAddManager->add($newAddArt);
+							$addArticle = $newAddManager->add($newAddArt);
+
 							header('Location: admin.php?page=adminArticlesView');
 							exit();
 						} else {
@@ -251,12 +252,11 @@ class AdminController {
 						}
 					} else {
 						echo "Une erreur est survenue lors de l'envoi du fichier !";
-					} 	
+					}
 				} else {
 					echo 'Vous devez uploader un fichier de type png, gif, jpg, jpeg...';
 				}
-			}
-		} 
+		}
 	}
 
 	public static function getListArt() {
@@ -405,7 +405,7 @@ class AdminController {
 				'id' => htmlspecialchars($_GET['id'])
 			]);
 
-			$newDelManager = new ArticlerManager();
+			$newDelManager = new ArticleManager();
 			$delArt = $newDelManager->delete($newDelArt);
 			header('Location: admin.php?page=adminArticlesView');
 		}

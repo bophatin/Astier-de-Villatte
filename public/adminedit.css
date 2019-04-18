@@ -13,7 +13,6 @@ html body {
 .logo {
     width: 300px;
     height: auto;
-
 }
 
 .bloc_id {
@@ -102,7 +101,7 @@ nav li:visited {
 }
 
 .create, .update_delete {
-    padding: 20px 120px; 
+    padding: 20px 120px;
 }
 
 label {
@@ -168,7 +167,11 @@ input [type="text"], textarea {
 
 @media all and (max-width: 1441px) {
     .create, .update_delete {
-        padding: 20px 55px; 
+        padding: 20px 50px; 
+    }
+
+    textarea {
+        width: 400px;
     }
 }
 

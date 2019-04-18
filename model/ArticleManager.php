@@ -4,14 +4,14 @@ require_once 'Database.php';
 class ArticleManager {
 
     public function add(Article $art) {
-        $db = Database::getPDO()->prepare('INSERT INTO articles(designation, img_big, title_desc, description_art, img_art_1, id_categories) VALUES (:designation, :title_desc, :description_art, :img_art_1, :categories_id)');
+        $db = Database::getPDO()->prepare('INSERT INTO articles(designation, img_big, title_desc, description_art, img_art_1, id_categories) VALUES (:designation, :img_big, :title_desc, :description_art, :img_art_1, :id_categories)');
         
         $db->bindValue(':designation', $art->designation());
         $db->bindValue(':img_big', $art->imgBig());
         $db->bindValue(':title_desc', $art->titleDesc());
         $db->bindValue(':description_art', $art->descriptionArt());
         $db->bindValue(':img_art_1', $art->imgArt1());
-        $db->bindValue(':categories_id', $art->idCategories());
+        $db->bindValue(':id_categories', $art->idCategories());
 
         $db->execute();
     }
@@ -61,6 +61,20 @@ class ArticleManager {
         $db->bindValue(':description_art', $art->descriptionArt());
         $db->bindValue(':id', $art->id());
 
+        $db->execute();
+    }
+
+    public function delete(Article $art) {
+        $db = Database::getPDO()->prepare('DELETE FROM articles WHERE id =' .$art->id());
+
+        $db->bindValue(':id', $art->id());
+        $db->bindValue(':designation', $art->designation());
+        $db->bindValue(':img_big', $art->imgBig());
+        $db->bindValue(':title_desc', $art->titleDesc());
+        $db->bindValue(':description_art', $art->descriptionArt());
+        $db->bindValue(':img_art_1', $art->imgArt1());
+        $db->bindValue(':id_categories', $art->idCategories());
+        
         $db->execute();
     }
 }
