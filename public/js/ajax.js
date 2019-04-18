@@ -5,11 +5,16 @@ $(document).ready(function() {
 
         var email = $("#email").val();
         var submit = $("#sendemail").val();
+        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        var regex = re.test(String(email).toLowerCase());
         var dataString = {'email': email, 'sendemail': submit};
         var msg_error = "Merci de remplir votre email";
+        var msg_error_1 = "Cette adresse mail est invalide !";
 
         if (email == "") {
             $("#response_error").html(msg_error);
+        } else if (!regex) {
+            $("#response_error").html(msg_error_1);
         } else {
             $.ajax({
                 type : "POST",
@@ -18,13 +23,13 @@ $(document).ready(function() {
                 success : function() {
                     $("#response_ok").html("<p>Nous avons bien enregistré votre email !</p>");
                 },
-                error: function() {
-                    $("#response_error").html("<p>Cette adresse mail est invalide !</p>");
+                error : function() {
+                    $("#response_error").html("<p>Cette adresse mail dysfonctionne</p>");
                 }
             });
         }
         return false;
-    });
+    }); /* message d'erreur disparaisse*/
 
     $("#contact").submit(function(e) {
         e.preventDefault();
@@ -57,7 +62,7 @@ $(document).ready(function() {
         } else {
             $.ajax({
                 type : "POST",
-                url: "index.php?page=contact", /*$(this).attr("action")*/
+                url: "index.php?page=contact",
                 data: dataString,
                 success : function() {
                     $("#contact").html("<p>Votre message a bien été envoyé !</p>");
