@@ -42,7 +42,10 @@ class FrontController {
 			} else {
 				echo 'Error';
 			}
-		} 
+		} else {
+			echo 'Veuillez renseigner votre email';
+			$email = "";
+		}
 	}
 
 
@@ -66,6 +69,8 @@ class FrontController {
 			} else {
 				require 'view/allArticlesView.php';
 			}
+		} else {
+			require 'view/404View.php';
 		}
 	}
 
@@ -84,6 +89,8 @@ class FrontController {
 			} else {
 				require 'view/articleView.php';
 			}
+		} else {
+			require 'view/404View.php';
 		}
 	}
 

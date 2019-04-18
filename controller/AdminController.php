@@ -193,7 +193,7 @@ class AdminController {
 
 				$newCatManager = new CategoryManager();
 				$updateCat = $newCatManager->update($newCat);
-				header('Location: admin.php?page=adminCategoryView'); 
+				header('Location: admin.php?page=adminCategoryView');
 			}
 		}
 	}
@@ -220,8 +220,10 @@ class AdminController {
 
 			if ($taille_fichier > $taille_max) {
 				echo "Vous avez dépassé la taille de fichier autorisée";
-			}
+			} /* $_filesize */
 
+			/* $fileName = timestamp */
+			/* timestamp pour créer une image */
 			$designation = $_POST['designation'];
 			$imgBig = $_FILES['images']['name'][0];
 			$title = $_POST['title_desc'];
@@ -235,16 +237,16 @@ class AdminController {
 								
 							$newAddArt = new Article ([
 								'designation' => $designation,
-								'img_big' => $imgBig,
+								'img_big' => $file_destination,
 								'title_desc' => $title,
 								'description_art' => $description,
-								'img_art_1' => $imgArt1,
+								'img_art_1' => $file_destination,
 								'id_categories' => $idCategories
 							]);
 
 							$newAddManager = new ArticleManager();
 							$addArticle = $newAddManager->add($newAddArt);
-
+							
 							header('Location: admin.php?page=adminArticlesView');
 							exit();
 					} else {
@@ -372,6 +374,7 @@ class AdminController {
 				$newEmailManager = new NewsletterManager();
 				$updateEmail = $newEmailManager->update($newEmail);
 				header('Location: admin.php?page=adminNewsletterView'); 
+				exit();
 			}
 		}
 	}

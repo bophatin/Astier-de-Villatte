@@ -28,7 +28,7 @@
                     <input type="password" name="password" id="mdp-log"/>
                     <input type="submit" name="submit" value="CONNEXION" class ="button"/>
                  </form> 
-                 <div class="error-msg"><?php echo $error ?></div>
+                 <div class="error-msg"><?= (isset($error)) ? $error : '' ?></div>
             </div>
         </div>
     </div>

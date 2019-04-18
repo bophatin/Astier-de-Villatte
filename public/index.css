@@ -649,39 +649,6 @@ h1, h2, h3, h4, h5, h6 {
 	cursor: pointer;
 }
 
-/**/
-.desc-hover {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	width: 250px;
-	height: 350px;
-	background-color: rgba(255, 255, 255, 1);
-	display:none;
-}
-
-.label-art {
-	position: relative;
-	height: 363px;
-}
-
-.title-art {
-	font-family: 'Roboto', sans-serif;
-	font-size: 16px;
-	text-transform: uppercase;
-	letter-spacing: 1.5px;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	text-align: center;
-}
-
-.product-sec4:hover .desc-hover{
-	display: block;
-}
-
 @media all and (max-width: 1441px) {
 	.container-section-4 {
 		width: 1200px;

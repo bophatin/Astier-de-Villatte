@@ -66,17 +66,9 @@
 				<?php foreach ($groupeSlider as $sliders): ?>
 					<li class="slide">
 						<?php foreach ($sliders as $slider): ?>
-						<div class="product-sec4">
-							<img src="<?= $slider->imgArt1(); ?>" alt="">
-						 <div class="desc-hover">
 							<a href="index.php?page=articleView&id=<?=$slider->id();?>">
-								<div class="label-art">
-									<div class="title-art">
-									<p><?= $slider->designation(); ?></p>
-									</div>
-								</div>
+								<img src="<?= $slider->imgArt1(); ?>" alt="" class="product-sec4">
 							</a>
-						</div></div>
 						<?php endforeach ?>
 					</li>
 				<?php endforeach ?>

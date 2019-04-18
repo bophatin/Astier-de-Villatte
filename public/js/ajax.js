@@ -29,7 +29,7 @@ $(document).ready(function() {
             });
         }
         return false;
-    }); /* message d'erreur disparaisse*/
+    });
 
     $("#contact").submit(function(e) {
         e.preventDefault();
