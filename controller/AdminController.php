@@ -127,7 +127,7 @@ class AdminController {
 				$extension = strrchr($file_name, '.'); 
 				$extensions_ok = array('.png', '.gif', '.jpg', '.jpeg');
 				$file_tmp_name = $_FILES['img-cat']['tmp_name'];
-				$taille_max = 104857600; /* Equivaut à 100 Mo */
+				$taille_max = 104857600; 
 				$taille_fichier = filesize($file_tmp_name);
 				$file_destination = 'public/img/' .$file_name;
 
@@ -135,28 +135,29 @@ class AdminController {
 					echo "Vous avez dépassé la taille de fichier autorisée";
 				}
 
-				if(in_array($extension, $extensions_ok)) {
-					if(move_uploaded_file($file_tmp_name, $file_destination)) {
-						/*echo "Fichier envoyé avec succès !";*/
+				if(!empty($_POST['name-cat']) AND !empty($_POST['desc-cat']) AND !empty($_FILES['img-cat'])) {
+					if(in_array($extension, $extensions_ok)) {
+						if(move_uploaded_file($file_tmp_name, $file_destination)) {
 
-						if(!empty($_POST['name-cat']) AND !empty($_POST['desc-cat']) AND !empty($_FILES['img-cat'])) {
-
-							$newAddCat = new Category ([
-								'name_cat' => $nameCat,
-								'description_cat' => $descCat,
-								'img_cat' => $file_destination
-							]);
+								$newAddCat = new Category ([
+									'name_cat' => $nameCat,
+									'description_cat' => $descCat,
+									'img_cat' => $file_destination
+								]);
+							
+								$newAddManager = new CategoryManager();
+								$addCat = $newAddManager->add($newAddCat);
+								header('Location: admin.php?page=adminCategoryView');
+								exit();
 						
-							$newAddManager = new CategoryManager();
-							$addCat = $newAddManager->add($newAddCat);
-							header('Location: admin.php?page=adminCategoryView');
-							exit();
-						}
+						} else {
+							echo "Une erreur est survenue lors de l'envoi du fichier !";
+						} 	
 					} else {
-						echo "Une erreur est survenue lors de l'envoi du fichier !";
-					} 	
+						echo 'Vous devez uploader un fichier de type png, gif, jpg, jpeg...';
+					}
 				} else {
-					echo 'Vous devez uploader un fichier de type png, gif, jpg, jpeg...';
+					echo "Veuillez renseigner tous les champs";
 				}
 			}
 		} 
@@ -217,22 +218,21 @@ class AdminController {
 				$taille_max = 104857600;
 			}
 
-				if ($taille_fichier > $taille_max) {
-					echo "Vous avez dépassé la taille de fichier autorisée";
-				}
+			if ($taille_fichier > $taille_max) {
+				echo "Vous avez dépassé la taille de fichier autorisée";
+			}
 
-				$designation = $_POST['designation'];
-				$imgBig = $_FILES['images']['name'][0];
-				$title = $_POST['title_desc'];
-				$description = $_POST['description_art'];
-				$imgArt1 = $_FILES['images']['name'][1];
-				$idCategories = $_POST['id_categories'];
-				
+			$designation = $_POST['designation'];
+			$imgBig = $_FILES['images']['name'][0];
+			$title = $_POST['title_desc'];
+			$description = $_POST['description_art'];
+			$imgArt1 = $_FILES['images']['name'][1];
+			$idCategories = $_POST['id_categories'];
+
+			if (!empty($designation) AND !empty($imgBig) AND !empty($title) AND !empty($description) AND !empty($imgArt1) AND !empty($idCategories)) {
 				if(in_array($extension, $extensions)) {
 					if(move_uploaded_file($file_tmp_name, $file_destination)) {
-						
-						if (!empty($designation) AND !empty($imgBig) AND !empty($title) AND !empty($description) AND !empty($imgArt1) AND !empty($idCategories)) {
-							
+								
 							$newAddArt = new Article ([
 								'designation' => $designation,
 								'img_big' => $imgBig,
@@ -247,16 +247,16 @@ class AdminController {
 
 							header('Location: admin.php?page=adminArticlesView');
 							exit();
-						} else {
-							echo "Une erreur est survenue lors de l'ajout du fichier !";
-						}
 					} else {
 						echo "Une erreur est survenue lors de l'envoi du fichier !";
 					}
 				} else {
 					echo 'Vous devez uploader un fichier de type png, gif, jpg, jpeg...';
 				}
-		}
+			} else {
+				echo "Veuillez remplir tous les champs !";
+			}
+		} 
 	}
 
 	public static function getListArt() {

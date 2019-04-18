@@ -1,7 +1,5 @@
 <?php $css='public/adminedit.css' ?>
 <?php $title='Back Office - Astier de Villatte' ?>
-
-
 <?php ob_start(); ?>
     <div class="container_flex">
 
