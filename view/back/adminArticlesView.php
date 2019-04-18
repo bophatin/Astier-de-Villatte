@@ -22,11 +22,11 @@
                     <br/><textarea type="text" name="description_art" cols="70" rows="15"></textarea>
                 </p>
                 <input type="hidden" name="MAX_FILE_SIZE"/>
-                <p><label>Img big</label><input type="file" name="img_big" multiple/></p>
-                <p><label>Img tous les articles</label><input type="file" name="img_art_1" multiple/></p></label>
+                <p><label>Img big</label><input type="file" name="images[]" multiple/></p>
+                <p><label>Img tous les articles</label><input type="file" name="images[]" multiple/></p></label>
 
                 <p>
-                    <select name="categories_id">
+                    <select name="id_categories">
                         <option>CATEGORIE ASSOCIÉE</option>
                         <?php foreach($getCats as $choix_cat): ?>
                         <option value="<?= $choix_cat->id(); ?>"><?= $choix_cat->nameCat(); ?></option>
