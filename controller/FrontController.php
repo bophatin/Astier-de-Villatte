@@ -149,10 +149,8 @@ class FrontController {
 				
 					//Recipients
 					$mail->setFrom($email);
-					$mail->addAddress('bophatin@gmail.com');               // Name is optional
-					$mail->addReplyTo('bophatin@gmail.com', 'Information');
-					$mail->addCC('cc@example.com');
-					$mail->addBCC('bcc@example.com');
+					$mail->addAddress('contact@bophatin.com', 'Contact Astier de Villatte');               // Name is optional
+					$mail->addReplyTo($email);
 
 					// Content
 					$mail->isHTML(true);                                  // Set email format to HTML

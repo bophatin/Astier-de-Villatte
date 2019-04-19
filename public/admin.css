@@ -76,15 +76,25 @@ input:focus {
 }
 
 .button {
-	font-family: 'Roboto', sans-serif;
-	background:black;
-	width:120px;
-	height:50px;
-	color: white;
-	border: none;
+    height: 30px;
+    padding-left: 22px;
+    padding-right: 22px;
+    cursor:pointer;
+    background:rgb(37, 37, 37);
+    color: white;
+    text-transform: uppercase;
+    border:inherit;
+    letter-spacing: 1.5px;
+    border-radius: 40px;
+	margin-right: 20px;
 	margin-top: 35px;
-	font-size: 12px;
-	letter-spacing: 2px;
+}
+
+.button:hover {
+    background: white;
+	transition: 0.2s;
+	border:1px solid rgb(37, 37, 37);
+    color: rgb(37, 37, 37); 
 }
 
 .error-msg {
