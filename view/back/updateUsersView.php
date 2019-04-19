@@ -5,9 +5,9 @@
     <div class="container_flex">
 		<div class="create">
 			<form method="post" class="form">
-                <p class=titre>Modifier un user</p>
+                <p class=titre>Modifier un utilisateur</p>
                 <p>
-                    <label for="pseudo">PSEUDO</label>
+                    <label for="pseudo">Nom d'utilisateur</label>
                     <br/><input type="text" name="pseudo-new" id="nom" value="<?= $getUser->nameAdmin(); ?>"/>
                 </p>
                 <p>

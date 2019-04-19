@@ -47,18 +47,20 @@ $(document).ready(function() {
         var msg_email = "Merci de remplir votre email";
         var msg_msg = "Merci de remplir le message";
 
-        /* rajouter if else, if else  au lieu de else if else if */
-        /* mettre un <p> en display none et ecrire si le champs est vide faire apparaitre le p, s'il est rempli le cacher */
-
         if (dataString  == "") {
             $("#msg_all").html(msg_all);
          } else if (nom == "") {
             $("#msg_nom").html(msg_nom);
         } else if (sujet == "") {
+            $("#msg_nom").hide();
             $("#msg_sujet").html(msg_sujet);
         } else if (email == "") {
+            $("#msg_nom").hide();
+            $("#msg_sujet").hide();
             $("#msg_email").html(msg_email);
         } else if (message == "") {
+            $("#msg_nom").hide();
+            $("#msg_sujet").hide();
             $("#msg_message").html(msg_msg);
         } else {
             $.ajax({

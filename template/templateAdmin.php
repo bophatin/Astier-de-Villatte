@@ -3,9 +3,9 @@
 <html lang="fr-FR">
 
 <head>
-	<meta charset="utf-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="<?= $css; ?>"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Cormorant:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
     <title><?= $title; ?></title>
@@ -20,13 +20,13 @@
                     <ul>
                         <li><a href="admin.php?page=adminCategoryView">Catégories</a></li>
                         <li><a href="admin.php?page=adminArticlesView">Articles</a></li>
-                        <li><a href="admin.php?page=adminNewsletterView">Newsletter</a></li>
-                        <li><a href="admin.php?page=adminUsersView">Users</a></li>
+                        <li><a href="admin.php?page=adminNewsletterView">Newsletters</a></li>
+                        <li><a href="admin.php?page=adminUsersView">Utilisateurs</a></li>
                     </ul>
                 </nav>
             </div>
             <div class="bloc_id">
-                <div class="id">User : <?= (isset($_SESSION['username'])) ? $_SESSION['username'] : '' ?></div>
+                <div class="id">Utilisateur : <br/><?= (isset($_SESSION['username'])) ? $_SESSION['username'] : '' ?></div>
                 <div class="id"><a href="admin.php?page=logout">Deconnexion</a></div>
             </div>
         </div>

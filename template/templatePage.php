@@ -13,7 +13,6 @@
 </head>
 
 <body>
-	<?php //include("view/headerView.php"); ?>
     <?= $content; ?>
 	<?php include("view/footerView.php"); ?>
 
@@ -24,7 +23,5 @@
 	<script src="public/js/animation.js"></script>-->
 	<script src="public/js/global.js"></script>
 </body>
-
-
 
 </html>

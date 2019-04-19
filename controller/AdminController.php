@@ -121,7 +121,6 @@ class AdminController {
 
 	/* CATEGORIES */
 	
-
 	// ajouter une nouvelle cat
 	public static function addNewCat() {
 
@@ -224,17 +223,16 @@ class AdminController {
 	public static function addArticle() {
 		if(isset($_POST['send-art'])) {
 			
-			$nb_img = count($_FILES['images']['name']);
+			$nbLignes = count($_FILES['images']['name']);
 
-			for($i=0 ; $i<=$nb_img-1 ; $i++) {
-
+			for($i=0 ; $i<=$nbLignes-1 ; $i++) {
 				$file_name = $_FILES['images']['name'][$i];
 				$file_tmp_name = $_FILES['images']['tmp_name'][$i];
 				$extension = strrchr($file_name, '.');
 				$taille_fichier = filesize($file_tmp_name);
 				$file_destination = 'public/img/' .$file_name;
 				self::EXTENSION_VALID;
-				self::POIDS_IMG_MAX;
+                self::POIDS_IMG_MAX;
 			}
 
 			if ($taille_fichier > self::POIDS_IMG_MAX) {
@@ -246,15 +244,7 @@ class AdminController {
 			$title = htmlspecialchars($_POST['title_desc']);
 			$description = htmlspecialchars($_POST['description_art']);
 			$imgArt1 = $_FILES['images']['name'][1];
-			$idCategories = htmlspecialchars($_POST['id_categories']);
-
-			if(strlen($_POST['designation']) > 30){
-				echo "La designation recquiert 30 caractères maximum !";
-			} else if (strlen($_POST['title_desc']) > 50){
-				echo "La description recquiert 50 caractères maximum !";
-			} else if (strlen($_POST['description_art']) > 1050){
-				echo "La description recquiert 1050 caractères maximum !";
-			}
+            $idCategories = htmlspecialchars($_POST['id_categories']);
 
 			if (!empty($designation) AND !empty($imgBig) AND !empty($title) AND !empty($description) AND !empty($imgArt1) AND !empty($idCategories)) {
 				if(in_array($extension, self::EXTENSION_VALID)) {
@@ -262,13 +252,13 @@ class AdminController {
 
 							$newAddArt = new Article ([
 								'designation' => $designation,
-								'img_big' => $file_destination,
+								'img_big' => 'img/public/'.$imgBig,
 								'title_desc' => $title,
 								'description_art' => $description,
 								'img_art_1' => $file_destination,
 								'id_categories' => $idCategories
-							]);
-
+                            ]);
+                            
 							$newAddManager = new ArticleManager();
 							$addArticle = $newAddManager->add($newAddArt);
 							
@@ -283,7 +273,7 @@ class AdminController {
 			} else {
 				$error = "Veuillez remplir tous les champs !";
 			}
-		} /*require 'view/back/adminArticlesView.php';*/
+		}
 	}
 
 	public static function getListArt() {

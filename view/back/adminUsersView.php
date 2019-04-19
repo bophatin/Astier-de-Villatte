@@ -5,10 +5,10 @@
 <?php ob_start(); ?>
 	<div class="container_flex">
 		<div class="create">
-			<p class=titre>Créer un user</p>
+			<p class=titre>Créer un utilisateur</p>
 			<form method="post" class="form">
 				<p>
-					<label for="pseudo">Pseudo</label>
+					<label for="pseudo">Nom d'utilisateur</label>
 					<br/><input type="text" name="pseudo-add" id="nom" maxlength="255"/>
 				</p>
 				<p>
@@ -20,7 +20,7 @@
 		</div>
 
 		<div class="update_delete">
-			<p class=titre>Liste des users</p>
+			<p class=titre>Liste des utilisateurs</p>
 			<table>
 				<?php foreach($getUser as $user): ?>
 				<tr>

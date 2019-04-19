@@ -21,7 +21,7 @@
                 </p>
                 <input type="hidden" name="MAX_FILE_SIZE"/>
                 <p><label>Image d'ensemble <span class="length"> (10Mo max)</span></label><input type="file" name="images[]" multiple/></p>
-                <p><label>Image article <span class="length"> (10Mo max)</span></label><input type="file" name="images[]" multiple/></p></label>
+                <p><label>Image article <span class="length"> (10Mo max)</span></label><input type="file" name="images[]" multiple/></p>
                 <p>
                     <select name="id_categories">
                         <option>CATEGORIE ASSOCIÉE</option>

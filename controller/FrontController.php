@@ -44,8 +44,8 @@ class FrontController {
 			}
 		} else {
 			echo 'Veuillez renseigner votre email';
-			$email = "";
-		}
+		} 
+		require 'view/indexView.php';
 	}
 
 
@@ -79,6 +79,7 @@ class FrontController {
 
 	public static function getArticle() {
 		if (isset($_GET['id']) AND !empty($_GET['id'])) {
+
 			$id = htmlspecialchars(($_GET['id']));
 			$article = new ArticleManager();
 			$post = $article->getArt($id);
@@ -168,7 +169,6 @@ class FrontController {
 			}
 			require 'view/contactView.php';
 		}
-	
 }
 
 

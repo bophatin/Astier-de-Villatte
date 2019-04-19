@@ -8,7 +8,7 @@
 			<div class="container-nav">	
 				<nav>
 					<ul class="menu-principal">
-						<li class="menu-collection"><a href="">Collection</a>
+						<li class="menu-collection">Collections
 							<ul class="submenu">
 								<?php foreach($menu as $menus): ?>
 								<li><a href="index.php?page=allArticles&id=<?= $menus->id(); ?>"><?= $menus->nameCat(); ?></a></li>
@@ -16,7 +16,7 @@
 							</ul>
 						</li>
 						<li class="menu-boutiques"><a href="index.php?page=boutiques">Boutiques</a></li>
-						<li class="menu-about"><a href="index.php?page=about">About</a></li>
+						<li class="menu-about"><a href="index.php?page=about">En savoir plus</a></li>
 					</ul>
 				</nav>
 			</div>
