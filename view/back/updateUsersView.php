@@ -11,7 +11,7 @@
                     <br/><input type="text" name="pseudo-new" id="nom" value="<?= $getUser->nameAdmin(); ?>"/>
                 </p>
                 <p>
-                    <label for="password">PASSWORD</label>
+                    <label for="password">Mot de passe</label>
                     <br/><input type="password" name="mdp-new" id="mdp" value="<?= $getUser->pwdAdmin(); ?>"/>
                 </p>
 				<input type="submit" name="update" value="Modifier" class ="button_add"/>
