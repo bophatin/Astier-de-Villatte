@@ -22,7 +22,7 @@
         <div class="right-container-log">
             <div id="form">
                 <form method="post">
-                    <label for="username">NON D'UTILISATEUR</label>
+                    <label for="username">NOM D'UTILISATEUR</label>
                     <input type="text" name="username" id="pseudo-log"/>
                     <label for="password">MOT DE PASSE</label>
                     <input type="password" name="password" id="mdp-log"/>
