@@ -1,6 +1,5 @@
 <?php $css='public/adminedit.css' ?>
-<?php $title='B0 Category - Astier de Villatte' ?>
-
+<?php $title='Update User - BO Astier de Villatte' ?>
 
 <?php ob_start(); ?>
     <div class="container_flex">

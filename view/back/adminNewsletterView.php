@@ -23,7 +23,7 @@
         <?php endforeach ?>
 
         <form method="post" action="admin.php?page=exportCSV">
-            <input type="submit" name="export_emails" value="exporter" class="button"/>
+            <input type="submit" name="export_emails" value="exporter la liste" class="button" id="input_export"/>
         </form>
     </div>
 <?php $content = ob_get_clean(); ?>

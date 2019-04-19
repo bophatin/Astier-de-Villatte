@@ -9,7 +9,7 @@
             <p class=titre>Modifier l'adresse mail</p>
 			<p>
 				<label for="email">Email</label>
-				<input type="text" name="email-new" id="nom" maxlength="30" value="<?= $getEmails->email(); ?>"/>
+				<input type="text" name="email-new" id="nom" maxlength="30" value="<?= $getEmailId->email(); ?>"/>
 			</p>
 			<input type="submit" name="update" value="Modifier" class ="button_add"/>
 		    </form> 
