@@ -121,9 +121,13 @@ class AdminController {
 
 	/* CATEGORIES */
 	
-	// ajouter une nouvelle cat
-	public static function addNewCat() {
+	public static function editCategory() {
 
+		// afficher liste des catégories
+		$newCat = new CategoryManager();
+		$getCats = $newCat->getListCat();
+
+		// ajouter une catégorie
 		if(isset($_POST['send-cat'])) {
 			$nameCat = htmlspecialchars($_POST['name-cat']);
 			$descCat = htmlspecialchars($_POST['desc-cat']);
@@ -171,13 +175,7 @@ class AdminController {
 					$error = "Veuillez renseigner tous les champs";
 				}
 			}
-		} /*require 'view/back/adminCategoryView.php';*/
-	}
-
-	// afficher liste des catégories
-	public static function getCats() {
-		$newCat = new CategoryManager();
-		$getCats = $newCat->getListCat();
+		} 
 		require 'view/back/adminCategoryView.php';
 	}
 
@@ -219,8 +217,17 @@ class AdminController {
 
 	/* ARTICLES */
 
-	// ajouter un nouvel article
-	public static function addArticle() {
+	public static function editArticle() {
+
+		// afficher la liste de tous les articles
+		$newArt = new ArticleManager();
+		$getArts = $newArt->getArts();
+	
+		// afficher liste catégories pour associer l'article
+		$newCat = new CategoryManager();
+		$getCats = $newCat->getListCat();
+
+		// ajouter un nouvel article
 		if(isset($_POST['send-art'])) {
 			
 			$nbLignes = count($_FILES['images']['name']);
@@ -274,17 +281,6 @@ class AdminController {
 				$error = "Veuillez remplir tous les champs !";
 			}
 		}
-	}
-
-	public static function getListArt() {
-		// afficher la liste de tous les articles
-		$newArt = new ArticleManager();
-		$getArts = $newArt->getArts();
-
-		// afficher liste catégories pour associer l'article
-		$newCat = new CategoryManager();
-		$getCats = $newCat->getListCat();
-
 		require 'view/back/adminArticlesView.php';
 	}
 

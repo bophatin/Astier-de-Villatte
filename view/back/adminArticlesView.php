@@ -32,6 +32,7 @@
                 </p>
                 <input type="submit" name="send-art" value="valider" class ="button_add"/>
             </form>
+            <div class="error-msg"><?= (isset($error)) ? $error : '' ?></div>
         </div>
 
         <div class="update_delete">
@@ -53,7 +54,6 @@
             </table>
         </div>
     </div>
-    <div class="error-msg"><?= (isset($error)) ? $error : '' ?></div>
 <?php $content = ob_get_clean(); ?>
 
 <?php require ('template/templateAdmin.php') ?>

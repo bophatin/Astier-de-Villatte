@@ -22,13 +22,11 @@ switch($page) {
 	break;
 
 	case 'adminCategoryView':
-	AdminController::getCats();
-	AdminController::addNewCat();
+	AdminController::editCategory();
 	break;
 
 	case 'adminArticlesView':
-	AdminController::getListArt();
-	AdminController::addArticle();
+	AdminController::editArticle();
 	break;
 
 	case 'adminNewsletterView':
