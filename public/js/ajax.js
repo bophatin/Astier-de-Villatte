@@ -21,6 +21,7 @@ $(document).ready(function() {
                 url : "index.php?page=action",
                 data : dataString,
                 success : function() {
+                    $("#response_error").hide();
                     $("#response_ok").html("<p>Nous avons bien enregistré votre email !</p>");
                 },
                 error : function() {

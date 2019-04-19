@@ -1,28 +1,27 @@
 <?php $css='public/adminedit.css' ?>
-<?php $title='Back Office - Astier de Villatte' ?>
+<?php $title='Articles - BO Astier de Villatte' ?>
+
 <?php ob_start(); ?>
     <div class="container_flex">
-
         <div class="create">
             <p class=titre>Créer un article</p>
 
             <form method="post" enctype="multipart/form-data">
                 <p>
-                    <label for="designation">Designation</label>
-                    <br/><input type="text" name="designation" maxlength="30"/>
+                    <label for="designation">Designation <span class="length"> (max 30 caractères)</span></label>
+                    <br/><input type="text" name="designation" maxlength="30" class="short_input"/>
                 </p>
                 <p>
-                    <label for="title_desc">Title</label>
-                    <br/><input type="text" name="title_desc"/>
+                    <label for="title_desc">Titre de la description <span class="length"> (max 50 caractères)</span></label>
+                    <br/><input type="text" name="title_desc" maxlength="50" class="mid_input"/>
                 </p>
                 <p>
                     <label for="description_art">Description</label>
-                    <br/><textarea type="text" name="description_art" cols="70" rows="15"></textarea>
+                    <br/><textarea type="text" name="description_art" cols="70" rows="15" maxlength="1050"></textarea>
                 </p>
                 <input type="hidden" name="MAX_FILE_SIZE"/>
-                <p><label>Img big</label><input type="file" name="images[]" multiple/></p>
-                <p><label>Img tous les articles</label><input type="file" name="images[]" multiple/></p></label>
-
+                <p><label>Image d'ensemble <span class="length"> (10Mo max)</span></label><input type="file" name="images[]" multiple/></p>
+                <p><label>Image article <span class="length"> (10Mo max)</span></label><input type="file" name="images[]" multiple/></p></label>
                 <p>
                     <select name="id_categories">
                         <option>CATEGORIE ASSOCIÉE</option>
@@ -31,8 +30,7 @@
                         <?php endforeach ?>
                     </select>
                 </p>
-
-                <input type="submit" name="send-art" value="creer" class ="button_add"/>
+                <input type="submit" name="send-art" value="valider" class ="button_add"/>
             </form>
         </div>
 
@@ -55,5 +53,7 @@
             </table>
         </div>
     </div>
+    <div class="error-msg"><?= (isset($error)) ? $error : '' ?></div>
 <?php $content = ob_get_clean(); ?>
+
 <?php require ('template/templateAdmin.php') ?>

@@ -14,7 +14,7 @@ $page === isset($_GET['page']);
 
 switch($page) {
 	case 'adminLogView':
-	AdminController::logPro();
+	AdminController::log();
 	break;
 
 	case 'logout':
@@ -40,8 +40,7 @@ switch($page) {
 	break;
 
 	case 'adminUsersView':
-	AdminController::getUsers();
-	AdminController::addUser();
+	AdminController::editUsers();
 	break;
 
 	case 'updateUsersView':

@@ -3,16 +3,21 @@ html body {
     padding: 0;
 }
 
-
-.bloc-logo {
-    width: 1135px;
-    height: 70px;
-    background: yellow;
+.error-msg {
+	width: 450px;
+	text-align: center;
+	color: red;
+	font-family: 'Roboto', sans-serif;
+	font-size: 14px;
 }
 
+
+/**/
+
 .logo {
-    width: 300px;
+    width: 180px;
     height: auto;
+    padding: 20px 20px;
 }
 
 .bloc_id {
@@ -41,18 +46,18 @@ a {
 
 .container-nav-content {
     max-width: 100%;
-    height: 100vh;
+    height: auto;
     display: flex;
 }
 
 .bloc-nav-admin {
     width: 220px;
     height: 100vh;
-    border-right:1px solid #b5b5b5;
 }
 
 .bloc-content-admin {
     width: 1770px;
+    border-left:1px solid #b5b5b5;
     background: #f3f5f5;
 }
 
@@ -85,7 +90,7 @@ nav li:visited {
     }
 }
 
-
+/**/
 
 .container_flex {
     display: flex;
@@ -115,6 +120,22 @@ input, textarea {
     padding: 5px;
     margin-top: 15px;
     font-size: 12px;
+}
+
+textarea {
+    resize: none;
+}
+
+.short_input {
+    width: 220px;
+}
+
+.mid_input {
+    width: 330px;
+}
+
+.length {
+   font-size: 12px;
 }
 
 input [type="text"], textarea {
@@ -179,4 +200,11 @@ input [type="text"], textarea {
 
 .td_newslett {
     width: 250px;
+}
+
+/**/
+
+#input_export{
+    margin-top: 50px;
+    border:1px solid black;
 }

@@ -2,30 +2,32 @@
 
 class AdminController {
 
+	const EXTENSION_VALID = array('.png', '.gif', '.jpg', '.jpeg', '.JPEG', '.JPG');
+	const POIDS_IMG_MAX = 10000000;
+
 	/* LOG */ 
 
-    public static function logPro() {
+    public static function log() {
 		if(isset($_POST['submit'])) {
 			if (isset($_POST['username'], $_POST['password'])) {
 				if(!empty($_POST['username']) AND !empty($_POST['password'])) {
 					$name = htmlspecialchars($_POST['username']);
 					$pwd = htmlspecialchars($_POST['password']);
 			
-					$us = new User([
+					$newUser = new User([
 						'name_admin' => $name,
 						'pwd_admin' => $pwd
 					]);
 				
-					$um = new UserManager();
-					$user = $um->logUser($name);
+					$userManager = new UserManager();
+					$user = $userManager->logUser($name);
 					
-					$mdp = $user->pwdAdmin();
-					$validPwd = password_verify($pwd, $mdp);
+					$pwd_BDD = $user->pwdAdmin();
+					$valid_Pwd = password_verify($pwd, $pwd_BDD);
 	
-					if($validPwd) {
+					if($valid_Pwd) {
 						session_start();
 						$_SESSION['username'] = $_POST['username'];
-						echo $_POST;
 						header('Location:admin.php?page=adminCategoryView');
 					} else {
 						$error = "Identifiants incorrects"; 
@@ -55,32 +57,37 @@ class AdminController {
 
 	/* USERS */
 
-	// afficher liste des users
-    public static function getUsers() {
-        $newUser = new UserManager();
-		$getUser = $newUser->getListUsers();
-		require 'view/back/adminUsersView.php';
-	}
+	public static function editUsers() {
 
-	// ajouter un user
-	public static function addUser() {
-        if(isset($_POST['create'])) {
+		// afficher liste des users
+		$newUser = new UserManager();
+		$getUser = $newUser->getListUsers();
+
+		// ajouter un user
+		if(isset($_POST['create'])) {
 			if (isset($_POST['pseudo-add'], $_POST['mdp-add'])) {
 				if (!empty($_POST['pseudo-add']) AND !empty($_POST['mdp-add'])) {
+
+					if(strlen($_POST['pseudo-add']) > 255){
+						echo "Le pseudo recquiert 255 caractères maximum !";
+					} else if (strlen($_POST['mdp-add']) > 255){
+						echo "Le mot de passe recquiert 255 caractères maximum !";
+					}
 
 					$newUser = new User([
 						'name_admin' => htmlspecialchars($_POST['pseudo-add']),
 						'pwd_admin' => password_hash(htmlspecialchars($_POST['mdp-add']), PASSWORD_DEFAULT)
 					]);
 
-					$addUserManager = new UserManager();
-					$addUser = $addUserManager->add($newUser);
+					$userManager = new UserManager();
+					$add_User = $userManager->add($newUser);
 					header('Location: admin.php?page=adminUsersView'); 
 				} else {
-					echo  "Tous les champs doivent être complétés !";
+					$error =  "Tous les champs doivent être complétés !";
 				}
-			} 
+			}
 		} 
+		require 'view/back/adminUsersView.php';
 	}
 
 	// afficher data d'un user selon son id sur la page update
@@ -98,69 +105,74 @@ class AdminController {
 	public static function updateUser() {
 		if(isset($_POST['update'])) {
 			if (isset($_POST['pseudo-new'], $_POST['mdp-new'])) {
-				$newUpUser = new User([
+				$new_update_user = new User([
 					'name_admin' => htmlspecialchars($_POST['pseudo-new']),
 					'pwd_admin' => password_hash(htmlspecialchars($_POST['mdp-new']), PASSWORD_DEFAULT),
 					'id' => htmlspecialchars($_GET['id'])
 				]);
 
-				$newUpUserManager = new UserManager();
-				$UpdateUser = $newUpUserManager->update($newUpUser);
-				header('Location: admin.php?page=adminUsersView'); 
+				$new_update_manager = new UserManager();
+				$update_user = $new_update_manager->update($new_update_user);
+				header('Location: admin.php?page=adminUsersView');
 			}
 		}
 	}
 
 
 	/* CATEGORIES */
+	
 
 	// ajouter une nouvelle cat
 	public static function addNewCat() {
 
 		if(isset($_POST['send-cat'])) {
-
 			$nameCat = htmlspecialchars($_POST['name-cat']);
 			$descCat = htmlspecialchars($_POST['desc-cat']);
 
 			if (!empty($_FILES)) {
 				$file_name = $_FILES['img-cat']['name'];
-				$extension = strrchr($file_name, '.'); 
-				$extensions_ok = array('.png', '.gif', '.jpg', '.jpeg');
 				$file_tmp_name = $_FILES['img-cat']['tmp_name'];
-				$taille_max = 104857600; 
+				$extension = strrchr($file_name, '.'); 
 				$taille_fichier = filesize($file_tmp_name);
 				$file_destination = 'public/img/' .$file_name;
+				self::EXTENSION_VALID;
+				self::POIDS_IMG_MAX;
 
-				if ($taille_fichier > $taille_max) {
-					echo "Vous avez dépassé la taille de fichier autorisée";
+				if ($taille_fichier > self::POIDS_IMG_MAX) {
+					$error = "Vous avez dépassé la taille de fichier autorisée";
 				}
 
+				if(strlen($_POST['name-cat']) > 13){
+					echo "Le nom recquiert 13 caractères maximum !";
+				} else if (strlen($_POST['desc-cat']) > 450){
+					echo "La description recquiert 450 caractères maximum !";
+				}
+				
 				if(!empty($_POST['name-cat']) AND !empty($_POST['desc-cat']) AND !empty($_FILES['img-cat'])) {
-					if(in_array($extension, $extensions_ok)) {
+					if(in_array($extension, self::EXTENSION_VALID)) {
 						if(move_uploaded_file($file_tmp_name, $file_destination)) {
 
-								$newAddCat = new Category ([
+							$newAddCat = new Category ([
 									'name_cat' => $nameCat,
 									'description_cat' => $descCat,
 									'img_cat' => $file_destination
 								]);
-							
+								
 								$newAddManager = new CategoryManager();
 								$addCat = $newAddManager->add($newAddCat);
 								header('Location: admin.php?page=adminCategoryView');
 								exit();
-						
 						} else {
-							echo "Une erreur est survenue lors de l'envoi du fichier !";
+							$error = "Une erreur est survenue lors de l'envoi du fichier !";
 						} 	
 					} else {
-						echo 'Vous devez uploader un fichier de type png, gif, jpg, jpeg...';
+						$error = 'Vous devez uploader un fichier de type png, gif, jpg, jpeg...';
 					}
 				} else {
-					echo "Veuillez renseigner tous les champs";
+					$error = "Veuillez renseigner tous les champs";
 				}
 			}
-		} 
+		} /*require 'view/back/adminCategoryView.php';*/
 	}
 
 	// afficher liste des catégories
@@ -176,7 +188,7 @@ class AdminController {
 			$id = htmlspecialchars(($_GET['id']));
 
 			$getCatManager = new CategoryManager();
-			$getCats = $getCatManager->getCat($id);
+			$getCatsId = $getCatManager->getCat($id);
 			require 'view/back/updateCategoryView.php';
 		} 
 	}
@@ -185,6 +197,13 @@ class AdminController {
 	public static function updateCat() {
 		if(isset($_POST['update'])) {
 			if (isset($_POST['cat-new'], $_POST['desc-new'])) {
+
+				if(strlen($_POST['cat-new']) > 13){
+					echo "Le nom recquiert 13 caractères maximum !";
+				} else if (strlen($_POST['desc-new']) > 450){
+					echo "La description recquiert 450 caractères maximum !";
+				}
+
 				$newCat = new Category([
 					'name_cat' => htmlspecialchars($_POST['cat-new']),
 					'description_cat' => htmlspecialchars($_POST['desc-new']),
@@ -205,36 +224,42 @@ class AdminController {
 	public static function addArticle() {
 		if(isset($_POST['send-art'])) {
 			
-			$nbLignes = count($_FILES['images']['name']);
+			$nb_img = count($_FILES['images']['name']);
 
-			for($i=0 ; $i<=$nbLignes-1 ; $i++) {
+			for($i=0 ; $i<=$nb_img-1 ; $i++) {
 
 				$file_name = $_FILES['images']['name'][$i];
 				$file_tmp_name = $_FILES['images']['tmp_name'][$i];
 				$extension = strrchr($file_name, '.');
-				$extensions = array('.png', '.gif', '.jpg', '.jpeg');
 				$taille_fichier = filesize($file_tmp_name);
 				$file_destination = 'public/img/' .$file_name;
-				$taille_max = 104857600;
+				self::EXTENSION_VALID;
+				self::POIDS_IMG_MAX;
 			}
 
-			if ($taille_fichier > $taille_max) {
-				echo "Vous avez dépassé la taille de fichier autorisée";
-			} /* $_filesize */
+			if ($taille_fichier > self::POIDS_IMG_MAX) {
+				$error = "Vous avez dépassé la taille de fichier autorisée";
+			}
 
-			/* $fileName = timestamp */
-			/* timestamp pour créer une image */
-			$designation = $_POST['designation'];
+			$designation = htmlspecialchars($_POST['designation']);
 			$imgBig = $_FILES['images']['name'][0];
-			$title = $_POST['title_desc'];
-			$description = $_POST['description_art'];
+			$title = htmlspecialchars($_POST['title_desc']);
+			$description = htmlspecialchars($_POST['description_art']);
 			$imgArt1 = $_FILES['images']['name'][1];
-			$idCategories = $_POST['id_categories'];
+			$idCategories = htmlspecialchars($_POST['id_categories']);
+
+			if(strlen($_POST['designation']) > 30){
+				echo "La designation recquiert 30 caractères maximum !";
+			} else if (strlen($_POST['title_desc']) > 50){
+				echo "La description recquiert 50 caractères maximum !";
+			} else if (strlen($_POST['description_art']) > 1050){
+				echo "La description recquiert 1050 caractères maximum !";
+			}
 
 			if (!empty($designation) AND !empty($imgBig) AND !empty($title) AND !empty($description) AND !empty($imgArt1) AND !empty($idCategories)) {
-				if(in_array($extension, $extensions)) {
+				if(in_array($extension, self::EXTENSION_VALID)) {
 					if(move_uploaded_file($file_tmp_name, $file_destination)) {
-								
+
 							$newAddArt = new Article ([
 								'designation' => $designation,
 								'img_big' => $file_destination,
@@ -250,19 +275,19 @@ class AdminController {
 							header('Location: admin.php?page=adminArticlesView');
 							exit();
 					} else {
-						echo "Une erreur est survenue lors de l'envoi du fichier !";
+						$error = "Une erreur est survenue lors de l'envoi du fichier !";
 					}
 				} else {
-					echo 'Vous devez uploader un fichier de type png, gif, jpg, jpeg...';
+					$error = 'Vous devez uploader un fichier de type png, gif, jpg, jpeg...';
 				}
 			} else {
-				echo "Veuillez remplir tous les champs !";
+				$error = "Veuillez remplir tous les champs !";
 			}
-		} 
+		} /*require 'view/back/adminArticlesView.php';*/
 	}
 
 	public static function getListArt() {
-		// afficher la liste des articles pour update ou delete
+		// afficher la liste de tous les articles
 		$newArt = new ArticleManager();
 		$getArts = $newArt->getArts();
 
@@ -279,7 +304,7 @@ class AdminController {
 			$id = htmlspecialchars(($_GET['id']));
 
 			$getArtManager = new ArticleManager();
-			$getArts = $getArtManager->getArt($id);
+			$getArtId = $getArtManager->getArt($id);
 			require 'view/back/updateArticlesView.php';
 		} 
 	}
@@ -287,16 +312,12 @@ class AdminController {
 	// update data d'un article
 	public static function updateArt() {
 		if(isset($_POST['update'])) {
-			if (isset($_POST['designation_new'], $_POST['title_desc_new'], $_POST['desc_art_new'], $_POST['volume_new'], $_POST['prix_new'], $_POST['bloc_01_new'], $_POST['bloc_02_new'], $_POST['bloc_03_new'])) {
+			if (isset($_POST['designation_new'], $_POST['title_desc_new'], $_POST['desc_art_new'])) {
+				
 				$newArticle = new Article([
 					'designation' => htmlspecialchars($_POST['designation_new']),
 					'title_desc' => htmlspecialchars($_POST['title_desc_new']),
 					'description_art' => htmlspecialchars($_POST['desc_art_new']),
-					'volume' => htmlspecialchars($_POST['volume_new']),
-					'prix' => htmlspecialchars($_POST['prix_new']),
-					'bloc_01' => htmlspecialchars($_POST['bloc_01_new']),
-					'bloc_02' => htmlspecialchars($_POST['bloc_02_new']),
-					'bloc_03' => htmlspecialchars($_POST['bloc_03_new']),
 					'id' => htmlspecialchars($_GET['id'])
 				]);
 
@@ -348,7 +369,7 @@ class AdminController {
 				fputcsv($fp,$data,$delimiter,$enclosure);
 			}
 			fclose($fp);
-		}
+		} 
 	}
 
 	// afficher data d'un email selon son id sur la page update
@@ -357,7 +378,7 @@ class AdminController {
 			$id = htmlspecialchars(($_GET['id']));
 
 			$getEmailManager = new NewsletterManager();
-			$getEmails = $getEmailManager->getEmail($id);
+			$getEmailId = $getEmailManager->getEmail($id);
 			require 'view/back/updateNewsletterView.php';
 		} 
 	}

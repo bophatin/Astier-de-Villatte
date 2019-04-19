@@ -4,12 +4,11 @@
 
 <head>
 	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="public/adminedit.css"/>
+	<link rel="stylesheet" type="text/css" href="<?= $css; ?>"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Cormorant:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-    <title>Back Office - Astier de Villatte</title>
+    <title><?= $title; ?></title>
 </head>
 
 <body>
@@ -19,7 +18,7 @@
             <div class="navigation">
                 <nav>
                     <ul>
-                        <li><a href="admin.php?page=adminCategoryView">Categorie</a></li>
+                        <li><a href="admin.php?page=adminCategoryView">Catégories</a></li>
                         <li><a href="admin.php?page=adminArticlesView">Articles</a></li>
                         <li><a href="admin.php?page=adminNewsletterView">Newsletter</a></li>
                         <li><a href="admin.php?page=adminUsersView">Users</a></li>
@@ -27,7 +26,7 @@
                 </nav>
             </div>
             <div class="bloc_id">
-                <div class="id">User : <?php echo $_SESSION['username']; ?></div>
+                <div class="id">User : <?= (isset($_SESSION['username'])) ? $_SESSION['username'] : '' ?></div>
                 <div class="id"><a href="admin.php?page=logout">Deconnexion</a></div>
             </div>
         </div>
