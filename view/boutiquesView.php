@@ -40,7 +40,7 @@
                 </div>
             </div>
             <address class="address">16, rue de Tournon, Paris VIe. <br/>Tel : 01 45 09 54 02</address>
-            <div class="bloc-img"><img src="public/img/boutique-honore-astier.jpg" alt="Boutique Astier de Villatte rue Saint Honore Paris"></div>
+            <div class="bloc-img"><img src="public/img/boutique-tournon.jpg" alt="Boutique Astier de Villatte rue de Tournon Paris"></div>
         </div>
     </section>
 <?php $content= ob_get_clean(); ?>

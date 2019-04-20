@@ -3,6 +3,12 @@ html body {
 	padding: 0;
 }
 
+h1 {
+	font-weight: normal;
+	padding: 0;
+	margin: 0;
+}
+
 /* SECTION 1 */
 
 #wrapper-section-1 {
@@ -19,7 +25,7 @@ html body {
 }
 
 .container-sec1-left {
-	width: 588px;
+	width: 1000px;
 	height: 700px;
 	position: relative;
 }
@@ -47,13 +53,83 @@ html body {
 }
 
 .container-sec1-right {
-	width: 852px;
+	width: 1000px;
 	height: 700px;
 }
 
 .container-sec1-right > img {
-	width: 852px;
+	width: 1000px;
 	height: 700px;
+}
+
+@media all and (max-width: 1441px) {
+	.container-sec1-left {
+		width: 470px;
+		height: 700px;
+	}
+
+	.container-sec1-right {
+		width: 970px;
+		height: 700px;
+	}
+
+	.container-sec1-right > img {
+		width: 970px;
+		height: 700px;
+	}
+}
+
+@media all and (max-width: 1024px) {
+	.container-section-1 {
+		flex-wrap: wrap;
+		justify-content: none;
+	}
+
+	.container-sec1-left {
+		position: inherit;
+		height: 0px;
+		margin: auto;
+	}
+
+	.background-left {
+		width: 570px;
+		background: rgba(255, 255, 255, 0.9);
+		padding: 40px;
+		top: 70%;
+		left: 50%;
+		transform: translate(-50%, -70%);
+	}
+	
+	.container-sec1-right {
+		width: 100%;
+		height: 650px;
+	}
+
+	.container-sec1-right > img {
+		width: 100%;
+		height: 650px;
+	}
+}
+
+@media all and (max-width: 480px) {
+	#wrapper-section-1 {
+		height: 400px;
+	}
+	
+	.container-sec1-right {
+		display: none;
+	}
+
+	.background-left {
+		position: inherit;
+		width: 300px;
+		background: none;
+		padding: 0px;
+		top: 0%;
+		left: 0%;
+		transform: translate(0%, 0%);
+		margin: auto;
+	}
 }
 
 /* SECTION 2 */
@@ -67,18 +143,19 @@ html body {
 }
 
 .container-articles {
-	width: 1200px;
+	width: 1300px;
 	display: flex;
 	margin: auto;
 	flex-wrap: wrap;
 	justify-content: space-between;
 	padding: 0;
+	margin-top: -90px;
 }
 
 .article {
 	width: 372px;
 	height: 465px;
-	margin-bottom: 47px;
+	margin-top: 90px;
 	position: relative;
 }
 
@@ -117,4 +194,28 @@ html body {
 
 .article:hover .desc-hover{
 	display: block;
+}
+
+@media all and (max-width: 1441px) {
+	.container-articles {
+		width: 1200px;
+	}
+
+	.article {
+		margin-top: 47px;
+	}
+}
+
+@media all and (max-width: 1024px) {
+	.container-articles {
+		width: 800px;
+	}
+}
+
+@media all and (max-width: 768px) {
+	.container-articles {
+		margin-top: -150px;
+		margin-bottom: 50px;
+		width: 372px;
+	}
 }
