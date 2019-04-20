@@ -64,11 +64,9 @@
 		</div>
 		<div class="container-txt4">
 			<p class="text-sec4">Astier de Villate, fondé en 1996, est le fabricant de céramiques le plus chic et sobre de Paris en s'inspirant des quatre coins du monde. Cette Maison, connue pour ses collaborations prestigieuses avec l'artiste Setsuko Klossowska de Rola, veuve du peintre Balthus ou John Derian, utilise un réel savoir-faire artisanal puisque ce ce sont d’anciens moines Tibétains qui fabriquent les céramiques. Ivan Pericoli & Benoît Astier de Villatte se rencontrent dans les années 90 dans un café de Saint-Germain. Formés au sein des Beaux-Arts de Paris, ils travaillent ensemble dans l'atelier de Georges Jeanclos, ils y apprennent l'art de la scupture.</p>
-			<button><a href="">Decouvrir</a></button>
+			<!--<button><a href="">Decouvrir</a></button>-->
 		</div>
 	</div>
-
-	<script src="public/js/skew.js"></script>
 <?php $content = ob_get_clean(); ?>
 
 <?php require('template/templatePage.php'); ?>
