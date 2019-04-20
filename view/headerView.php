@@ -16,7 +16,7 @@
 							</ul>
 						</li>
 						<li class="menu-boutiques"><a href="index.php?page=boutiques">Boutiques</a></li>
-						<li class="menu-about"><a href="index.php?page=about">About</a></li>
+						<li class="menu-about"><a href="index.php?page=about">Ivan & Benoit</a></li>
 					</ul>
 				</nav>
 			</div>
