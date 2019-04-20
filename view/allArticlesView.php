@@ -2,21 +2,21 @@
 <?php $title='Eaux - Astier de Villatte' ?>
 
 <?php ob_start(); ?>
-    <div id="wrapper-section-1">
-			<div class="container-section-1">
-				<div class="container-sec1-left">
-					<div class="background-left">
-						<div>
-							<div class="title-left"><?= $nameMenu->nameCat(); ?></div>
-							<div class="txt-left"><?= $nameMenu->descriptionCat(); ?></div>
-						</div>
+    <section id="wrapper-section-1">
+		<div class="container-section-1">
+			<div class="container-sec1-left">
+				<div class="background-left">
+					<div>
+						<h1 class="title-left"><?= $nameMenu->nameCat(); ?></h1>
+						<div class="txt-left"><?= $nameMenu->descriptionCat(); ?></div>
 					</div>
 				</div>
-				<div class="container-sec1-right"><img src="<?= $nameMenu->imgCat(); ?>"></div>
 			</div>
-	</div>
+			<div class="container-sec1-right"><img src="<?= $nameMenu->imgCat(); ?>"></div>
+		</div>
+	</section>
 
-	<div id="wrapper-section-2">
+	<article id="wrapper-section-2">
 		<div class="background-section2">
 			<ul class="container-articles">
 				<?php foreach($articles as $article): ?>
@@ -33,7 +33,7 @@
 				<?php endforeach ?>
 			</ul>
 		</div>
-	</div>
+	</article>
 
 <?php $content = ob_get_clean(); ?>
 
