@@ -16,7 +16,7 @@
 							</ul>
 						</li>
 						<li class="menu-boutiques"><a href="index.php?page=boutiques">Boutiques</a></li>
-						<li class="menu-about"><a href="index.php?page=about">En savoir plus</a></li>
+						<li class="menu-about"><a href="index.php?page=about">About</a></li>
 					</ul>
 				</nav>
 			</div>

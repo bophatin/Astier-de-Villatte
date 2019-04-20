@@ -6,8 +6,8 @@ html body {
 /* ECRAN ACCUEIL */
 
 #wrapper_boutiques {
-	padding-top: 40px;
-	padding-bottom: 190px;
+	padding-top: 110px;
+	padding-bottom: 255px;
 	background: #b7d0cd;
 }
 
@@ -44,6 +44,13 @@ h1 {
 	margin: 0;
 }
 
+@media all and (max-width: 1441px) {
+	#wrapper_boutiques {
+		padding-top: 40px;
+		padding-bottom: 190px;
+	}
+}
+
 
 /* TXT TRANSITION */
 
@@ -63,11 +70,22 @@ h1 {
 	margin: auto;
 }
 
-/* HONORE */
+@media all and (max-width: 1024px) {
+	.container_transition {
+		height : 240px;
+	}
+}
+
+/* BLOC SHOP */
 
 #wrapper-honore {
 	max-width: 100%;
-	margin-top: 100px;
+}
+
+#wrapper-tournon{
+	margin-top: 150px;
+	margin-bottom: -100px;
+	max-width: 100%;
 }
 
 .container-shop {
@@ -125,4 +143,101 @@ h1 {
 	font-size: 50px;
 	padding:0;
 	margin:0;
+}
+
+.address {
+	font-family: 'Roboto', sans-serif;
+	font-size: 16px;
+	line-height: 25px;
+	padding-top: 10px;
+	text-align:right;
+}
+
+h2, h3 {
+	font-weight:normal;
+}
+
+@media all and (max-width: 1441px) {
+	#wrapper-tournon {
+		margin-bottom: 0px;
+	}
+}
+
+@media all and (max-width: 1024px) {
+	.container-shop {
+		width: 900px;
+		height:800px;
+	}
+
+	.bloc-map {
+		width: 600px;
+		height: 645px;
+	}
+
+	.bloc-map > iframe {
+		width: 600px;
+		height: 645px;
+	}
+
+	.bloc-titres {
+		width: 250px;
+		height: 320px;
+		top: 150px;
+		right: 120px;
+	}
+
+	.nom_shop {
+		font-size: 42px;
+	}
+}
+
+@media all and (max-width: 768px) {
+	#wrapper-honore, #wrapper-tournon{
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	.container-shop, .bloc-map, .bloc-img, .bloc-titres, .bloc-titre {
+		position: inherit;
+	}
+
+	.bloc-titres, .bloc-titre, .bloc-img {
+		display: none;
+	}
+
+	.bloc-map {
+		z-index:inherit;
+	}
+
+	.address {
+		text-align:center;
+	}
+
+	.bloc-map {
+		margin: auto;
+	}
+
+	#wrapper-tournon{
+		margin-top: 0px;
+	}
+}
+
+@media all and (max-width: 480px) {
+	.txt-transition {
+		font-size: 16px;
+	}
+
+	.bloc-map {
+		width: 480px;
+		height: 620px;
+	}
+
+	.bloc-map > iframe {
+		width: 480px;
+		height: 620px;
+	}
+
+	#wrapper-tournon, #wrapper-honore {
+		margin-bottom: -45px;
+	}
 }
