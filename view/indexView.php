@@ -8,7 +8,7 @@
 			<div class="container-sec1-left">
 				<div class="background-left"><img src="public/img/1.jpg" alt="Ceramic Astier de Villatte"></div>
 				<div class="title-left"><h1>Ceramic</h1></div>
-				<button class="btn"><a href="index.php?page=allArticles&id=2">Decouvrir</a></button>
+				<div class="btn"><a href="index.php?page=allArticles&id=2">Decouvrir</a></div>
 			</div>
 			<div class="container-sec1-right"><img src="public/img/2.jpg" alt="Decoration Astier de Villatte"></div>
 		</div>
@@ -46,7 +46,7 @@
 				</div>
 				<div class="right-green">
 					<p class="text-green">5ème arrondissement de la capitale. Quartier Maubert. C’est dans ce coin qu’ils qualifient de « banlieue de Saint-Michel » et de « province au cœur de Paris » qu’Ivan Pericoli et Benoît Astier de Villatte, créateurs de la maison de céramique Astier de Villatte, ont façonné un appartement à l’image de leur univers. Quartier Maubert.</p>
-					<button class="btn-collec"><a href="index.php?page=about">Decouvrir</a></button>
+					<div class="btn-collec"><a href="index.php?page=about">Decouvrir</a></div>
 				</div>
 			</div>
 		</div>
