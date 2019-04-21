@@ -3,25 +3,23 @@
 
 <?php ob_start(); ?>
     <!-- 1. GRANDE IMG + TITRE PDUIT -->
-    <div id="wrapper-section-1">
+    <section id="wrapper-section-1">
 		<div class="container-section-1">
         <div class="container-sec1-left"><img src="<?= $post->imgBig(); ?>"></div>
 		<div class="container-sec1-right">
 			<div class="background-right">
-				<div>
-					<div class="title-right"><?= $post->designation(); ?></div>
-				</div>
+				<h1 class="title-right"><?= $post->designation(); ?></h1>
 			</div>
 		</div>
 		</div>
-	</div>
+    </section>
 
     <!-- 2. TEXTE + IMG PRDUIT -->
-    <div id="wrapper-section-2">
+    <section id="wrapper-section-2">
         <div class="container-section-2">
             <div class="container-sec2-left">
                 <div class="desc-left">
-                    <p class="title-left"><?= $post->titleDesc(); ?></p>
+                    <h2 class="title-left"><?= $post->titleDesc(); ?></h2>
                     <p class=txt-left><?= $post->descriptionArt(); ?></p>
                     <div class="infos-left">
                         <p class="ml-left">Plus d'infos ?</p>
@@ -33,7 +31,7 @@
                 <img src="<?= $post->imgArt1(); ?>" class="img-splash">
             </div>
         </div>
-    </div>
+    </section>
 
     <!-- 3. BLOCS 01 02 03 -->
     <div id="wrapper-section-3">
@@ -60,7 +58,7 @@
                 <img src ="public/img/atable-astier.jpg">
             </div>
             <div class="container-title-sec4">
-                <div class="title-sec4">À table !</div>
+                <div class="title-sec4">Des objets pour la maison</div>
             </div>
         </div>
     </div>
