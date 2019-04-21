@@ -13,6 +13,7 @@
 </head>
 
 <body>
+    <?php include("view/headerView.php"); ?>
     <?= $content; ?>
 	<?php include("view/footerView.php"); ?>
 
