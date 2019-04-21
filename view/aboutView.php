@@ -2,19 +2,19 @@
 <?php $title='A propos - Astier de Villatte'; ?>
 
 <?php ob_start(); ?>
-    <div id="wrapper-section-1">
+    <section id="wrapper-section-1">
         <div class="container-sec1">
 			<div class="bloc-left">
 				<div class="txt-left-duet"><h1 class="title-left">The duet</h1></div>
 			</div>
-			<div class="bloc-right"><img src="public/img/about-duo.jpg"></div>
+			<div class="bloc-right"><img src="public/img/about-duo.jpg" alt="Ivan & Benoit les fondateurs d'Astier de Villatte"></div>
         </div>
-	</div>
+	</section>
 
-	<div id="wrapper-section-2">
+	<section id="wrapper-section-2">
 		<div class="container-sec2">
 			<div class="bloc-left-sec2">
-				<img src="public/img/about-fleurs.jpg">
+				<img src="public/img/about-fleurs.jpg" alt="L'art Astier de Villatte">
 			</div>
 			<div class="bloc-right-sec2">
 				<div class="txt-right-sec2">
@@ -23,15 +23,15 @@
 				</div>
 			</div>
 		</div>	
-	</div>
+	</section>
 
-	<div id="wrapper-section-3">
+	<section id="wrapper-section-3">
 		<h3 class="title-sec3">L'appartement</h3>
 		<section>
 		<div class="container-sec3">
 			<div class=bloc-3>
 				<div class=bloc-in3>
-					<img src="public/img/about-1.jpg" alt="">
+					<img src="public/img/about-1.jpg" alt="Maison de décoration Astier de Villatte">
 				</div>
 				<div class=bloc-p3>
 					<p>Ambiance XVIIème siècle</p>
@@ -39,15 +39,15 @@
 			</div>
 			<div class=bloc-3-end>
 				<div class=bloc-in3>
-					<img src="public/img/about-3.jpg" alt="">
+					<img src="public/img/about-3.jpg" alt="Ambiance et déco chic Astier de Villatte">
 				</div>
 				<div class=bloc-p3>
 					<p>Une lumière d'atelier</p>
 				</div>
 			</div>
 			<div class=bloc-3>
-				<div class=bloc-in3>
-					<img src="public/img/about-2.jpg" alt="">
+				<div class=bloc_in3>
+					<img src="public/img/about-2.jpg" alt="Des objets de curiosités Astier de Villatte">
 				</div>
 				<div class=bloc-p3>
 					<p>Des objets aux histoires curieuses</p>
@@ -55,18 +55,17 @@
 			</div>
 		</div>
 		</section>
-	</div>
+	</section>
 
-	<div id="wrapper-section-4">
+	<section id="wrapper-section-4">
 		<div class="container-sec4">
-			<img src="public/img/about-atelier.jpg" alt="">
+			<img src="public/img/about-atelier.jpg" alt="Atelier parisien Astier de Villatte">
 			<h4>Atelier Parisien</h4>
 		</div>
 		<div class="container-txt4">
 			<p class="text-sec4">Astier de Villate, fondé en 1996, est le fabricant de céramiques le plus chic et sobre de Paris en s'inspirant des quatre coins du monde. Cette Maison, connue pour ses collaborations prestigieuses avec l'artiste Setsuko Klossowska de Rola, veuve du peintre Balthus ou John Derian, utilise un réel savoir-faire artisanal puisque ce ce sont d’anciens moines Tibétains qui fabriquent les céramiques. Ivan Pericoli & Benoît Astier de Villatte se rencontrent dans les années 90 dans un café de Saint-Germain. Formés au sein des Beaux-Arts de Paris, ils travaillent ensemble dans l'atelier de Georges Jeanclos, ils y apprennent l'art de la scupture.</p>
-			<!--<button><a href="">Decouvrir</a></button>-->
 		</div>
-	</div>
+	</section>
 <?php $content = ob_get_clean(); ?>
 
 <?php require('template/templatePage.php'); ?>
