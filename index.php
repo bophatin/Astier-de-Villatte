@@ -11,9 +11,12 @@ if(isset($_GET['page'])) {
 
 $page === isset($_GET['page']);
 
-FrontController::getListMenu();
 
 switch($page) {
+	case 'headerView':
+	FrontController::getListMenu();
+	break;
+
 	case 'indexView':
 	FrontController::getListSLider();
 	break;
