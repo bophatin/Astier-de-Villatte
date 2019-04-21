@@ -5,7 +5,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="public/contact.css"/>
-    <link rel="stylesheet" type="text/css" href="public/template.css"/>
 	<link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Cormorant:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
@@ -13,8 +12,8 @@
 </head>
 
 <body>
+    <?php include("view/headerView.php"); ?>
     <div class="img_back"><img src="public/img/contact.jpg"></div>
-
     <div id="wrapper-form">
         <div class="container-form">
 
@@ -59,7 +58,7 @@
                         </div>
                         <span id="msg_all"></span>
                         </form>
-                        
+                        <div class="error-msg"><?= (isset($error)) ? $error : '' ?></div>
                     </div>
                 </div>
             </div>
