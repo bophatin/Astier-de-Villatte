@@ -13,7 +13,7 @@
 
 <body>
     <?php include("view/headerView.php"); ?>
-    <div class="img_back"><img src="public/img/contact.jpg"></div>
+    <div class="img_back"><img src="public/img/contact.jpg" alt="L'art de vivre parisien Astier de Villatte"></div>
     <div id="wrapper-form">
         <div class="container-form">
 

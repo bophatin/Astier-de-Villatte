@@ -27,7 +27,6 @@
 
 	<section id="wrapper-section-3">
 		<h3 class="title-sec3">L'appartement</h3>
-		<section>
 		<div class="container-sec3">
 			<div class=bloc-3>
 				<div class=bloc-in3>
@@ -54,7 +53,6 @@
 				</div>
 			</div>
 		</div>
-		</section>
 	</section>
 
 	<section id="wrapper-section-4">

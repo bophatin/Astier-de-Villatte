@@ -5,7 +5,7 @@
     <!-- 1. GRANDE IMG + TITRE PDUIT -->
     <section id="wrapper-section-1">
 		<div class="container-section-1">
-        <div class="container-sec1-left"><img src="<?= $post->imgBig(); ?>"></div>
+        <div class="container-sec1-left"><img src="<?= $post->imgBig(); ?>" alt="Des produits faits à la main à Paris Astier de Villatte"></div>
 		<div class="container-sec1-right">
 			<div class="background-right">
 				<h1 class="title-right"><?= $post->designation(); ?></h1>
@@ -28,7 +28,7 @@
                 </div>
             </div>
             <div class="container-sec2-right">
-                <img src="<?= $post->imgArt1(); ?>" class="img-splash">
+                <img src="<?= $post->imgArt1(); ?>" class="img-splash" alt="Des produits faits à la main à Paris Astier de Villatte">
             </div>
         </div>
     </section>
@@ -55,7 +55,7 @@
     <div id="wrapper-section-4">
         <div class="container-sec4">
             <div class="container-img-sec4">
-                <img src ="public/img/atable-astier.jpg">
+                <img src ="public/img/atable-astier.jpg" alt="Découvrez l'univers Astier de Villatte">
             </div>
             <div class="container-title-sec4">
                 <div class="title-sec4">Des objets pour la maison</div>

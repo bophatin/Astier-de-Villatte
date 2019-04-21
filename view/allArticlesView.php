@@ -12,16 +12,16 @@
 					</div>
 				</div>
 			</div>
-			<div class="container-sec1-right"><img src="<?= $nameMenu->imgCat(); ?>"></div>
+			<div class="container-sec1-right"><img src="<?= $nameMenu->imgCat(); ?>" alt="Produits déco Astier de Villatte"></div>
 		</div>
 	</section>
 
-	<article id="wrapper-section-2">
+	<div id="wrapper-section-2">
 		<div class="background-section2">
 			<ul class="container-articles">
 				<?php foreach($articles as $article): ?>
 				<li class="article">
-					<img src="<?= $article->imgArt1(); ?>">
+					<img src="<?= $article->imgArt1(); ?>" alt="Produits déco Astier de Villatte">
 					<div class="desc-hover">
 						<a href="index.php?page=articleView&id=<?=$article->id();?>"><div class="label-art">
 						<div class="title-art">
@@ -33,8 +33,7 @@
 				<?php endforeach ?>
 			</ul>
 		</div>
-	</article>
-
+    </div>
 <?php $content = ob_get_clean(); ?>
 
 <?php require ('template/templatePage.php') ?>
