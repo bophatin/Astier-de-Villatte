@@ -38,16 +38,16 @@
 	<!-- 3. THE DUET -->
 	<section id="wrapper-section-3">
 		<div class="container-img-3"><img src="public/img/theduet.jpg" alt="Ivan & Benoit Astier de Villatte"></div>
-	</div>
-	<div class="back-green">
-		<div class="container-green">
-			<div class="left-green">
-				<h3 class="title-green">The Duet</h3>
-				<p class="lititle-green">Ivan & Benoit</p>
-			</div>
-			<div class="right-green">
-				<p class="text-green">5ème arrondissement de la capitale. Quartier Maubert. C’est dans ce coin qu’ils qualifient de « banlieue de Saint-Michel » et de « province au cœur de Paris » qu’Ivan Pericoli et Benoît Astier de Villatte, créateurs de la maison de céramique Astier de Villatte, ont façonné un appartement à l’image de leur univers. Quartier Maubert.</p>
-				<button class="btn-collec"><a href="index.php?page=about">Decouvrir</a></button>
+		<div class="back-green">
+			<div class="container-green">
+				<div class="left-green">
+					<h3 class="title-green">The Duet</h3>
+					<p class="lititle-green">Ivan & Benoit</p>
+				</div>
+				<div class="right-green">
+					<p class="text-green">5ème arrondissement de la capitale. Quartier Maubert. C’est dans ce coin qu’ils qualifient de « banlieue de Saint-Michel » et de « province au cœur de Paris » qu’Ivan Pericoli et Benoît Astier de Villatte, créateurs de la maison de céramique Astier de Villatte, ont façonné un appartement à l’image de leur univers. Quartier Maubert.</p>
+					<button class="btn-collec"><a href="index.php?page=about">Decouvrir</a></button>
+				</div>
 			</div>
 		</div>
 	</section>
