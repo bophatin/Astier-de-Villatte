@@ -11,11 +11,16 @@
                     <br/><input type="text" name="pseudo-new" id="nom" value="<?= $getUser->nameAdmin(); ?>"/>
                 </p>
                 <p>
-                    <label for="password">Mot de passe</label>
-                    <br/><input type="password" name="mdp-new" id="mdp" value="<?= $getUser->pwdAdmin(); ?>"/>
+                    <label for="password">Nouveau mot de passe</label>
+                    <br/><input type="password" name="mdp-new" id="mdp"/>
+                </p>
+                <p>
+                    <label for="password">Retaper le nouveau mot de passe</label>
+                    <br/><input type="password" name="mdp-confirm" id="mdp"/>
                 </p>
 				<input type="submit" name="update" value="Modifier" class ="button_add"/>
 			</form> 
+            <div class="error-msg"><?= (isset($error)) ? $error : '' ?></div>
         </div>
 	</div>
 <?php $content = ob_get_clean(); ?>
