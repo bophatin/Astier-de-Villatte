@@ -138,22 +138,22 @@ class FrontController {
 
 				try {
 					//Server settings
-					$mail->SMTPDebug = 2;                                  // Enable verbose debug output
-					$mail->isSMTP();                                    // Set mailer to use SMTP
-					$mail->Host       = 'ns0.ovh.net';  // Specify main and backup SMTP servers
-					$mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-					$mail->Username   = 'contact@bophatin.com';                     // SMTP username
-					$mail->Password   = 'boP5astier';                               // SMTP password
-					$mail->SMTPSecure = 'tls';                                  // Enable TLS encryption, `ssl` also accepted
-					$mail->Port       = 587;                                    // TCP port to connect to
+					$mail->SMTPDebug = 2;                                
+					$mail->isSMTP();                                  
+					$mail->Host       = 'ns0.ovh.net';  
+					$mail->SMTPAuth   = false;                                 
+					$mail->Username   = 'contact@bophatin.com';                 
+					$mail->Password   = '**********';                       
+					$mail->SMTPSecure = 'tls';                               
+					$mail->Port       = 587;                                   
 				
 					//Recipients
 					$mail->setFrom($email);
-					$mail->addAddress('contact@bophatin.com', 'Contact Astier de Villatte');               // Name is optional
+					$mail->addAddress('contact@bophatin.com', 'Contact Astier de Villatte');              
 					$mail->addReplyTo($email);
 
 					// Content
-					$mail->isHTML(true);                                  // Set email format to HTML
+					$mail->isHTML(true);                                
 					$mail->Subject = $sujet;
 					$mail->Body    = $message;
 					$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
