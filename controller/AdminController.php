@@ -104,19 +104,39 @@ class AdminController {
 	// update data d'un user
 	public static function updateUser() {
 		if(isset($_POST['update'])) {
-			if (isset($_POST['pseudo-new'], $_POST['mdp-new'])) {
-				$new_update_user = new User([
+			
+			if (isset($_POST['pseudo-new']) AND !empty($_POST['pseudo-new']) AND $_POST['pseudo-new'] != $_SESSION['username']) {
+				$new_user = new User([
 					'name_admin' => htmlspecialchars($_POST['pseudo-new']),
-					'pwd_admin' => password_hash(htmlspecialchars($_POST['mdp-new']), PASSWORD_DEFAULT),
 					'id' => htmlspecialchars($_GET['id'])
 				]);
-
-				$new_update_manager = new UserManager();
-				$update_user = $new_update_manager->update($new_update_user);
+	
+				$new_manager = new UserManager();
+				$new_name = $new_manager->updateName($new_user);
 				header('Location: admin.php?page=adminUsersView');
+			}
+		
+			if (isset($_POST['mdp-new']) AND !empty($_POST['mdp-new']) AND isset($_POST['mdp-confirm']) AND !empty($_POST['mdp-confirm'])) {
+				$mdp_new = isset($_POST['mdp-new']); 
+				$mdp_confirm = isset($_POST['mdp-confirm']); 
+
+				if ($mdp_new == $mdp_confirm) {
+					$new_us = new User([
+						'pwd_admin' => password_hash($_POST['mdp-new'], PASSWORD_DEFAULT),
+						'id' => htmlspecialchars($_GET['id'])
+					]);
+						
+					$new_manag = new UserManager();
+					$new_pwd = $new_manag->updateMdp($new_us);
+					header('Location: admin.php?page=adminUsersView');
+					
+				} else {
+					echo "Les mots de passe ne correspondent pas";
+				}
 			}
 		}
 	}
+
 
 
 	/* CATEGORIES */
